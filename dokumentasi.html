@@ -5,9 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dokumentasi Kegiatan - Pusat Rehabilitasi Satwa Punti Kayu</title>
 
+    <!-- IMPORT FONT PLUS JAKARTA SANS & INTER -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
+    />
+
+    <!-- IMPORT FONT AWESOME V6.5.1 -->
+    <link 
+      rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
     />
 
     <style>
@@ -52,9 +59,48 @@
         color: inherit;
       }
 
-      /* =========================================
-         HEADER & TOPBAR — SAMA DENGAN INFORMASIREHABILITASI.HTML
-      ========================================= */
+      /* FLOATING SOCIAL MEDIA SIDEBAR */
+      .social-floating-bar {
+        position: fixed;
+        left: 0;
+        top: 40%;
+        transform: translateY(-50%);
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        border-radius: 0 10px 10px 0;
+        box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+        border: 1px solid #cbd5e1;
+        border-left: none;
+        padding: 6px 4px;
+        gap: 6px;
+      }
+
+      .social-floating-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 6px;
+        color: #334155;
+        font-size: 18px;
+        transition: all 0.25s ease;
+      }
+
+      .social-floating-item:hover {
+        color: #ffffff;
+        transform: translateX(4px);
+      }
+
+      .social-floating-item.fb:hover { background-color: #1877f2; }
+      .social-floating-item.tw:hover { background-color: #000000; }
+      .social-floating-item.th:hover { background-color: #000000; }
+      .social-floating-item.ig:hover { background-color: #e1306c; }
+      .social-floating-item.yt:hover { background-color: #ff0000; }
+
+      /* HEADER & TOPBAR */
       .topbar {
         background: #081c10;
         color: #fff;
@@ -115,9 +161,7 @@
         margin-top: 2px;
       }
 
-      /* =========================================
-         NAVIGASI — SAMA DENGAN INFORMASIREHABILITASI.HTML
-      ========================================= */
+      /* NAVIGASI KHUSUS PRS PUNTI KAYU */
       .nav {
         position: sticky;
         top: 0;
@@ -196,9 +240,7 @@
         color: #fff;
       }
 
-      /* =========================================
-         KONTEN UTAMA & GALERI
-      ========================================= */
+      /* KONTEN UTAMA & GALERI */
       .main-container {
         max-width: 1100px;
         margin: 28px auto;
@@ -394,6 +436,7 @@
 
       /* RESPONSIVE TABLET & MOBILE */
       @media screen and (max-width: 868px) {
+        .social-floating-bar { display: none; }
         .topbar {
           font-size: 11px;
           text-align: center;
@@ -508,10 +551,108 @@
           grid-template-columns: 1fr;
         }
       }
+      /* NAVIGASI KHUSUS PRS PUNTI KAYU */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: #081c10;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .nav-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 16px; /* Menambah padding samping agar tidak mepet layar */
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Membuat tombol terdorong rapi ke kanan */
+        gap: 16px; /* Memberi jarak minimal antar elemen */
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        gap: 4px;
+        min-width: 0;
+      }
+
+      .nav-links li {
+        position: relative;
+        white-space: nowrap;
+      }
+
+      .nav-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px;
+        color: #fff;
+        background: #081c10;
+        padding: 0 16px;
+        font-size: 13px;
+        font-weight: 700;
+        border-bottom: 3px solid transparent;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: #fff;
+        background: #00a859;
+        border-bottom: 3px solid #00ff88;
+      }
+
+      .back {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        height: 32px;
+        padding: 0 14px;
+        border: 1.5px solid #00a859;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 12.5px;
+        font-weight: 700;
+        background: rgba(0, 168, 89, 0.15);
+        white-space: nowrap;
+        transition: all 0.2s;
+        margin-left: 14px; /* TAMBAHAN: Memberi jarak renggang dari menu Dokumentasi */
+      }
+
+      .back:hover {
+        background: #00a859;
+        border-color: #00a859;
+        color: #fff;
+      }
     </style>
   </head>
 
   <body>
+    <!-- FLOATING BAR MEDIA SOSIAL -->
+    <div class="social-floating-bar">
+      <a href="https://www.facebook.com/bksda.s.selatan" target="_blank" class="social-floating-item fb" title="Facebook BKSDA Sumsel">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a href="https://x.com/bksda_sumsel" target="_blank" class="social-floating-item tw" title="X (Twitter) BKSDA Sumsel">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+      <a href="https://www.threads.com/@bksda_sumsel" target="_blank" class="social-floating-item th" title="Threads BKSDA Sumsel">
+        <i class="fa-brands fa-threads"></i>
+      </a>
+      <a href="https://www.instagram.com/bksda_sumsel" target="_blank" class="social-floating-item ig" title="Instagram BKSDA Sumsel">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/channel/UC3mTRUNscHxFBZndT64-_Kg" target="_blank" class="social-floating-item yt" title="YouTube BKSDA Sumsel">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
+
     <!-- INFORMASI INSTANSI -->
     <div class="topbar">
       Kementerian Kehutanan Republik Indonesia · Ditjen KSDAE
@@ -551,7 +692,7 @@
       </div>
     </header>
 
-    <!-- NAVIGASI PRS -->
+    <!-- NAVIGASI UTAMA PRS PUNTI KAYU -->
     <nav class="nav">
       <div class="nav-inner">
         <ul class="nav-links">
@@ -560,7 +701,8 @@
             <a href="informasirehabilitasi.html">Informasi Rehabilitasi</a>
           </li>
           <li><a href="datasatwaprs.html">Data Satwa PRS</a></li>
-          <li><a href="kegiatanedukasi.html">Kegiatan &amp; Edukasi</a></li>
+          <li><a href="eksitu.html">Kegiatan</a></li>
+          <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
           <li><a class="active" href="dokumentasi.html">Dokumentasi</a></li>
         </ul>
 
@@ -576,7 +718,7 @@
       <div class="gallery-grid">
         <div class="gallery-card">
           <div class="img-wrapper" onclick="openModal('prs/evakuasitrenggiling.jpeg', 'Evakuasi Trenggiling')">
-            <img src="prs/evakuasitrenggiling.jpeg" alt="Evakuasi Trenggiling" loading="lazy" />
+            <img src="prs/evakuasitrenggiling.jpeg" alt="Evakuasi Trenggiling" loading="lazy" onerror="this.onerror=null; this.src='images/profil.png';" />
           </div>
           <div class="caption">
             <h4>Evakuasi Trenggiling</h4>
@@ -586,7 +728,7 @@
 
         <div class="gallery-card">
           <div class="img-wrapper" onclick="openModal('prs/penerimaankucinghutankuwuk.jpeg', 'Penerimaan Kucing Hutan')">
-            <img src="prs/penerimaankucinghutankuwuk.jpeg" alt="Penerimaan Kucing Hutan Kuwuk" loading="lazy" />
+            <img src="prs/penerimaankucinghutankuwuk.jpeg" alt="Penerimaan Kucing Hutan Kuwuk" loading="lazy" onerror="this.onerror=null; this.src='images/profil.png';" />
           </div>
           <div class="caption">
             <h4>Penerimaan Kucing Hutan (Kuwuk)</h4>
@@ -596,7 +738,7 @@
 
         <div class="gallery-card">
           <div class="img-wrapper" onclick="openModal('prs/penerimaansiamang.jpeg', 'Penerimaan Siamang')">
-            <img src="prs/penerimaansiamang.jpeg" alt="Penerimaan Siamang" loading="lazy" />
+            <img src="prs/penerimaansiamang.jpeg" alt="Penerimaan Siamang" loading="lazy" onerror="this.onerror=null; this.src='images/profil.png';" />
           </div>
           <div class="caption">
             <h4>Penerimaan Siamang</h4>
@@ -610,7 +752,7 @@
       <div class="gallery-grid">
         <div class="gallery-card">
           <div class="img-wrapper" onclick="openModal('prs/perawatansiamang.jpeg', 'Perawatan Siamang')">
-            <img src="prs/perawatansiamang.jpeg" alt="Perawatan Siamang" loading="lazy" />
+            <img src="prs/perawatansiamang.jpeg" alt="Perawatan Siamang" loading="lazy" onerror="this.onerror=null; this.src='images/profil.png';" />
           </div>
           <div class="caption">
             <h4>Perawatan Medis Siamang</h4>
@@ -620,7 +762,7 @@
 
         <div class="gallery-card">
           <div class="img-wrapper" onclick="openModal('prs/perawatanelang.jpeg', 'Perawatan Elang')">
-            <img src="prs/perawatanelang.jpeg" alt="Perawatan Elang" loading="lazy" />
+            <img src="prs/perawatanelang.jpeg" alt="Perawatan Elang" loading="lazy" onerror="this.onerror=null; this.src='images/profil.png';" />
           </div>
           <div class="caption">
             <h4>Perawatan Satwa Elang</h4>
@@ -630,7 +772,7 @@
 
         <div class="gallery-card">
           <div class="img-wrapper" onclick="openModal('prs/perawatantrenggiling.jpeg', 'Perawatan Trenggiling')">
-            <img src="prs/perawatantrenggiling.jpeg" alt="Perawatan Trenggiling" loading="lazy" />
+            <img src="prs/perawatantrenggiling.jpeg" alt="Perawatan Trenggiling" loading="lazy" onerror="this.onerror=null; this.src='images/profil.png';" />
           </div>
           <div class="caption">
             <h4>Perawatan Trenggiling</h4>
@@ -644,7 +786,7 @@
       <div class="gallery-grid">
         <div class="gallery-card">
           <div class="img-wrapper" onclick="openModal('prs/pemeliharaanberuangmadu.jpeg', 'Pemeliharaan Beruang Madu')">
-            <img src="prs/pemeliharaanberuangmadu.jpeg" alt="Pemeliharaan Beruang Madu" loading="lazy" />
+            <img src="prs/pemeliharaanberuangmadu.jpeg" alt="Pemeliharaan Beruang Madu" loading="lazy" onerror="this.onerror=null; this.src='images/profil.png';" />
           </div>
           <div class="caption">
             <h4>Pemeliharaan Beruang Madu</h4>
@@ -654,7 +796,7 @@
 
         <div class="gallery-card">
           <div class="img-wrapper" onclick="openModal('prs/pemeliharaanburungkakatua.jpeg', 'Pemeliharaan Burung Kakatua')">
-            <img src="prs/pemeliharaanburungkakatua.jpeg" alt="Pemeliharaan Burung Kakatua" loading="lazy" />
+            <img src="prs/pemeliharaanburungkakatua.jpeg" alt="Pemeliharaan Burung Kakatua" loading="lazy" onerror="this.onerror=null; this.src='images/profil.png';" />
           </div>
           <div class="caption">
             <h4>Pemeliharaan Burung Kakatua</h4>
@@ -664,7 +806,7 @@
 
         <div class="gallery-card">
           <div class="img-wrapper" onclick="openModal('prs/pemeliharaanlutung.jpeg', 'Pemeliharaan Lutung')">
-            <img src="prs/pemeliharaanlutung.jpeg" alt="Pemeliharaan Lutung" loading="lazy" />
+            <img src="prs/pemeliharaanlutung.jpeg" alt="Pemeliharaan Lutung" loading="lazy" onerror="this.onerror=null; this.src='images/profil.png';" />
           </div>
           <div class="caption">
             <h4>Pemeliharaan Lutung</h4>
@@ -678,7 +820,7 @@
       <div class="gallery-grid">
         <div class="gallery-card">
           <div class="img-wrapper" onclick="openModal('prs/pelepasliaranmerakhijau.jpeg', 'Pelepasliaran Merak Hijau')">
-            <img src="prs/pelepasliaranmerakhijau.jpeg" alt="Pelepasliaran Merak Hijau" loading="lazy" />
+            <img src="prs/pelepasliaranmerakhijau.jpeg" alt="Pelepasliaran Merak Hijau" loading="lazy" onerror="this.onerror=null; this.src='images/profil.png';" />
           </div>
           <div class="caption">
             <h4>Pelepasliaran Merak Hijau</h4>
