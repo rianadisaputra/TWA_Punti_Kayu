@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fauna - TWA Punti Kayu Palembang</title>
+    <title>Keanekaragaman Satwa - Balai Konservasi Sumber Daya Alam Sumatera Selatan</title>
     
     <!-- IMPORT FONT PLUS JAKARTA SANS & INTER -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- IMPORT FONT AWESOME V6.5.1 UNTUK IKON SOSMED -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,6 +29,47 @@
 
         a { color: #00a859; text-decoration: none; font-weight: 700; }
         a:hover { color: #007a40; text-decoration: underline; }
+
+        /* FLOATING SOCIAL MEDIA SIDEBAR */
+        .social-floating-bar {
+            position: fixed;
+            left: 0;
+            top: 40%;
+            transform: translateY(-50%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+            border: 1px solid #cbd5e1;
+            border-left: none;
+            padding: 6px 4px;
+            gap: 6px;
+        }
+
+        .social-floating-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 6px;
+            color: #334155;
+            font-size: 18px;
+            transition: all 0.25s ease;
+        }
+
+        .social-floating-item:hover {
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+
+        .social-floating-item.fb:hover { background-color: #1877f2; }
+        .social-floating-item.tw:hover { background-color: #000000; }
+        .social-floating-item.th:hover { background-color: #000000; }
+        .social-floating-item.ig:hover { background-color: #e1306c; }
+        .social-floating-item.yt:hover { background-color: #ff0000; }
 
         /* 1. TOP BAR RESPONSIVE */
         .top-bar { 
@@ -323,7 +367,7 @@
         .section-header:first-of-type { margin-top: 0; }
         .article-text { font-size: 13.5px; color: #1e293b; margin-bottom: 16px; text-align: justify; font-weight: 500; line-height: 1.65; }
 
-        /* STYLING KOLASE FAUNA (SEPERTI ANGGREK) */
+        /* STYLING KOLASE FAUNA */
         .fauna-box {
             background-color: #f8fafc;
             border: 1px solid #cbd5e1;
@@ -376,7 +420,6 @@
             box-shadow: 0 8px 20px rgba(0, 168, 89, 0.18);
         }
 
-        /* DIBUAT RASIO LANDSCAPE YANG PAS UNTUK DOKUMENTASI */
         .fauna-img-box {
             width: 100%;
             height: 180px;
@@ -472,7 +515,7 @@
         .widget-list li { margin-bottom: 10px; padding-left: 14px; position: relative; }
         .widget-list li::before { content: "•"; color: #00a859; font-weight: bold; font-size: 16px; position: absolute; left: 0; top: -2px; }
 
-        /* MODAL POPUP LIGHTBOX FOTO DETAIL LANDSCAPE PENUH */
+        /* MODAL POPUP LIGHTBOX FOTO FAUNA FULL */
         .detail-modal {
             display: none;
             position: fixed;
@@ -510,7 +553,6 @@
             max-height: 750px;
         }
 
-        /* DIBUAT OBJECT-FIT CONTAIN AGAR FOTO LANDSCAPE PENUH TANPA TERPOTONG */
         .detail-modal-img-box {
             width: 58%;
             background-color: #040e08;
@@ -524,7 +566,7 @@
         .detail-modal-img-box img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* PENTING: MENAMPILKAN GAMBAR PENUH UTUH */
+            object-fit: contain;
             background-color: #040e08;
         }
 
@@ -612,8 +654,10 @@
         .footer-col p { color: #cbd5e1; font-size: 12px; line-height: 1.6; }
         .footer-bottom { max-width: 1100px; margin: 22px auto 0 auto; padding-top: 14px; border-top: 1px solid #164229; text-align: center; font-size: 11.5px; color: #94a3b8; font-weight: 500; }
 
-        /* MEDIA QUERIES MOBILE & TABLET (KOMPATIBEL HP KETAT) */
+        /* MEDIA QUERIES MOBILE & TABLET */
         @media screen and (max-width: 868px) {
+            .social-floating-bar { display: none; }
+
             .mobile-header-bar { display: flex !important; }
             .top-bar { font-size: 11px; text-align: center; padding: 6px 12px; }
             .header-container { flex-direction: column; text-align: center; gap: 10px; }
@@ -630,7 +674,6 @@
             .main-container { flex-direction: column; padding: 16px; margin: 16px auto; }
             .sidebar-area { border-left: none; border-top: 2px solid #e2e8f0; padding-left: 0; padding-top: 20px; }
             
-            /* TAMPILAN GRID KOLASE MENJADI 1 KOLOM DI HP */
             .fauna-grid { grid-template-columns: repeat(1, 1fr); }
             .fauna-img-box { height: 200px; }
 
@@ -651,6 +694,25 @@
 </head>
 <body>
 
+    <!-- FLOATING SOCIAL MEDIA SIDEBAR -->
+    <div class="social-floating-bar">
+      <a href="https://www.facebook.com/bksda.s.selatan" target="_blank" class="social-floating-item fb" title="Facebook BKSDA Sumsel">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a href="https://x.com/bksda_sumsel" target="_blank" class="social-floating-item tw" title="X (Twitter) BKSDA Sumsel">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+      <a href="https://www.threads.com/@bksda_sumsel" target="_blank" class="social-floating-item th" title="Threads BKSDA Sumsel">
+        <i class="fa-brands fa-threads"></i>
+      </a>
+      <a href="https://www.instagram.com/bksda_sumsel" target="_blank" class="social-floating-item ig" title="Instagram BKSDA Sumsel">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/channel/UC3mTRUNscHxFBZndT64-_Kg" target="_blank" class="social-floating-item yt" title="YouTube BKSDA Sumsel">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
+
     <!-- BARIS ATAS -->
     <div class="top-bar">Kementerian Kehutanan Republik Indonesia — Direktorat Jenderal KSDAE</div>
 
@@ -669,7 +731,7 @@
         </div>
     </header>
 
-    <!-- NAVIGASI UTAMA -->
+    <!-- NAVIGASI UTAMA SESUAI ARAHAN PIMPINAN -->
     <nav class="nav-bar">
         <div class="nav-container">
             <ul class="nav-menu">
@@ -679,31 +741,22 @@
                     <a href="profiltwa.html">Profil TWA Punti Kayu &#9662;</a>
                     <ul class="dropdown-menu">
                         <li><a href="profiltwa.html">Profil Kawasan</a></li>
-                        <li><a href="pejabat.html">Profil Pejabat</a></li>
                         <li><a href="struktur.html">Struktur Organisasi</a></li>
+                        <li><a href="pejabat.html">Profil Pimpinan</a></li>
                     </ul>
                 </li>
 
                 <li class="dropdown active">
                     <a href="kehati.html">Keanekaragaman Hayati &#9662;</a>
                     <ul class="dropdown-menu">
-                        <li><a href="kehati.html">Flora</a></li>
-                        <li><a href="fauna.html">Fauna</a></li>
-                        <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
+                        <li><a href="kehati.html">Tumbuhan</a></li>
+                        <li><a href="fauna.html">Satwa</a></li>
                     </ul>
                 </li>
 
                 <li><a href="wisata.html">Objek wisata</a></li>
-
-                <li class="dropdown">
-                    <a href="insitu.html">Kegiatan &#9662;</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="insitu.html">Insitu</a></li>
-                        <li><a href="eksitu.html">Eksitu</a></li>
-                    </ul>
-                </li>
-
-                <li><a href="kontak.html">Kontak</a></li>
+                <li><a href="insitu.html">Kegiatan</a></li>
+                <li><a href="kontak.html">Kontak & Layanan</a></li>
                 <li class="nav-prs"><a href="prs.html">PRS Punti Kayu &rarr;</a></li>
             </ul>
         </div>
@@ -711,7 +764,7 @@
 
     <!-- BANNER PAGE -->
     <div class="page-banner">
-        <h2>Keanekaragaman Fauna</h2>
+        <h2>Keanekaragaman Satwa</h2>
         <p>Katalog Dokumentasi Satwa Liar, Mamalia, Aves, Reptil, dan Serangga di TWA Punti Kayu</p>
     </div>
 
@@ -730,17 +783,16 @@
 
                 <ul class="mobile-dropdown-menu" id="mobileDropdown">
                     <div class="menu-category">Keanekaragaman Hayati</div>
-                    <li><a href="kehati.html">Flora</a></li>
-                    <li><a href="fauna.html">Fauna</a></li>
-                    <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
+                    <li><a href="kehati.html">Tumbuhan</a></li>
+                    <li><a href="fauna.html">Satwa</a></li>
                 </ul>
             </div>
 
-            <!-- KOLASE FAUNA KAWASAN HASIL DOKUMENTASI LAPANAN -->
+            <!-- KOLASE FAUNA KAWASAN HASIL DOKUMENTASI LAPANGAN -->
             <div class="fauna-box">
                 <div class="fauna-header">
-                    <h3>Koleksi Dokumentasi Fauna TWA Punti Kayu</h3>
-                    <p>Klik pada salah satu kartu fauna untuk melihat foto lanskap penuh serta rincian taksonomi dan status konservasinya.</p>
+                    <h3>Koleksi Dokumentasi Satwa TWA Punti Kayu</h3>
+                    <p>Klik pada salah satu kartu satwa untuk melihat foto lanskap penuh serta rincian taksonomi dan status konservasinya.</p>
                 </div>
 
                 <div class="fauna-grid">
@@ -813,7 +865,7 @@
                          data-title="Burung Raja Udang"
                          data-latin="Alcedo atthis"
                          data-group="Aves / Burung"
-                         data-status="Dilindungi (P.106 KLHK) • IUCN LC"
+                         data-status="Dilindungi (P.106 Kemenhut) • IUCN LC"
                          data-desc="Burung mungil dengan bulu biru cerah keemasan yang memiliki kecepatan terbang tinggi. Hidup di sekitar alur air kawasan untuk menangkap udang dan ikan kecil."
                          data-img="fauna/rajaudang.jpeg">
                         <div class="fauna-img-box">
@@ -942,31 +994,30 @@
             <div class="widget">
                 <div class="widget-title">NAVIGASI KEHATI</div>
                 <ul class="widget-list">
-                    <li><a href="kehati.html">Flora & Anggrek</a></li>
-                    <li><a href="fauna.html">Fauna Kawasan</a></li>
-                    <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
+                    <li><a href="kehati.html">Tumbuhan & Anggrek</a></li>
+                    <li><a href="fauna.html">Satwa Kawasan</a></li>
                 </ul>
             </div>
 
             <div class="widget">
                 <div class="widget-title">INFORMASI PERLINDUNGAN</div>
                 <p style="font-size: 12px; color: #334155; line-height: 1.55; font-weight: 600;">
-                    Seluruh fauna di TWA Punti Kayu dilindungi dari tindakan perburuan, penangkapan, maupun pengrusakan habitat sesuai UU No. 5 Tahun 1990.
+                    Seluruh satwa di TWA Punti Kayu dilindungi dari tindakan perburuan, penangkapan, maupun pengrusakan habitat sesuai UU No. 5 Tahun 1990.
                 </p>
             </div>
         </div>
     </div>
 
-    <!-- MODAL POPUP LIGHTBOX FOTO FAUNA FULL (OBJECT-FIT CONTAIN) -->
+    <!-- MODAL POPUP LIGHTBOX FOTO FAUNA FULL -->
     <div id="detailModal" class="detail-modal" onclick="tutupModalOuter(event)">
         <span id="closeDetailModal" class="detail-modal-close">&times;</span>
         <div class="detail-modal-card">
             <div class="detail-modal-img-box">
-                <img id="detailModalImg" src="" alt="Pratinjau Foto Fauna">
+                <img id="detailModalImg" src="" alt="Pratinjau Foto Satwa">
             </div>
             <div class="detail-modal-content">
-                <span id="detailMetaTag" class="detail-meta-tag">Kategori Fauna</span>
-                <h3 id="detailTitle" class="detail-title">Nama Fauna</h3>
+                <span id="detailMetaTag" class="detail-meta-tag">Kategori Satwa</span>
+                <h3 id="detailTitle" class="detail-title">Nama Satwa</h3>
                 <span id="detailLatin" class="detail-latin">Nama Ilmiah</span>
                 
                 <div class="detail-info-list">
@@ -991,15 +1042,15 @@
     <footer class="footer-main">
         <div class="footer-container">
             <div class="footer-col">
-                <h5>BKSDA Sumatera Selatan</h5>
-                <p>Balai Konservasi Sumber Daya Alam Sumatera Selatan bertugas mengelola kawasan konservasi dan keanekaragaman hayati di wilayah Sumatera Selatan.</p>
+                <h5>Balai Konservasi Sumber Daya Alam Sumatera Selatan</h5>
+                <p>Unit Pelaksana Teknis Direktorat Jenderal Konservasi Sumber Daya Alam dan Ekosistem yang bertugas mengelola kawasan konservasi dan keanekaragaman hayati di wilayah Sumatera Selatan.</p>
             </div>
             <div class="footer-col">
                 <h5>Alamat Kantor</h5>
-                <p>Jl. Kolonel H. Burlian KM. 6 No. 79, Kota Palembang, Sumatera Selatan<br>Telepon/Fax: (0711) 410948</p>
+                <p>Jl. Kolonel H. Burlian KM. 6 No. 79, Kota Palembang, Sumatera Selatan<br>Telepon/Fax: (0711) 410948 | Email: bksdasumsel@kemenhut.go.id</p>
             </div>
         </div>
-        <div class="footer-bottom">Hak Cipta &copy; 2026 Balai Konservasi Sumber Daya Alam (BKSDA) Sumatera Selatan — Pengelola Kawasan TWA Punti Kayu</div>
+        <div class="footer-bottom">Hak Cipta &copy; 2026 Balai Konservasi Sumber Daya Alam Sumatera Selatan — Kementerian Kehutanan Republik Indonesia</div>
     </footer>
 
     <!-- SCRIPT JAVASCRIPT UTAMA -->
