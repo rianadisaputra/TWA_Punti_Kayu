@@ -7,9 +7,16 @@
       Beranda PRS - Pusat Rehabilitasi Satwa Punti Kayu | BKSDA Sumsel
     </title>
 
+    <!-- IMPORT FONT PLUS JAKARTA SANS & INTER -->
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
+    />
+    
+    <!-- IMPORT FONT AWESOME V6.5.1 -->
+    <link 
+      rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
     />
 
     <style>
@@ -54,9 +61,48 @@
         color: inherit;
       }
 
-      /* =========================================
-         HEADER & TOPBAR
-      ========================================= */
+      /* FLOATING SOCIAL MEDIA SIDEBAR */
+      .social-floating-bar {
+        position: fixed;
+        left: 0;
+        top: 40%;
+        transform: translateY(-50%);
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        border-radius: 0 10px 10px 0;
+        box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+        border: 1px solid #cbd5e1;
+        border-left: none;
+        padding: 6px 4px;
+        gap: 6px;
+      }
+
+      .social-floating-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 6px;
+        color: #334155;
+        font-size: 18px;
+        transition: all 0.25s ease;
+      }
+
+      .social-floating-item:hover {
+        color: #ffffff;
+        transform: translateX(4px);
+      }
+
+      .social-floating-item.fb:hover { background-color: #1877f2; }
+      .social-floating-item.tw:hover { background-color: #000000; }
+      .social-floating-item.th:hover { background-color: #000000; }
+      .social-floating-item.ig:hover { background-color: #e1306c; }
+      .social-floating-item.yt:hover { background-color: #ff0000; }
+
+      /* HEADER & TOPBAR */
       .topbar {
         background: #081c10;
         color: #fff;
@@ -117,9 +163,7 @@
         margin-top: 2px;
       }
 
-      /* =========================================
-         NAVIGASI
-      ========================================= */
+      /* NAVIGASI */
       .nav {
         position: sticky;
         top: 0;
@@ -198,9 +242,7 @@
         color: #fff;
       }
 
-      /* =========================================
-         HERO SECTION (BACKGROUND DARI INFORMASIREHABILITASI)
-      ========================================= */
+      /* HERO SECTION */
       .hero {
         background:
           linear-gradient(110deg, #062c1be8, #087b4cb0),
@@ -260,9 +302,7 @@
         transform: translateY(-2px);
       }
 
-      /* =========================================
-         KONTEN UTAMA
-      ========================================= */
+      /* KONTEN UTAMA */
       .main-container {
         max-width: 1100px;
         margin: 28px auto;
@@ -338,6 +378,31 @@
         border-radius: 5px;
       }
 
+      .social-links-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .social-btn {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 9px 12px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 700;
+        color: #ffffff !important;
+        transition: all 0.25s ease;
+      }
+
+      .social-fb { background-color: #1877f2; }
+      .social-tw { background-color: #000000; }
+      .social-th { background-color: #000000; }
+      .social-ig { background-color: #e1306c; }
+      .social-yt { background-color: #ff0000; }
+
       /* FOOTER */
       .footer-main {
         background-color: #081c10;
@@ -366,45 +431,17 @@
         color: #94a3b8;
       }
 
-      /* =========================================
-         RESPONSIVE TABLET & MOBILE
-      ========================================= */
+      /* RESPONSIVE */
       @media screen and (max-width: 868px) {
-        .topbar {
-          font-size: 11px;
-          text-align: center;
-          padding: 6px 12px;
-        }
-
-        .header-main {
-          padding: 14px 20px;
-        }
-
-        .header-container {
-          flex-direction: column;
-          text-align: center;
-          gap: 10px;
-        }
-
-        .header-logo-wrapper {
-          justify-content: center;
-        }
-
-        .header-logo {
-          height: 48px;
-        }
-
-        .header-title h1 {
-          font-size: 14px;
-        }
-
-        .header-title h2 {
-          font-size: 12px;
-        }
-
-        .header-title p {
-          font-size: 10.5px;
-        }
+        .social-floating-bar { display: none; }
+        .topbar { font-size: 11px; text-align: center; padding: 6px 12px; }
+        .header-main { padding: 14px 20px; }
+        .header-container { flex-direction: column; text-align: center; gap: 10px; }
+        .header-logo-wrapper { justify-content: center; }
+        .header-logo { height: 48px; }
+        .header-title h1 { font-size: 14px; }
+        .header-title h2 { font-size: 12px; }
+        .header-title p { font-size: 10.5px; }
 
         .nav-inner {
           overflow-x: auto;
@@ -461,54 +498,118 @@
       }
 
       @media screen and (max-width: 560px) {
-        .header-title h1 {
-          font-size: 12px;
-          line-height: 1.4;
-        }
+        .header-title h1 { font-size: 12px; line-height: 1.4; }
+        .header-title h2 { font-size: 11px; }
+        .header-title p { font-size: 10px; line-height: 1.5; }
+        .nav-links { gap: 2px; padding: 0 6px; }
+        .nav-links a { height: 42px; padding: 0 10px; font-size: 11px; }
+        .back { height: 30px; padding: 0 10px; font-size: 10px; }
+        .hero { min-height: 290px; padding: 30px 16px; }
+        .hero h2 { font-size: 24px; }
+        .hero p { font-size: 12.5px; }
+      }
+      /* NAVIGASI KHUSUS PRS PUNTI KAYU */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: #081c10;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
 
-        .header-title h2 {
-          font-size: 11px;
-        }
+      .nav-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 16px; /* Menambah padding samping agar tidak mepet layar */
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Membuat tombol terdorong rapi ke kanan */
+        gap: 16px; /* Memberi jarak minimal antar elemen */
+      }
 
-        .header-title p {
-          font-size: 10px;
-          line-height: 1.5;
-        }
+      .nav-links {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        gap: 4px;
+        min-width: 0;
+      }
 
-        .nav-links {
-          gap: 2px;
-          padding: 0 6px;
-        }
+      .nav-links li {
+        position: relative;
+        white-space: nowrap;
+      }
 
-        .nav-links a {
-          height: 42px;
-          padding: 0 10px;
-          font-size: 11px;
-        }
+      .nav-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px;
+        color: #fff;
+        background: #081c10;
+        padding: 0 16px;
+        font-size: 13px;
+        font-weight: 700;
+        border-bottom: 3px solid transparent;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
 
-        .back {
-          height: 30px;
-          padding: 0 10px;
-          font-size: 10px;
-        }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: #fff;
+        background: #00a859;
+        border-bottom: 3px solid #00ff88;
+      }
 
-        .hero {
-          min-height: 290px;
-          padding: 30px 16px;
-        }
+      .back {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        height: 32px;
+        padding: 0 14px;
+        border: 1.5px solid #00a859;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 12.5px;
+        font-weight: 700;
+        background: rgba(0, 168, 89, 0.15);
+        white-space: nowrap;
+        transition: all 0.2s;
+        margin-left: 14px; /* TAMBAHAN: Memberi jarak renggang dari menu Dokumentasi */
+      }
 
-        .hero h2 {
-          font-size: 24px;
-        }
-
-        .hero p {
-          font-size: 12.5px;
-        }
+      .back:hover {
+        background: #00a859;
+        border-color: #00a859;
+        color: #fff;
       }
     </style>
   </head>
 
   <body>
+    <!-- FLOATING BAR MEDIA SOSIAL -->
+    <div class="social-floating-bar">
+      <a href="https://www.facebook.com/bksda.s.selatan" target="_blank" class="social-floating-item fb" title="Facebook BKSDA Sumsel">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a href="https://x.com/bksda_sumsel" target="_blank" class="social-floating-item tw" title="X (Twitter) BKSDA Sumsel">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+      <a href="https://www.threads.com/@bksda_sumsel" target="_blank" class="social-floating-item th" title="Threads BKSDA Sumsel">
+        <i class="fa-brands fa-threads"></i>
+      </a>
+      <a href="https://www.instagram.com/bksda_sumsel" target="_blank" class="social-floating-item ig" title="Instagram BKSDA Sumsel">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/channel/UC3mTRUNscHxFBZndT64-_Kg" target="_blank" class="social-floating-item yt" title="YouTube BKSDA Sumsel">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
+
     <!-- INFORMASI INSTANSI -->
     <div class="topbar">
       Kementerian Kehutanan Republik Indonesia · Ditjen KSDAE
@@ -548,7 +649,7 @@
       </div>
     </header>
 
-    <!-- NAVIGASI PRS -->
+    <!-- NAVIGASI PRS (TEKS NAV: "Kegiatan" NAMA FILE: "eksitu.html") -->
     <nav class="nav">
       <div class="nav-inner">
         <ul class="nav-links">
@@ -557,7 +658,8 @@
             <a href="informasirehabilitasi.html">Informasi Rehabilitasi</a>
           </li>
           <li><a href="datasatwaprs.html">Data Satwa PRS</a></li>
-          <li><a href="kegiatanedukasi.html">Kegiatan &amp; Edukasi</a></li>
+          <li><a href="eksitu.html">Kegiatan</a></li>
+          <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
           <li><a href="dokumentasi.html">Dokumentasi</a></li>
         </ul>
 
@@ -565,7 +667,7 @@
       </div>
     </nav>
 
-    <!-- HERO SECTION LENGKAP DENGAN BACKGROUND GAMBAR -->
+    <!-- HERO SECTION -->
     <section class="hero">
       <div class="hero-inner">
         <span class="eyebrow">Pusat Rehabilitasi Satwa</span>
@@ -598,26 +700,37 @@
           </p>
         </div>
 
+        <!-- KEGIATAN EKSITU PRS -->
+        <div class="section-header">Kegiatan Rehabilitasi Satwa</div>
         <div class="grid-two">
           <div class="card-box" style="flex: 1">
-            <h4>Visi &amp; Misi</h4>
+            <h4>Rescue & Evakuasi</h4>
             <p>
-              Mewujudkan kelestarian satwa liar dilindungi melalui tahapan
-              rehabilitasi yang terstandar medis serta mengembalikan sifat alami
-              satwa sebelum dilepasliarkan ke habitat aslinya.
+              Penanganan aduan konflik satwa liar dan evakuasi medis darurat untuk satwa liar terancam atau serahan sukarela masyarakat.
             </p>
           </div>
           <div class="card-box" style="flex: 1">
-            <h4>Fokus Penanganan</h4>
+            <h4>Rehabilitasi & Pelepasliaran</h4>
             <p>
-              Penanganan difokuskan pada Mamalia, Primata, Aves, dan Reptil
-              dilindungi yang mengalami cedera, trauma, atau kehilangan insting
-              liar akibat dipelihara ilegal.
+              Perawatan medis, pengembalian insting liar satwa, hingga proses translokasi/pelepasliaran kembali ke Suaka Margasatwa atau Taman Nasional.
             </p>
           </div>
         </div>
+
+        <!-- EDUKASI POSTER SATWA DILINDUNGI -->
+        <div class="section-header">Media Edukasi & Poster Satwa Dilindungi</div>
+        <div class="card-box" style="background-color: #f8fafc;">
+          <h4>Katalog & Identification Poster</h4>
+          <p style="margin-bottom: 12px;">
+            Akses informasi visual lengkap mengenai jenis satwa dilindungi, status konservasi, serta lembar edukasi satwa hasil penanganan PRS Punti Kayu.
+          </p>
+          <a href="poster.html" style="display: inline-block; background-color: #00a859; color: #ffffff; padding: 7px 14px; border-radius: 6px; font-weight: 700; font-size: 12px;">
+            Lihat Poster Satwa Dilindungi &rarr;
+          </a>
+        </div>
       </div>
 
+      <!-- SIDEBAR -->
       <div class="sidebar-area">
         <div class="widget">
           <div class="widget-title">RINGKASAN PRS</div>
@@ -626,6 +739,32 @@
             karantina medis, perawatan pakan berkala, hingga evaluasi kesiapan
             rilis (pelepasliaran).
           </p>
+        </div>
+
+        <div class="widget">
+          <div class="widget-title">MEDIA SOSIAL BKSDA SUMSEL</div>
+          <div class="social-links-grid">
+            <a href="https://www.facebook.com/bksda.s.selatan" target="_blank" class="social-btn social-fb">
+              <i class="fa-brands fa-facebook-f"></i>
+              <span>Facebook</span>
+            </a>
+            <a href="https://x.com/bksda_sumsel" target="_blank" class="social-btn social-tw">
+              <i class="fa-brands fa-x-twitter"></i>
+              <span>X (Twitter)</span>
+            </a>
+            <a href="https://www.threads.com/@bksda_sumsel" target="_blank" class="social-btn social-th">
+              <i class="fa-brands fa-threads"></i>
+              <span>Threads</span>
+            </a>
+            <a href="https://www.instagram.com/bksda_sumsel" target="_blank" class="social-btn social-ig">
+              <i class="fa-brands fa-instagram"></i>
+              <span>Instagram</span>
+            </a>
+            <a href="https://www.youtube.com/channel/UC3mTRUNscHxFBZndT64-_Kg" target="_blank" class="social-btn social-yt">
+              <i class="fa-brands fa-youtube"></i>
+              <span>YouTube</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
