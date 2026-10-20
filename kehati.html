@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keanekaragaman Hayati (Flora & Anggrek) - TWA Punti Kayu Palembang</title>
+    <title>Keanekaragaman Tumbuhan & Koleksi Anggrek - Balai Konservasi Sumber Daya Alam Sumatera Selatan</title>
     
     <!-- IMPORT FONT PLUS JAKARTA SANS & INTER -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- IMPORT FONT AWESOME V6.5.1 UNTUK IKON SOSMED -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <style>
         /* CSS DASAR & RESET FONT */
@@ -42,6 +45,47 @@
             text-decoration: underline;
         }
 
+        /* FLOATING SOCIAL MEDIA SIDEBAR */
+        .social-floating-bar {
+            position: fixed;
+            left: 0;
+            top: 40%;
+            transform: translateY(-50%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+            border: 1px solid #cbd5e1;
+            border-left: none;
+            padding: 6px 4px;
+            gap: 6px;
+        }
+
+        .social-floating-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 6px;
+            color: #334155;
+            font-size: 18px;
+            transition: all 0.25s ease;
+        }
+
+        .social-floating-item:hover {
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+
+        .social-floating-item.fb:hover { background-color: #1877f2; }
+        .social-floating-item.tw:hover { background-color: #000000; }
+        .social-floating-item.th:hover { background-color: #000000; }
+        .social-floating-item.ig:hover { background-color: #e1306c; }
+        .social-floating-item.yt:hover { background-color: #ff0000; }
+
         /* 1. TOP BAR RESPONSIVE */
         .top-bar {
             background-color: #081c10;
@@ -72,7 +116,6 @@
             display: flex;
             align-items: center;
             gap: 12px;
-         
             flex-shrink: 0;
         }
 
@@ -939,6 +982,10 @@
 
         /* MEDIA QUERIES MOBILE & TABLET */
         @media screen and (max-width: 868px) {
+            .social-floating-bar {
+                display: none;
+            }
+
             .mobile-header-bar {
                 display: flex !important;
             }
@@ -1061,6 +1108,25 @@
 </head>
 <body>
 
+    <!-- FLOATING SOCIAL MEDIA SIDEBAR -->
+    <div class="social-floating-bar">
+      <a href="https://www.facebook.com/bksda.s.selatan" target="_blank" class="social-floating-item fb" title="Facebook BKSDA Sumsel">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a href="https://x.com/bksda_sumsel" target="_blank" class="social-floating-item tw" title="X (Twitter) BKSDA Sumsel">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+      <a href="https://www.threads.com/@bksda_sumsel" target="_blank" class="social-floating-item th" title="Threads BKSDA Sumsel">
+        <i class="fa-brands fa-threads"></i>
+      </a>
+      <a href="https://www.instagram.com/bksda_sumsel" target="_blank" class="social-floating-item ig" title="Instagram BKSDA Sumsel">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/channel/UC3mTRUNscHxFBZndT64-_Kg" target="_blank" class="social-floating-item yt" title="YouTube BKSDA Sumsel">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
+
     <!-- BARIS ATAS -->
     <div class="top-bar">
         Kementerian Kehutanan Republik Indonesia — Direktorat Jenderal KSDAE
@@ -1081,7 +1147,7 @@
         </div>
     </header>
 
-    <!-- NAVIGASI UTAMA -->
+    <!-- NAVIGASI UTAMA SESUAI ARAHAN PIMPINAN -->
     <nav class="nav-bar">
         <div class="nav-container">
             <ul class="nav-menu">
@@ -1091,31 +1157,22 @@
                     <a href="profiltwa.html">Profil TWA Punti Kayu &#9662;</a>
                     <ul class="dropdown-menu">
                         <li><a href="profiltwa.html">Profil Kawasan</a></li>
-                        <li><a href="pejabat.html">Profil Pejabat</a></li>
                         <li><a href="struktur.html">Struktur Organisasi</a></li>
+                        <li><a href="pejabat.html">Profil Pimpinan</a></li>
                     </ul>
                 </li>
 
                 <li class="dropdown active">
                     <a href="kehati.html">Keanekaragaman Hayati &#9662;</a>
                     <ul class="dropdown-menu">
-                        <li><a href="kehati.html">Flora</a></li>
-                        <li><a href="fauna.html">Fauna</a></li>
-                        <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
+                        <li><a href="kehati.html">Tumbuhan</a></li>
+                        <li><a href="fauna.html">Satwa</a></li>
                     </ul>
                 </li>
 
                 <li><a href="wisata.html">Objek wisata</a></li>
-
-                <li class="dropdown">
-                    <a href="insitu.html">Kegiatan &#9662;</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="insitu.html">Insitu</a></li>
-                        <li><a href="eksitu.html">Eksitu</a></li>
-                    </ul>
-                </li>
-
-                <li><a href="kontak.html">Kontak</a></li>
+                <li><a href="insitu.html">Kegiatan</a></li>
+                <li><a href="kontak.html">Kontak & Layanan</a></li>
                 <li class="nav-prs"><a href="prs.html">PRS Punti Kayu &rarr;</a></li>
             </ul>
         </div>
@@ -1123,7 +1180,7 @@
 
     <!-- BANNER PAGE KEHATI -->
     <div class="page-banner">
-        <h2>Keanekaragaman Flora & Koleksi Anggrek</h2>
+        <h2>Keanekaragaman Tumbuhan & Koleksi Anggrek</h2>
         <p>Katalog Tumbuhan & Spesies Anggrek Eksotik di Green House TWA Punti Kayu</p>
     </div>
 
@@ -1265,19 +1322,16 @@
                 <!-- DROPDOWN SUB-MENU LENGKAP KHUSUS HP -->
                 <ul class="mobile-dropdown-menu" id="mobileDropdown">
                     <div class="menu-category">Keanekaragaman Hayati</div>
-                    <li><a href="kehati.html">Flora</a></li>
-                    <li><a href="fauna.html">Fauna</a></li>
-                    <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
+                    <li><a href="kehati.html">Tumbuhan</a></li>
+                    <li><a href="fauna.html">Satwa</a></li>
                 </ul>
             </div>
 
-           
-
-            <!-- BAGIAN 1: KOLASE FLORA KAWASAN HASIL DOKUMENTASI (BARU) -->
+            <!-- BAGIAN 1: KOLASE FLORA KAWASAN HASIL DOKUMENTASI -->
             <div class="orchid-greenhouse-box">
                 <div class="orchid-header">
-                    <h3>Keanekaragaman Flora Kawasan TWA Punti Kayu</h3>
-                    <p>Klik pada salah satu kartu flora untuk melihat dokumentasi foto lanskap utuh serta informasi taksonomi lengkap.</p>
+                    <h3>Keanekaragaman Tumbuhan Kawasan TWA Punti Kayu</h3>
+                    <p>Klik pada salah satu kartu tumbuhan untuk melihat dokumentasi foto lanskap utuh serta informasi taksonomi lengkap.</p>
                 </div>
 
                 <div class="orchid-grid">
@@ -1330,7 +1384,7 @@
                         </div>
                     </div>
 
-                    <!-- FLORA 3: BUNGAN POHON SIMPUR -->
+                    <!-- FLORA 3: BUNGA POHON SIMPUR -->
                     <div class="orchid-card" 
                          data-title="Pohon Simpur"
                          data-indo="Bunga & Pohon Simpur Air"
@@ -1338,7 +1392,7 @@
                          data-family="Dilleniaceae"
                          data-growth="Pohon sedang berdaun besar bergerigi"
                          data-roots="Akar kokoh penyerap air alami"
-                         data-desc="Spesies flora khas hutan hujan tropis dengan bunga putih/kuning besar yang mekar megah. Buahnya menjadi tempat berlindung dan pakan herpetofauna."
+                         data-desc="Spesies tumbuhan khas hutan hujan tropis dengan bunga putih/kuning besar yang mekar megah. Buahnya menjadi tempat berlindung dan pakan herpetofauna."
                          data-img="flora/bungapohonsimpur.jpeg">
                         <div class="orchid-img-box">
                             <span class="orchid-number-badge">03</span>
@@ -1348,7 +1402,7 @@
                             <h4>Bunga Pohon Simpur</h4>
                             <span class="indo-name-sub">Simpur / Dillenia</span>
                             <span class="latin-name">Dillenia indica</span>
-                            <span class="type-badge">Flora Hutan / Dilleniaceae</span>
+                            <span class="type-badge">Tumbuhan Hutan / Dilleniaceae</span>
                             <p class="desc-preview">Bunga tropis berukuran besar khas tajuk hutan hujan.</p>
                             <span class="click-hint-text">Tampilkan Informasi Lengkap</span>
                         </div>
@@ -1397,7 +1451,7 @@
                             <span class="indo-name-sub">Tumbuhan Cengkeh Air</span>
                             <span class="latin-name">Ludwigia octovalvis</span>
                             <span class="type-badge">Herba Perairan</span>
-                            <p class="desc-preview">Flora tepi rawa pembawa kebersihan filter alami perairan.</p>
+                            <p class="desc-preview">Tumbuhan tepi rawa pembawa kebersihan filter alami perairan.</p>
                             <span class="click-hint-text">Tampilkan Informasi Lengkap</span>
                         </div>
                     </div>
@@ -1421,7 +1475,7 @@
                             <span class="indo-name-sub">Terung Hutan Jamaika</span>
                             <span class="latin-name">Solanum jamaicense</span>
                             <span class="type-badge">Perdu / Solanaceae</span>
-                            <p class="desc-preview">Perdu perdu berbuah bulat penghuni semak perkotaan.</p>
+                            <p class="desc-preview">Perdu berbuah bulat penghuni semak perkotaan.</p>
                             <span class="click-hint-text">Tampilkan Informasi Lengkap</span>
                         </div>
                     </div>
@@ -1432,7 +1486,7 @@
             <!-- BAGIAN 2: KOLASE FOTO ANGGREK GREEN HOUSE -->
             <div class="orchid-greenhouse-box">
                 <div class="orchid-header">
-                    <h3>Koleksi Flora Anggrek Green House TWA Punti Kayu</h3>
+                    <h3>Koleksi Anggrek Green House TWA Punti Kayu</h3>
                     <p>Klik pada salah satu kartu untuk melihat pratinjau gambar penuh beserta taksonomi dan spesifikasi lengkap tumbuhan.</p>
                 </div>
 
@@ -1663,7 +1717,7 @@
                      Barcode Interaktif Pohon <span>Edukasi Digital</span>
                 </div>
                 <p class="article-text" style="margin-bottom: 8px;">
-                    Setiap pohon terpilih di kawasan TWA Punti Kayu dilengkapi dengan plang QR Code informasi resmi BKSDA Sumatera Selatan. Pengunjung dapat memindai barcode berikut menggunakan kamera ponsel untuk mengakses deskripsi singkat, manfaat ekologis, dan klasifikasi ilmiah spesies secara langsung di lapangan:
+                    Setiap pohon terpilih di kawasan TWA Punti Kayu dilengkapi dengan plang QR Code informasi resmi Balai Konservasi Sumber Daya Alam Sumatera Selatan. Pengunjung dapat memindai barcode berikut menggunakan kamera ponsel untuk mengakses deskripsi singkat, manfaat ekologis, dan klasifikasi ilmiah spesies secara langsung di lapangan:
                 </p>
 
                 <div class="barcode-grid">
@@ -1696,24 +1750,23 @@
             <div class="widget">
                 <div class="widget-title">NAVIGASI KEHATI</div>
                 <ul class="widget-list">
-                    <li><a href="kehati.html">Flora & Anggrek</a></li>
-                    <li><a href="fauna.html">Fauna Kawasan</a></li>
-                    <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
+                    <li><a href="kehati.html">Tumbuhan & Anggrek</a></li>
+                    <li><a href="fauna.html">Satwa Kawasan</a></li>
                 </ul>
             </div>
 
             <div class="widget">
                 <div class="widget-title">PEMANTAUAN EKOSISTEM</div>
                 <p style="font-size: 12px; color: #334155; line-height: 1.55; font-weight: 600;">
-                    Keanekaragaman hayati dan konservasi flora/anggrek TWA Punti Kayu dipantau secara berkala oleh tim Pengendali Ekosistem Hutan (PEH) BKSDA Sumsel.
+                    Keanekaragaman hayati dan konservasi tumbuhan/anggrek TWA Punti Kayu dipantau secara berkala oleh tim Pengendali Ekosistem Hutan (PEH) Balai Konservasi Sumber Daya Alam Sumatera Selatan.
                 </p>
             </div>
 
             <div class="widget">
                 <div class="widget-title">TAUTAN TERKAIT</div>
                 <ul class="widget-list">
-                    <li><a href="https://www.menlhk.go.id" target="_blank">Kementerian Kehutanan RI</a></li>
-                    <li><a href="http://ksdae.menlhk.go.id" target="_blank">Ditjen KSDAE</a></li>
+                    <li><a href="https://www.kemenhut.go.id" target="_blank">Kementerian Kehutanan RI</a></li>
+                    <li><a href="http://ksdae.kemenhut.go.id" target="_blank">Ditjen KSDAE</a></li>
                 </ul>
             </div>
         </div>
@@ -1724,16 +1777,16 @@
     <footer class="footer-main">
         <div class="footer-container">
             <div class="footer-col">
-                <h5>BKSDA Sumatera Selatan</h5>
-                <p>Balai Konservasi Sumber Daya Alam Sumatera Selatan bertugas mengelola kawasan konservasi dan keanekaragaman hayati di wilayah Sumatera Selatan.</p>
+                <h5>Balai Konservasi Sumber Daya Alam Sumatera Selatan</h5>
+                <p>Unit Pelaksana Teknis Direktorat Jenderal Konservasi Sumber Daya Alam dan Ekosistem yang bertugas mengelola kawasan konservasi dan keanekaragaman hayati di wilayah Sumatera Selatan.</p>
             </div>
             <div class="footer-col">
                 <h5>Alamat Kantor</h5>
-                <p>Jl. Kolonel H. Burlian KM. 6 No. 79, Kota Palembang, Sumatera Selatan<br>Telepon/Fax: (0711) 410948</p>
+                <p>Jl. Kolonel H. Burlian KM. 6 No. 79, Kota Palembang, Sumatera Selatan<br>Telepon/Fax: (0711) 410948 | Email: bksdasumsel@kemenhut.go.id</p>
             </div>
         </div>
         <div class="footer-bottom">
-            Hak Cipta &copy; 2026 Balai Konservasi Sumber Daya Alam (BKSDA) Sumatera Selatan — Pengelola Kawasan TWA Punti Kayu
+            Hak Cipta &copy; 2026 Balai Konservasi Sumber Daya Alam Sumatera Selatan — Kementerian Kehutanan Republik Indonesia
         </div>
     </footer>
 
@@ -1743,10 +1796,10 @@
         
         <div class="detail-modal-card">
             <div class="detail-modal-img-box">
-                <img id="detailModalImg" src="" alt="Pratinjau Flora & Anggrek">
+                <img id="detailModalImg" src="" alt="Pratinjau Tumbuhan & Anggrek">
             </div>
             <div class="detail-modal-content">
-                <h3 id="detailTitle" class="detail-title">Nama Flora</h3>
+                <h3 id="detailTitle" class="detail-title">Nama Tumbuhan</h3>
                 <p id="detailIndo" class="detail-indo">Nama Indonesia</p>
                 <p id="detailLatin" class="detail-latin">Nama Ilmiah</p>
                 <div class="detail-info-list">
@@ -1834,7 +1887,7 @@
                     modalImg.src = img.src;
                     modalTitle.textContent = name ? name.textContent : "Plang QR Code";
                     modalIndo.textContent = "Plang Edukasi Pohon TWA Punti Kayu";
-                    modalLatin.textContent = latin ? latin.textContent : "Dokumentasi BKSDA Sumatera Selatan";
+                    modalLatin.textContent = latin ? latin.textContent : "Dokumentasi Balai Konservasi Sumber Daya Alam Sumatera Selatan";
                     modalFamily.textContent = "Spesies Pohon Terpilih";
                     modalGrowth.textContent = "Area Konservasi Hayati TWA";
                     modalRoots.textContent = "Barcode Informasi Digital";
