@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Objek Wisata - TWA Punti Kayu Palembang - BKSDA Sumatera Selatan</title>
+    <title>Objek Wisata - TWA Punti Kayu Palembang - Balai Konservasi Sumber Daya Alam Sumatera Selatan</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- IMPORT FONT AWESOME V6.5.1 UNTUK IKON SOSMED -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <style>
         * {
@@ -39,6 +42,47 @@
             color: #007a40;
             text-decoration: underline;
         }
+
+        /* FLOATING SOCIAL MEDIA SIDEBAR */
+        .social-floating-bar {
+            position: fixed;
+            left: 0;
+            top: 40%;
+            transform: translateY(-50%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+            border: 1px solid #cbd5e1;
+            border-left: none;
+            padding: 6px 4px;
+            gap: 6px;
+        }
+
+        .social-floating-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 6px;
+            color: #334155;
+            font-size: 18px;
+            transition: all 0.25s ease;
+        }
+
+        .social-floating-item:hover {
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+
+        .social-floating-item.fb:hover { background-color: #1877f2; }
+        .social-floating-item.tw:hover { background-color: #000000; }
+        .social-floating-item.th:hover { background-color: #000000; }
+        .social-floating-item.ig:hover { background-color: #e1306c; }
+        .social-floating-item.yt:hover { background-color: #ff0000; }
 
         .top-bar {
             background-color: #081c10;
@@ -211,7 +255,7 @@
 
         .page-banner {
             background: linear-gradient(rgba(8, 28, 16, 0.70), rgba(8, 28, 16, 0.85)), 
-                        url('wisata/gerbang.jpeg') center/cover no-repeat;
+                        url('wisata/gerbangutama.jpeg') center/cover no-repeat;
             border-bottom: 4px solid #00a859;
             padding: 55px 20px;
             color: #ffffff;
@@ -633,6 +677,10 @@
         }
 
         @media screen and (max-width: 868px) {
+            .social-floating-bar {
+                display: none;
+            }
+
             .mobile-header-bar {
                 display: flex !important;
             }
@@ -732,6 +780,25 @@
 </head>
 <body>
 
+    <!-- FLOATING SOCIAL MEDIA SIDEBAR -->
+    <div class="social-floating-bar">
+      <a href="https://www.facebook.com/bksda.s.selatan" target="_blank" class="social-floating-item fb" title="Facebook BKSDA Sumsel">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a href="https://x.com/bksda_sumsel" target="_blank" class="social-floating-item tw" title="X (Twitter) BKSDA Sumsel">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+      <a href="https://www.threads.com/@bksda_sumsel" target="_blank" class="social-floating-item th" title="Threads BKSDA Sumsel">
+        <i class="fa-brands fa-threads"></i>
+      </a>
+      <a href="https://www.instagram.com/bksda_sumsel" target="_blank" class="social-floating-item ig" title="Instagram BKSDA Sumsel">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/channel/UC3mTRUNscHxFBZndT64-_Kg" target="_blank" class="social-floating-item yt" title="YouTube BKSDA Sumsel">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
+
     <!-- BARIS ATAS -->
     <div class="top-bar">
         Kementerian Kehutanan Republik Indonesia — Direktorat Jenderal KSDAE
@@ -752,7 +819,7 @@
         </div>
     </header>
 
-    <!-- NAVIGASI UTAMA -->
+    <!-- NAVIGASI UTAMA SESUAI ARAHAN PIMPINAN -->
     <nav class="nav-bar">
         <div class="nav-container">
             <ul class="nav-menu">
@@ -762,31 +829,22 @@
                     <a href="profiltwa.html">Profil TWA Punti Kayu &#9662;</a>
                     <ul class="dropdown-menu">
                         <li><a href="profiltwa.html">Profil Kawasan</a></li>
-                        <li><a href="pejabat.html">Profil Pejabat</a></li>
                         <li><a href="struktur.html">Struktur Organisasi</a></li>
+                        <li><a href="pejabat.html">Profil Pimpinan</a></li>
                     </ul>
                 </li>
 
                 <li class="dropdown">
                     <a href="kehati.html">Keanekaragaman Hayati &#9662;</a>
                     <ul class="dropdown-menu">
-                        <li><a href="kehati.html">Flora</a></li>
-                        <li><a href="fauna.html">Fauna</a></li>
-                        <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
+                        <li><a href="kehati.html">Tumbuhan</a></li>
+                        <li><a href="fauna.html">Satwa</a></li>
                     </ul>
                 </li>
 
                 <li class="active"><a href="wisata.html">Objek wisata</a></li>
-
-                <li class="dropdown">
-                    <a href="insitu.html">Kegiatan &#9662;</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="insitu.html">Insitu</a></li>
-                        <li><a href="eksitu.html">Eksitu</a></li>
-                    </ul>
-                </li>
-
-                <li><a href="kontak.html">Kontak</a></li>
+                <li><a href="insitu.html">Kegiatan</a></li>
+                <li><a href="kontak.html">Kontak & Layanan</a></li>
                 <li class="nav-prs"><a href="prs.html">PRS Punti Kayu &rarr;</a></li>
             </ul>
         </div>
@@ -813,29 +871,27 @@
             <ul class="mobile-dropdown-menu" id="mobileDropdown">
                 <div class="menu-category">Profil TWA Punti Kayu</div>
                 <li><a href="profiltwa.html">Profil Kawasan</a></li>
-                <li><a href="pejabat.html">Profil Pejabat</a></li>
                 <li><a href="struktur.html">Struktur Organisasi</a></li>
+                <li><a href="pejabat.html">Profil Pimpinan</a></li>
 
                 <div class="menu-category">Keanekaragaman Hayati</div>
-                <li><a href="kehati.html">Flora</a></li>
-                <li><a href="fauna.html">Fauna</a></li>
-                <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
+                <li><a href="kehati.html">Tumbuhan</a></li>
+                <li><a href="fauna.html">Satwa</a></li>
 
                 <div class="menu-category">Kegiatan</div>
-                <li><a href="insitu.html">Insitu</a></li>
-                <li><a href="eksitu.html">Eksitu</a></li>
+                <li><a href="insitu.html">Kegiatan Dalam Kawasan</a></li>
             </ul>
         </div>
 
         <div class="section-header">Daya Tarik & Wahana Wisata Utama</div>
 
-        <!-- GRID 10 FOTO LENGKAP DARI FOLDER WISATA -->
+        <!-- GRID FOTO ASLI LENGKAP OBJEK WISATA -->
         <div class="wisata-grid">
             
             <!-- 1. GERBANG UTAMA -->
             <div class="wisata-card">
-                <div class="wisata-img-box" onclick="openImgModal('wisata/gerbang.jpeg', 'Gerbang Utama TWA Punti Kayu')">
-                    <img src="wisata/gerbang.jpeg" alt="Gerbang Utama TWA Punti Kayu" loading="lazy">
+                <div class="wisata-img-box" onclick="openImgModal('wisata/gerbangutama.jpeg', 'Gerbang Utama TWA Punti Kayu')">
+                    <img src="wisata/gerbangutama.jpeg" alt="Gerbang Utama TWA Punti Kayu" loading="lazy">
                     <span class="wisata-badge">Akses Utama</span>
                 </div>
                 <div class="wisata-info">
@@ -847,8 +903,8 @@
 
             <!-- 2. AULA PERTEMUAN -->
             <div class="wisata-card">
-                <div class="wisata-img-box" onclick="openImgModal('wisata/aulapertemuan.jpeg', 'Aula Pertemuan Punti Kayu')">
-                    <img src="wisata/aulapertemuan.jpeg" alt="Aula Pertemuan Punti Kayu" loading="lazy">
+                <div class="wisata-img-box" onclick="openImgModal('wisata/aulapertemuan1.jpeg', 'Aula Pertemuan Punti Kayu')">
+                    <img src="wisata/aulapertemuan1.jpeg" alt="Aula Pertemuan Punti Kayu" loading="lazy">
                     <span class="wisata-badge">Serbaguna</span>
                 </div>
                 <div class="wisata-info">
@@ -860,8 +916,8 @@
 
             <!-- 3. KAMPUNG INDIAN -->
             <div class="wisata-card">
-                <div class="wisata-img-box" onclick="openImgModal('wisata/kampungindian.jpeg', 'Kampung Indian Punti Kayu')">
-                    <img src="wisata/kampungindian.jpeg" alt="Kampung Indian Punti Kayu" loading="lazy">
+                <div class="wisata-img-box" onclick="openImgModal('wisata/kampungindian1.jpeg', 'Kampung Indian Punti Kayu')">
+                    <img src="wisata/kampungindian1.jpeg" alt="Kampung Indian Punti Kayu" loading="lazy">
                     <span class="wisata-badge">Spot Foto</span>
                 </div>
                 <div class="wisata-info">
@@ -873,8 +929,8 @@
 
             <!-- 4. TAMAN REKREASI ANAK -->
             <div class="wisata-card">
-                <div class="wisata-img-box" onclick="openImgModal('wisata/temanrekreasianak.jpeg', 'Taman Rekreasi Anak Punti Kayu')">
-                    <img src="wisata/temanrekreasianak.jpeg" alt="Taman Rekreasi Anak Punti Kayu" loading="lazy">
+                <div class="wisata-img-box" onclick="openImgModal('wisata/tamanrekreasibermainanak.jpeg', 'Taman Rekreasi Anak Punti Kayu')">
+                    <img src="wisata/tamanrekreasibermainanak.jpeg" alt="Taman Rekreasi Anak Punti Kayu" loading="lazy">
                     <span class="wisata-badge">Keluarga</span>
                 </div>
                 <div class="wisata-info">
@@ -886,8 +942,8 @@
 
             <!-- 5. KOLAM RENANG -->
             <div class="wisata-card">
-                <div class="wisata-img-box" onclick="openImgModal('wisata/kolamrenang.jpeg', 'Kolam Renang Punti Kayu')">
-                    <img src="wisata/kolamrenang.jpeg" alt="Kolam Renang Punti Kayu" loading="lazy">
+                <div class="wisata-img-box" onclick="openImgModal('wisata/kolamrenang1.jpeg', 'Kolam Renang Punti Kayu')">
+                    <img src="wisata/kolamrenang1.jpeg" alt="Kolam Renang Punti Kayu" loading="lazy">
                     <span class="wisata-badge">Wahana Air</span>
                 </div>
                 <div class="wisata-info">
@@ -899,8 +955,8 @@
 
             <!-- 6. GAZEBO SANTAI -->
             <div class="wisata-card">
-                <div class="wisata-img-box" onclick="openImgModal('wisata/gazebo.jpeg', 'Gazebo Tempat Istirahat')">
-                    <img src="wisata/gazebo.jpeg" alt="Gazebo Tempat Istirahat" loading="lazy">
+                <div class="wisata-img-box" onclick="openImgModal('wisata/gazebosantai.jpeg', 'Gazebo Tempat Istirahat')">
+                    <img src="wisata/gazebosantai.jpeg" alt="Gazebo Tempat Istirahat" loading="lazy">
                     <span class="wisata-badge">Istirahat</span>
                 </div>
                 <div class="wisata-info">
@@ -912,8 +968,8 @@
 
             <!-- 7. JEMBATAN GANTUNG -->
             <div class="wisata-card">
-                <div class="wisata-img-box" onclick="openImgModal('wisata/jembatangantung.jpeg', 'Jembatan Gantung Punti Kayu')">
-                    <img src="wisata/jembatangantung.jpeg" alt="Jembatan Gantung Punti Kayu" loading="lazy">
+                <div class="wisata-img-box" onclick="openImgModal('wisata/jembatangantung1.jpeg', 'Jembatan Gantung Punti Kayu')">
+                    <img src="wisata/jembatangantung1.jpeg" alt="Jembatan Gantung Punti Kayu" loading="lazy">
                     <span class="wisata-badge">Ikonik</span>
                 </div>
                 <div class="wisata-info">
@@ -925,8 +981,8 @@
 
             <!-- 8. AREA REPLIKA -->
             <div class="wisata-card">
-                <div class="wisata-img-box" onclick="openImgModal('wisata/areareplika.jpeg', 'Area Replika Landsekap')">
-                    <img src="wisata/areareplika.jpeg" alt="Area Replika Landsekap" loading="lazy">
+                <div class="wisata-img-box" onclick="openImgModal('wisata/replikawisata.jpeg', 'Area Replika Landsekap')">
+                    <img src="wisata/replikawisata.jpeg" alt="Area Replika Landsekap" loading="lazy">
                     <span class="wisata-badge">Edukasi</span>
                 </div>
                 <div class="wisata-info">
@@ -938,8 +994,8 @@
 
             <!-- 9. PANGGUNG PERTUNJUKAN -->
             <div class="wisata-card">
-                <div class="wisata-img-box" onclick="openImgModal('wisata/panggungpertunjukan.jpeg', 'Panggung Pertunjukan Pentas Seni')">
-                    <img src="wisata/panggungpertunjukan.jpeg" alt="Panggung Pertunjukan Pentas Seni" loading="lazy">
+                <div class="wisata-img-box" onclick="openImgModal('wisata/pinusstage.jpeg', 'Panggung Pertunjukan Pentas Seni')">
+                    <img src="wisata/pinusstage.jpeg" alt="Panggung Pertunjukan Pentas Seni" loading="lazy">
                     <span class="wisata-badge">Pentas Seni</span>
                 </div>
                 <div class="wisata-info">
@@ -951,8 +1007,8 @@
 
             <!-- 10. AREA OUTBOUND -->
             <div class="wisata-card">
-                <div class="wisata-img-box" onclick="openImgModal('wisata/outbound.jpeg', 'Area Outbound & Ground Camping')">
-                    <img src="wisata/outbound.jpeg" alt="Area Outbound & Ground Camping" loading="lazy">
+                <div class="wisata-img-box" onclick="openImgModal('wisata/outbound1.jpeg', 'Area Outbound & Ground Camping')">
+                    <img src="wisata/outbound1.jpeg" alt="Area Outbound & Ground Camping" loading="lazy">
                     <span class="wisata-badge">Outbound</span>
                 </div>
                 <div class="wisata-info">
@@ -1039,16 +1095,16 @@
     <footer class="footer-main">
         <div class="footer-container">
             <div class="footer-col">
-                <h5>BKSDA Sumatera Selatan</h5>
-                <p>Balai Konservasi Sumber Daya Alam Sumatera Selatan bertugas mengelola kawasan konservasi dan keanekaragaman hayati di wilayah Sumatera Selatan.</p>
+                <h5>Balai Konservasi Sumber Daya Alam Sumatera Selatan</h5>
+                <p>Unit Pelaksana Teknis Direktorat Jenderal Konservasi Sumber Daya Alam dan Ekosistem yang bertugas mengelola kawasan konservasi dan keanekaragaman hayati di wilayah Sumatera Selatan.</p>
             </div>
             <div class="footer-col">
                 <h5>Alamat Kantor</h5>
-                <p>Jl. Kolonel H. Burlian KM. 6 No. 79, Kota Palembang, Sumatera Selatan<br>Telepon/Fax: (0711) 410948</p>
+                <p>Jl. Kolonel H. Burlian KM. 6 No. 79, Kota Palembang, Sumatera Selatan<br>Telepon/Fax: (0711) 410948 | Email: bksdasumsel@kemenhut.go.id</p>
             </div>
         </div>
         <div class="footer-bottom">
-            Hak Cipta &copy; 2026 Balai Konservasi Sumber Daya Alam (BKSDA) Sumatera Selatan — Pengelola Kawasan TWA Punti Kayu
+            Hak Cipta &copy; 2026 Balai Konservasi Sumber Daya Alam Sumatera Selatan — Kementerian Kehutanan Republik Indonesia
         </div>
     </footer>
 
