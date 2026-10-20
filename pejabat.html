@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Pejabat - BKSDA Sumatera Selatan</title>
+    <title>Profil Pimpinan - Balai Konservasi Sumber Daya Alam Sumatera Selatan</title>
     
     <!-- IMPORT FONT PLUS JAKARTA SANS & INTER -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- IMPORT FONT AWESOME V6.5.1 UNTUK IKON SOSMED -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <style>
         * { 
@@ -41,7 +44,48 @@
             text-decoration: underline;
         }
 
-        /* 1. TOP BAR RESPONSIVE */
+        /* FLOATING SOCIAL MEDIA SIDEBAR */
+        .social-floating-bar {
+            position: fixed;
+            left: 0;
+            top: 40%;
+            transform: translateY(-50%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+            border: 1px solid #cbd5e1;
+            border-left: none;
+            padding: 6px 4px;
+            gap: 6px;
+        }
+
+        .social-floating-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 6px;
+            color: #334155;
+            font-size: 18px;
+            transition: all 0.25s ease;
+        }
+
+        .social-floating-item:hover {
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+
+        .social-floating-item.fb:hover { background-color: #1877f2; }
+        .social-floating-item.tw:hover { background-color: #000000; }
+        .social-floating-item.th:hover { background-color: #000000; }
+        .social-floating-item.ig:hover { background-color: #e1306c; }
+        .social-floating-item.yt:hover { background-color: #ff0000; }
+
+        /* TOP BAR RESPONSIVE */
         .top-bar { 
             background-color: #081c10; 
             color: #ffffff; 
@@ -52,7 +96,7 @@
             text-align: left;
         }
 
-        /* 2. HEADER MAIN RESPONSIVE */
+        /* HEADER MAIN RESPONSIVE */
         .header-main { 
             background-color: #ffffff; 
             border-bottom: 3px solid #00a859; 
@@ -104,7 +148,7 @@
             margin-top: 2px;
         }
 
-        /* 3. NAVIGASI UTAMA */
+        /* NAVIGASI UTAMA */
         .nav-bar { 
             background-color: #081c10; 
             position: sticky; 
@@ -156,7 +200,6 @@
             text-decoration: none; 
         }
 
-        /* STYLING DROPDOWN DESKTOP HOVER */
         .dropdown-menu { 
             display: none; 
             position: absolute; 
@@ -227,6 +270,13 @@
             font-weight: 800; 
         }
 
+        .page-banner p {
+            font-size: 14px;
+            color: #00ff88;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
         /* WADAH KONTEN UTAMA */
         .main-container { 
             max-width: 1100px; 
@@ -238,7 +288,6 @@
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04); 
         }
 
-        /* FITUR TOMBOL GARIS 3 (HAMBURGER) UNTUK MODE HP */
         .mobile-header-bar {
             display: none;
             background-color: #081c10;
@@ -325,104 +374,126 @@
             color: #ffffff;
         }
 
-        /* LAYOUT PROFIL TUNGGAL */
-        .leader-layout { 
-            display: flex; 
-            gap: 40px; 
-            align-items: center; 
+        .section-header {
+            background-color: #f0fdf4;
+            border-left: 5px solid #00a859;
+            padding: 10px 16px;
+            font-size: 14.5px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            border-radius: 0 6px 6px 0;
+            border-top: 1px solid #dcfce7;
+            border-right: 1px solid #dcfce7;
+            border-bottom: 1px solid #dcfce7;
         }
 
-        .leader-text-box { 
-            flex: 1.3; 
-            min-width: 0;
+        /* GRID HIRARKI PIMPINAN (3 TINGKATAN) */
+        .pejabat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-bottom: 20px;
         }
 
-        .leader-text-box h2 { 
-            font-size: 22px; 
-            font-weight: 800; 
-            color: #0f172a; 
-            margin-bottom: 16px; 
-            border-bottom: 4px solid #00a859; 
-            display: inline-block; 
-            padding-bottom: 6px; 
-        }
-        
-        .leader-text-box p { 
-            font-size: 13.5px; 
-            color: #0f172a; 
-            font-weight: 600; 
-            line-height: 1.75; 
-            margin-bottom: 14px; 
-            text-align: justify; 
+        .pejabat-card {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            display: flex;
+            flex-direction: column;
         }
 
-        .leader-text-box ul { 
-            margin-left: 20px; 
-            margin-bottom: 16px; 
-            color: #0f172a; 
-            font-weight: 600; 
-            font-size: 13px; 
+        .pejabat-card:hover {
+            transform: translateY(-5px);
+            border-color: #00a859;
+            box-shadow: 0 8px 20px rgba(0, 168, 89, 0.15);
         }
 
-        .leader-text-box ul li { 
-            margin-bottom: 6px; 
+        .pejabat-card .badge-hirarki {
+            background-color: #081c10;
+            color: #00ff88;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 6px 12px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #00a859;
         }
 
-        .leader-single-card { 
-            flex: 1; 
-            display: flex; 
-            justify-content: center; 
+        .pejabat-img-wrapper {
             width: 100%;
-        }
-        
-        .card-pejabat-link { 
-            display: block; 
-            text-decoration: none; 
-            color: inherit; 
-            transition: transform 0.25s ease, box-shadow 0.2s ease; 
-            width: 100%; 
-            max-width: 340px; 
-        }
-
-        .card-pejabat-link:hover { 
-            transform: translateY(-5px); 
-        }
-
-        .card-pejabat { 
-            background-color: #ffffff; 
-            border: 1px solid #cbd5e1; 
-            border-radius: 14px; 
-            overflow: hidden; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06); 
-        }
-        
-        .card-pejabat img { 
-            width: 100%; 
-            height: 330px; 
-            object-fit: cover; 
-            object-position: center top; 
-            display: block; 
-            border-bottom: 4px solid #00a859; 
+            height: 280px;
+            overflow: hidden;
             background-color: #f1f5f9;
         }
 
-        .card-pejabat .info { 
-            padding: 16px; 
-            text-align: center; 
-            background-color: #ffffff; 
+        .pejabat-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            transition: transform 0.3s ease;
         }
 
-        .card-pejabat .info h3 { 
-            font-size: 16px; 
-            font-weight: 800; 
-            color: #0f172a; 
-            margin-bottom: 4px; 
+        .pejabat-card:hover .pejabat-img-wrapper img {
+            transform: scale(1.04);
         }
 
-        .card-pejabat .info p { 
-            font-size: 12.5px; 
-            font-weight: 700; 
-            color: #00a859; 
+        .pejabat-info {
+            padding: 18px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .pejabat-info h3 {
+            font-size: 15.5px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+
+        .pejabat-info .jabatan {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #00a859;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .pejabat-info p {
+            font-size: 12px;
+            color: #334155;
+            font-weight: 500;
+            line-height: 1.55;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+
+        .pejabat-btn {
+            display: inline-block;
+            background-color: #f0fdf4;
+            color: #00a859;
+            border: 1.5px solid #00a859;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+
+        .pejabat-btn:hover {
+            background-color: #00a859;
+            color: #ffffff;
+            text-decoration: none;
         }
 
         /* FOOTER RESMI */
@@ -473,8 +544,12 @@
             font-weight: 500;
         }
 
-        /* MEDIA QUERIES PENYESUAIAN TAMPILAN UNTUK HP / TABLET */
+        /* MEDIA QUERIES */
         @media screen and (max-width: 868px) {
+            .social-floating-bar {
+                display: none;
+            }
+
             .mobile-header-bar {
                 display: flex !important;
             }
@@ -533,21 +608,9 @@
                 margin: 16px auto;
             }
 
-            .leader-layout {
-                flex-direction: column;
-                gap: 24px;
-            }
-
-            .leader-text-box h2 {
-                font-size: 18px;
-            }
-
-            .card-pejabat-link {
-                max-width: 280px;
-            }
-
-            .card-pejabat img {
-                height: 300px;
+            .pejabat-grid {
+                grid-template-columns: repeat(1, 1fr);
+                gap: 20px;
             }
 
             .footer-container {
@@ -569,6 +632,25 @@
 </head>
 <body>
 
+    <!-- FLOATING SOCIAL MEDIA SIDEBAR -->
+    <div class="social-floating-bar">
+      <a href="https://www.facebook.com/bksda.s.selatan" target="_blank" class="social-floating-item fb" title="Facebook BKSDA Sumsel">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a href="https://x.com/bksda_sumsel" target="_blank" class="social-floating-item tw" title="X (Twitter) BKSDA Sumsel">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+      <a href="https://www.threads.com/@bksda_sumsel" target="_blank" class="social-floating-item th" title="Threads BKSDA Sumsel">
+        <i class="fa-brands fa-threads"></i>
+      </a>
+      <a href="https://www.instagram.com/bksda_sumsel" target="_blank" class="social-floating-item ig" title="Instagram BKSDA Sumsel">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/channel/UC3mTRUNscHxFBZndT64-_Kg" target="_blank" class="social-floating-item yt" title="YouTube BKSDA Sumsel">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
+
     <!-- BARIS ATAS -->
     <div class="top-bar">Kementerian Kehutanan Republik Indonesia — Direktorat Jenderal KSDAE</div>
 
@@ -587,7 +669,7 @@
         </div>
     </header>
 
-    <!-- NAVIGASI UTAMA (PROFIL LANGSUNG MENGARAH KE PROFILTWA.HTML) -->
+    <!-- NAVIGASI UTAMA -->
     <nav class="nav-bar">
         <div class="nav-container">
             <ul class="nav-menu">
@@ -597,31 +679,24 @@
                     <a href="profiltwa.html">Profil TWA Punti Kayu &#9662;</a>
                     <ul class="dropdown-menu">
                         <li><a href="profiltwa.html">Profil Kawasan</a></li>
-                        <li><a href="pejabat.html">Profil Pejabat</a></li>
                         <li><a href="struktur.html">Struktur Organisasi</a></li>
+                        <li><a href="pejabat.html">Profil Pimpinan</a></li>
                     </ul>
                 </li>
 
                 <li class="dropdown">
                     <a href="kehati.html">Keanekaragaman Hayati &#9662;</a>
                     <ul class="dropdown-menu">
-                        <li><a href="kehati.html">Flora</a></li>
-                        <li><a href="fauna.html">Fauna</a></li>
-                        <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
+                        <li><a href="kehati.html">Tumbuhan</a></li>
+                        <li><a href="fauna.html">Satwa</a></li>
                     </ul>
                 </li>
 
                 <li><a href="wisata.html">Objek wisata</a></li>
 
-                <li class="dropdown">
-                    <a href="insitu.html">Kegiatan &#9662;</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="insitu.html">Insitu</a></li>
-                        <li><a href="eksitu.html">Eksitu</a></li>
-                    </ul>
-                </li>
+                <li><a href="insitu.html">Kegiatan</a></li>
 
-                <li><a href="kontak.html">Kontak</a></li>
+                <li><a href="kontak.html">Kontak & Layanan</a></li>
                 <li class="nav-prs"><a href="prs.html">PRS Punti Kayu &rarr;</a></li>
             </ul>
         </div>
@@ -629,81 +704,95 @@
 
     <!-- BANNER PAGE -->
     <div class="page-banner">
-        <h2>Profil Kepala Resor KSDA Wilayah I Palembang</h2>
+        <h2>Profil Pimpinan & Struktural Pengelola</h2>
+        <p>Struktur Kepemimpinan Balai Konservasi Sumber Daya Alam Sumatera Selatan</p>
     </div>
 
     <!-- WADAH KONTEN UTAMA -->
     <div class="main-container">
 
-        <!-- BAR SUB-MENU GARIS 3 HANYA MUNCUL DI HP -->
-            <div class="mobile-header-bar">
-                <span class="mobile-header-title">Menu Profil</span>
-                <button type="button" class="mobile-menu-btn" onclick="toggleMobileMenu(event)">
-                    <!-- IKON GARIS 3 -->
-                    <svg viewBox="0 0 24 24">
-                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                    </svg>
-                </button>
+        <!-- BAR SUB-MENU HP -->
+        <div class="mobile-header-bar">
+            <span class="mobile-header-title">Menu Profil</span>
+            <button type="button" class="mobile-menu-btn" onclick="toggleMobileMenu(event)">
+                <svg viewBox="0 0 24 24">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                </svg>
+            </button>
 
-                <!-- DROPDOWN SUB-MENU LENGKAP KHUSUS HP -->
-                <ul class="mobile-dropdown-menu" id="mobileDropdown">
-                    <div class="menu-category">Profil TWA Punti Kayu</div>
-                    <li><a href="profiltwa.html">Profil Kawasan</a></li>
-                    <li><a href="pejabat.html">Profil Pejabat</a></li>
-                    <li><a href="struktur.html">Struktur Organisasi</a></li>                   
-                </ul>
-            </div>
-
-        <div class="leader-layout">
-            <!-- DESKRIPSI LENGKAP & DIPERTEGAS -->
-            <div class="leader-text-box">
-                <h2>Pimpinan Pengelola Kawasan</h2>
-                <p>
-                    Pelaksanaan operasional harian, perlindungan kawasan hutan, serta pelayanan publik di Taman Wisata Alam Punti Kayu dipimpin langsung oleh <strong>Kepala Resor KSDA Wilayah I Palembang</strong> di bawah naungan Balai Konservasi Sumber Daya Alam Sumatera Selatan.
-                </p>
-                <p>
-                    Tugas pokok dan fungsi operasional Resor KSDA Wilayah I Palembang meliputi:
-                </p>
-                <ul>
-                    <li>Pelaksanaan patroli rutin pengamanan hutan dan penegakan hukum lingkungan di dalam kawasan TWA Punti Kayu.</li>
-                    <li>Pengawasan tata kelola eduwisata, sarana prasarana rekreasi, serta aktivitas penelitian ilmiah.</li>
-                    <li>Penanganan konflik ruang antara manusia dan satwa liar, evakuasi, hingga translokasi satwa dilindungi di wilayah Palembang.</li>
-                    <li>Sosialisasi regulasi perlindungan keanekaragaman hayati dan pembinaan lembaga konservasi eksitu.</li>
-                </ul>
-                <p>
-                    <strong>Petunjuk:</strong> Silakan klik pada foto atau kartu pejabat di samping untuk melihat rincian biodata kepegawaian, jabatan fungsional POLHUT, riwayat pendidikan, serta rekam jejak lapangan beliau.
-                </p>
-            </div>
-
-            <!-- KARTU PEJABAT TUNGGAL -->
-            <div class="leader-single-card">
-                <a href="detail-pejabat-resor.html" class="card-pejabat-link">
-                    <div class="card-pejabat">
-                        <img src="images/kepalaresor.jpeg" alt="Foto Anjas Tuberlani, S.H." onerror="this.onerror=null; this.src='images/profil.png';">
-                        <div class="info">
-                            <h3>Anjas Tuberlani, S.H.</h3>
-                            <p>Kepala Resor KSDA Wilayah I Palembang</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            <ul class="mobile-dropdown-menu" id="mobileDropdown">
+                <div class="menu-category">Profil TWA Punti Kayu</div>
+                <li><a href="profiltwa.html">Profil Kawasan</a></li>
+                <li><a href="struktur.html">Struktur Organisasi</a></li>
+                <li><a href="pejabat.html">Profil Pimpinan</a></li>                   
+            </ul>
         </div>
+
+        <div class="section-header">Pimpinan Utama & Penanggung Jawab Wilayah Kerja</div>
+
+        <!-- GRID 3 HIRARKI PEJABAT SESUAI ARAHAN PIMPINAN -->
+        <div class="pejabat-grid">
+
+            <!-- 1. KEPALA BALAI KONSERVASI SUMBER DAYA ALAM SUMATERA SELATAN -->
+            <div class="pejabat-card">
+                <div class="badge-hirarki">Pimpinan Utama</div>
+                <div class="pejabat-img-wrapper">
+                    <img src="images/kepalabalai.jpeg" alt="Foto Kepala Balai KSDA Sumsel" onerror="this.onerror=null; this.src='images/profil.png';">
+                </div>
+                <div class="pejabat-info">
+                    <h3>-</h3>
+                    <div class="jabatan">Kepala Balai Konservasi Sumber Daya Alam Sumatera Selatan</div>
+                    <p>Memimpin seluruh pelaksanaan kebijakan teknis, pengelolaan kawasan konservasi, penegakan hukum lingkungan, serta pelestarian keanekaragaman hayati di wilayah Provinsi Sumatera Selatan.</p>
+                    <a href="detail-pejabat-balai.html" class="pejabat-btn">Detail Profil &rarr;</a>
+                </div>
+            </div>
+
+            <!-- 2. KEPALA SEKSI KONSERVASI SUMBER DAYA ALAM WILAYAH 1 (SKSDA 1) -->
+            <div class="pejabat-card">
+                <div class="badge-hirarki">Penanggung Jawab Wilayah</div>
+                <div class="pejabat-img-wrapper">
+                    <img src="images/kepalaseksi.jpeg" alt="Foto Kepala SKSDA 1" onerror="this.onerror=null; this.src='images/profil.png';">
+                </div>
+                <div class="pejabat-info">
+                    <h3>-</h3>
+                    <div class="jabatan">Kepala Seksi Konservasi Sumber Daya Alam Wilayah 1 (SKSDA 1)</div>
+                    <p>Bertanggung jawab atas koordinasi operasional, pemantauan kawasan konservasi, supervisi resor, dan pelaksanaan program perlindungan tumbuhan serta satwa di Wilayah 1.</p>
+                    <a href="detail-pejabat-seksi.html" class="pejabat-btn">Detail Profil &rarr;</a>
+                </div>
+            </div>
+
+            <!-- 3. KEPALA RESOR TWA PUNTI KAYU / KEPALA RESOR WILAYAH 1 -->
+            <div class="pejabat-card">
+                <div class="badge-hirarki">Pelaksana Lapangan</div>
+                <div class="pejabat-img-wrapper">
+                    <img src="images/kepalaresor.jpeg" alt="Foto Kepala Resor TWA Punti Kayu" onerror="this.onerror=null; this.src='images/profil.png';">
+                </div>
+                <div class="pejabat-info">
+                    <h3>Anjas Tuberlani, S.H.</h3>
+                    <div class="jabatan">Kepala Resor TWA Punti Kayu (Resor KSDA Wilayah 1 Palembang)</div>
+                    <p>Memimpin operasional harian, pengamanan kawasan hutan, pelayanan masyarakat, dan koordinasi lapangan di kawasan Taman Wisata Alam Punti Kayu Palembang.</p>
+                    <a href="detail-pejabat-resor.html" class="pejabat-btn">Detail Profil &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
     <!-- FOOTER RESMI -->
     <footer class="footer-main">
         <div class="footer-container">
             <div class="footer-col">
-                <h5>BKSDA Sumatera Selatan</h5>
-                <p>Balai Konservasi Sumber Daya Alam Sumatera Selatan bertugas mengelola kawasan konservasi dan keanekaragaman hayati di wilayah Sumatera Selatan.</p>
+                <h5>Balai Konservasi Sumber Daya Alam Sumatera Selatan</h5>
+                <p>Unit Pelaksana Teknis Direktorat Jenderal Konservasi Sumber Daya Alam dan Ekosistem yang bertugas mengelola kawasan konservasi dan keanekaragaman hayati di wilayah Sumatera Selatan.</p>
             </div>
             <div class="footer-col">
                 <h5>Alamat Kantor</h5>
-                <p>Jl. Kolonel H. Burlian KM. 6 No. 79, Kota Palembang, Sumatera Selatan<br>Telepon/Fax: (0711) 410948</p>
+                <p>Jl. Kolonel H. Burlian KM. 6 No. 79, Kota Palembang, Sumatera Selatan<br>Telepon/Fax: (0711) 410948 | Email: bksdasumsel@kemenhut.go.id</p>
             </div>
         </div>
         <div class="footer-bottom">
-            Hak Cipta &copy; 2026 Balai Konservasi Sumber Daya Alam (BKSDA) Sumatera Selatan — Pengelola Kawasan TWA Punti Kayu
+            Hak Cipta &copy; 2026 Balai Konservasi Sumber Daya Alam Sumatera Selatan — Kementerian Kehutanan Republik Indonesia
         </div>
     </footer>
 
@@ -715,7 +804,6 @@
         menu.classList.toggle("show");
     }
 
-    // Tutup dropdown mobile saat mengklik di luar area
     document.addEventListener("click", function (e) {
         const menu = document.getElementById("mobileDropdown");
         if (menu && !e.target.closest(".mobile-header-bar")) {
