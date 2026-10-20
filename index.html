@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beranda - Taman Wisata Alam Punti Kayu Palembang | BKSDA Sumatera Selatan</title>
+    <title>Beranda - Taman Wisata Alam Punti Kayu Palembang | Balai Konservasi Sumber Daya Alam Sumatera Selatan</title>
     
     <!-- IMPORT FONT PLUS JAKARTA SANS & INTER -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- IMPORT FONT AWESOME V6.5.1 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         /* CSS DASAR & RESET FONT */
@@ -41,6 +44,47 @@
             color: #007a40;
             text-decoration: underline;
         }
+
+        /* FLOATING SOCIAL MEDIA SIDEBAR (TAMPIL DI SEMUA UKURAN LAYAR) */
+        .social-floating-bar {
+            position: fixed;
+            left: 0;
+            top: 40%;
+            transform: translateY(-50%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+            border: 1px solid #cbd5e1;
+            border-left: none;
+            padding: 6px 4px;
+            gap: 6px;
+        }
+
+        .social-floating-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 6px;
+            color: #334155;
+            font-size: 18px;
+            transition: all 0.25s ease;
+        }
+
+        .social-floating-item:hover {
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+
+        .social-floating-item.fb:hover { background-color: #1877f2; }
+        .social-floating-item.tw:hover { background-color: #000000; }
+        .social-floating-item.th:hover { background-color: #000000; }
+        .social-floating-item.ig:hover { background-color: #e1306c; }
+        .social-floating-item.yt:hover { background-color: #ff0000; }
 
         /* 1. TOP BAR RESPONSIVE */
         .top-bar {
@@ -156,7 +200,6 @@
             text-decoration: none; 
         }
 
-        /* STYLING DROPDOWN HOVER UNTUK DESKTOP */
         .dropdown-menu {
             display: none;
             position: absolute;
@@ -213,7 +256,7 @@
             border-color: #00a859 !important;
         }
 
-        /* 4. HERO INFO BAR (TEKS & TOMBOL DI ATAS VIDEO HERO) */
+        /* 4. HERO INFO BAR */
         .hero-info-bar {
             background-color: #081c10;
             border-bottom: 3px solid #00a859;
@@ -265,7 +308,7 @@
             transform: translateY(-2px);
         }
 
-        /* 5. HERO BANNER VIDEO TERANG TANPA OVERLAY */
+        /* 5. HERO BANNER VIDEO */
         .hero-banner {
             position: relative;
             width: 100%;
@@ -283,7 +326,7 @@
             display: block;
         }
 
-        /* SECTION STATISTIK KONTRASTING */
+        /* STATISTIK PENGUNJUNG TAHUNAN */
         .stats-bar {
             background-color: #ffffff;
             border-bottom: 2px solid #e2e8f0;
@@ -323,7 +366,7 @@
             letter-spacing: 0.3px;
         }
 
-        /* SECTION PETA KAWASAN FULL RESPONSIVE DENGAN MODAL LIGHTBOX */
+        /* PETA KAWASAN TWA PUNTI KAYU */
         .map-section {
             background-color: #ffffff;
             border-bottom: 3px solid #00a859;
@@ -354,7 +397,7 @@
         .map-title::before {
             content: "";
             display: inline-block;
-            width: 10px;
+            width: 100px;
             height: 18px;
             background-color: #00a859;
             border-radius: 3px;
@@ -384,7 +427,7 @@
             object-fit: contain;
         }
 
-        /* MODAL LIGHTBOX FULLSCREEN MAP */
+        /* MODAL LIGHTBOX MAP */
         .map-modal {
             display: none;
             position: fixed;
@@ -460,7 +503,6 @@
             padding-left: 22px;
         }
 
-        /* FITUR TOMBOL GARIS 3 (HAMBURGER) UNTUK MODE HP */
         .mobile-header-bar {
             display: none;
             background-color: #081c10;
@@ -547,7 +589,6 @@
             color: #ffffff;
         }
 
-        /* SECTION HEADER DENGAN AKSEN HIJAU KEMENHUT */
         .section-header {
             background-color: #f0fdf4;
             border-left: 5px solid #00a859;
@@ -575,7 +616,6 @@
             margin-bottom: 24px;
         }
 
-        /* DESAIN CARD/BOX MODERN DENGAN BORDER TEBAL DAN SHADOW */
         .card-box {
             flex: 1;
             border: 1px solid #cbd5e1;
@@ -609,7 +649,6 @@
             line-height: 1.55;
         }
 
-        /* STYLING SLIDER KAWASAN AUTOMATIC INFINITE LOOP KE KIRI */
         .slider-container {
             width: 100%;
             overflow: hidden;
@@ -664,15 +703,10 @@
         }
 
         @keyframes slideLeft {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
-        /* TABEL DATA HIGH CONTRAST */
         table.data-table {
             width: 100%;
             border-collapse: collapse;
@@ -702,7 +736,6 @@
             background-color: #f8fafc;
         }
 
-        /* SIDEBAR WIDGET DENGAN BORDER PERKOTAK */
         .widget {
             margin-bottom: 24px;
             background-color: #ffffff;
@@ -754,7 +787,45 @@
             color: #00a859;
         }
 
-        /* FOOTER RESMI INSTANSI */
+        /* MEDIA SOSIAL SIDEBAR DENGAN LOGO RESMI X DAN THREADS */
+        .social-links-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 9px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #ffffff !important;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+
+        .social-btn i {
+            font-size: 16px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .social-btn:hover {
+            opacity: 0.9;
+            text-decoration: none;
+            transform: translateX(3px);
+        }
+
+        .social-fb { background-color: #1877f2; }
+        .social-tw { background-color: #000000; }
+        .social-th { background-color: #000000; }
+        .social-ig { background-color: #e1306c; }
+        .social-yt { background-color: #ff0000; }
+
         .footer-main {
             background-color: #081c10;
             color: #ffffff;
@@ -773,9 +844,7 @@
             gap: 20px;
         }
 
-        .footer-col {
-            flex: 1;
-        }
+        .footer-col { flex: 1; }
 
         .footer-col h5 {
             font-size: 13.5px;
@@ -802,7 +871,6 @@
             font-weight: 500;
         }
 
-        /* ANIMASI FORMAL SCROLL REVEAL */
         .reveal {
             opacity: 0;
             transform: translateY(20px);
@@ -814,151 +882,75 @@
             transform: translateY(0);
         }
 
-        /* MEDIA QUERIES UNTUK HP / TABLET */
+        /* MEDIA QUERIES MOBILE & TABLET */
         @media screen and (max-width: 868px) {
-            .mobile-header-bar {
-                display: flex !important;
+            /* MENGECILKAN IKON FLOATING SOSMED DI HP AGAR PROPORSIONAL DAN KECIL */
+            .social-floating-bar {
+                top: 50%;
+                padding: 4px 2px;
+                gap: 4px;
             }
 
-            .top-bar {
-                font-size: 11px;
-                text-align: center;
-                padding: 6px 12px;
-            }
-
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
-            }
-
-            .header-logo-wrapper {
-                justify-content: center;
-            }
-
-            .header-logo {
-                height: 48px;
-            }
-
-            .header-title h1 {
-                font-size: 14px;
-            }
-
-            .header-title h2 {
-                font-size: 12px;
-            }
-
-            .header-title p {
-                font-size: 10.5px;
-            }
-
-            .nav-container {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                justify-content: flex-start;
-            }
-
-            .nav-menu {
-                padding: 0 10px;
-                height: 44px;
-            }
-
-            .nav-menu li a {
-                height: 44px;
-                padding: 0 12px;
-                font-size: 12px;
-            }
-
-            .hero-info-bar {
-                padding: 16px 12px;
-            }
-
-            .hero-info-bar h2 {
+            .social-floating-item {
+                width: 32px;
+                height: 32px;
                 font-size: 15px;
-                margin-bottom: 10px;
             }
 
-            .btn-hero {
-                padding: 6px 14px;
-                font-size: 11px;
-            }
-
-            .hero-banner {
-                height: auto;
-                aspect-ratio: 16 / 9;
-                max-height: 320px;
-                background-color: #040e08;
-            }
-
-            .hero-video {
-                object-fit: contain;
-            }
-
-            .stats-container {
-                flex-wrap: wrap;
-                gap: 16px;
-            }
-
-            .stat-item {
-                flex: 1 1 40%;
-                border-right: none;
-            }
-
-            .main-container {
-                flex-direction: column;
-                padding: 16px;
-                margin: 16px auto;
-            }
-
-            .sidebar-area {
-                border-left: none;
-                border-top: 2px solid #e2e8f0;
-                padding-left: 0;
-                padding-top: 20px;
-            }
-
-            .grid-two {
-                flex-direction: column;
-            }
-
-            .footer-container {
-                flex-direction: column;
-                gap: 18px;
-            }
+            .mobile-header-bar { display: flex !important; }
+            .top-bar { font-size: 11px; text-align: center; padding: 6px 12px; }
+            .header-container { flex-direction: column; text-align: center; gap: 10px; }
+            .header-logo-wrapper { justify-content: center; }
+            .header-logo { height: 48px; }
+            .header-title h1 { font-size: 14px; }
+            .header-title h2 { font-size: 12px; }
+            .header-title p { font-size: 10.5px; }
+            .nav-container { overflow-x: auto; -webkit-overflow-scrolling: touch; justify-content: flex-start; }
+            .nav-menu { padding: 0 10px; height: 44px; }
+            .nav-menu li a { height: 44px; padding: 0 12px; font-size: 12px; }
+            .hero-info-bar { padding: 16px 12px; }
+            .hero-info-bar h2 { font-size: 15px; margin-bottom: 10px; }
+            .btn-hero { padding: 6px 14px; font-size: 11px; }
+            .hero-banner { height: auto; aspect-ratio: 16 / 9; max-height: 320px; background-color: #040e08; }
+            .hero-video { object-fit: contain; }
+            .stats-container { flex-wrap: wrap; gap: 16px; }
+            .stat-item { flex: 1 1 45%; border-right: none; }
+            .main-container { flex-direction: column; padding: 16px; margin: 16px auto; }
+            .sidebar-area { border-left: none; border-top: 2px solid #e2e8f0; padding-left: 0; padding-top: 20px; }
+            .grid-two { flex-direction: column; }
+            .footer-container { flex-direction: column; gap: 18px; }
         }
 
         @media screen and (max-width: 480px) {
-            .hero-info-bar h2 {
-                font-size: 12.5px;
-                line-height: 1.3;
-                margin-bottom: 8px;
-            }
-
-            .btn-hero {
-                padding: 5px 10px;
-                font-size: 10.5px;
-            }
-
-            .hero-banner {
-                aspect-ratio: 16 / 9;
-                max-height: 240px;
-            }
-
-            .stat-item {
-                flex: 1 1 100%;
-            }
-
-            table.data-table {
-                font-size: 11.5px;
-            }
-
-            table.data-table th, table.data-table td {
-                padding: 8px;
-            }
+            .hero-info-bar h2 { font-size: 12.5px; line-height: 1.3; margin-bottom: 8px; }
+            .btn-hero { padding: 5px 10px; font-size: 10.5px; }
+            .hero-banner { aspect-ratio: 16 / 9; max-height: 240px; }
+            .stat-item { flex: 1 1 100%; }
+            table.data-table { font-size: 11.5px; }
+            table.data-table th, table.data-table td { padding: 8px; }
         }
     </style>
 </head>
 <body>
+
+    <!-- FLOATING BAR MEDIA SOSIAL PADA SISI KIRI LAYAR (TAMPIL DI SEMUA UKURAN LAYAR TERMASUK HP) -->
+    <div class="social-floating-bar">
+        <a href="https://www.facebook.com/bksda.s.selatan" target="_blank" class="social-floating-item fb" title="Facebook BKSDA Sumsel">
+            <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://x.com/bksda_sumsel" target="_blank" class="social-floating-item tw" title="X (Twitter) BKSDA Sumsel">
+            <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a href="https://www.threads.com/@bksda_sumsel" target="_blank" class="social-floating-item th" title="Threads BKSDA Sumsel">
+            <i class="fa-brands fa-threads"></i>
+        </a>
+        <a href="https://www.instagram.com/bksda_sumsel" target="_blank" class="social-floating-item ig" title="Instagram BKSDA Sumsel">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/channel/UC3mTRUNscHxFBZndT64-_Kg" target="_blank" class="social-floating-item yt" title="YouTube BKSDA Sumsel">
+            <i class="fa-brands fa-youtube"></i>
+        </a>
+    </div>
 
     <!-- BARIS ATAS -->
     <div class="top-bar">
@@ -980,7 +972,7 @@
         </div>
     </header>
 
-    <!-- NAVIGASI UTAMA -->
+    <!-- NAVIGASI UTAMA SESUAI ARAHAN PIMPINAN -->
     <nav class="nav-bar">
         <div class="nav-container">
             <ul class="nav-menu">
@@ -990,31 +982,22 @@
                     <a href="profiltwa.html">Profil TWA Punti Kayu &#9662;</a>
                     <ul class="dropdown-menu">
                         <li><a href="profiltwa.html">Profil Kawasan</a></li>
-                        <li><a href="pejabat.html">Profil Pejabat</a></li>
                         <li><a href="struktur.html">Struktur Organisasi</a></li>
+                        <li><a href="pejabat.html">Profil Pimpinan</a></li>
                     </ul>
                 </li>
 
                 <li class="dropdown">
                     <a href="kehati.html">Keanekaragaman Hayati &#9662;</a>
                     <ul class="dropdown-menu">
-                        <li><a href="kehati.html">Flora</a></li>
-                        <li><a href="fauna.html">Fauna</a></li>
-                        <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
+                        <li><a href="kehati.html">Tumbuhan</a></li>
+                        <li><a href="fauna.html">Satwa</a></li>
                     </ul>
                 </li>
 
                 <li><a href="wisata.html">Objek wisata</a></li>
-
-                <li class="dropdown">
-                    <a href="insitu.html">Kegiatan &#9662;</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="insitu.html">Insitu</a></li>
-                        <li><a href="eksitu.html">Eksitu</a></li>
-                    </ul>
-                </li>
-                
-                <li><a href="kontak.html">Kontak</a></li>
+                <li><a href="insitu.html">Kegiatan</a></li>
+                <li><a href="kontak.html">Kontak & Layanan</a></li>
                 <li class="nav-prs"><a href="prs.html">PRS Punti Kayu &rarr;</a></li>
             </ul>
         </div>
@@ -1031,7 +1014,7 @@
         </div>
     </div>
 
-    <!-- BANNER HERO VIDEO TANPA OVERLAY GELAP -->
+    <!-- BANNER HERO VIDEO -->
     <section class="hero-banner">
         <video autoplay muted loop playsinline class="hero-video">
             <source src="videos/1012.mp4" type="video/mp4">
@@ -1039,22 +1022,29 @@
         </video>
     </section>
 
-    <!-- STATISTIK UTAMA DATA VALID BKSDA -->
+    <!-- STATISTIK PENGUNJUNG TAHUNAN RESMI BALAI KONSERVASI SUMBER DAYA ALAM -->
     <div class="stats-bar">
         <div class="stats-container">
             <div class="stat-item">
                 <div class="stat-number">50 Ha</div>
                 <div class="stat-label">Luas Resmi Kawasan</div>
             </div>
-        
             <div class="stat-item">
-                <div class="stat-number">1937</div>
-                <div class="stat-label">Tahun Penetapan Awal</div>
+                <div class="stat-number">-</div>
+                <div class="stat-label">Wisatawan Nusantara / Tahun</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">-</div>
+                <div class="stat-label">Pelajar & Mahasiswa / Tahun</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">-</div>
+                <div class="stat-label">Wisatawan Mancanegara / Tahun</div>
             </div>
         </div>
     </div>
 
-    <!-- PETA KAWASAN TWA PUNTI KAYU (TEPAT DI BAWAH STATISTIK) -->
+    <!-- PETA KAWASAN TWA PUNTI KAYU -->
     <section class="map-section reveal">
         <div class="map-container">
             <div class="map-header">
@@ -1066,7 +1056,7 @@
         </div>
     </section>
 
-    <!-- MODAL LIGHTBOX INTERAKTIF UNTUK PERBESAR PETA FULLSCREEN -->
+    <!-- MODAL LIGHTBOX PETA FULLSCREEN -->
     <div id="mapModal" class="map-modal" onclick="closeMapModal(event)">
         <div class="map-modal-content" onclick="event.stopPropagation()">
             <span class="map-modal-close" onclick="closeMapModal(event)">&times;</span>
@@ -1080,31 +1070,27 @@
         <!-- AREA KONTEN KIRI -->
         <div class="content-area">
 
-            <!-- BAR SUB-MENU GARIS 3 HANYA MUNCUL DI HP -->
+            <!-- BAR SUB-MENU HANYA MUNCUL DI HP -->
             <div class="mobile-header-bar">
                 <span class="mobile-header-title">Menu Navigasi HP</span>
                 <button type="button" class="mobile-menu-btn" onclick="toggleMobileMenu(event)">
-                    <!-- IKON GARIS 3 -->
                     <svg viewBox="0 0 24 24">
                         <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
                     </svg>
                 </button>
 
-                <!-- DROPDOWN SUB-MENU LENGKAP KHUSUS HP -->
                 <ul class="mobile-dropdown-menu" id="mobileDropdown">
                     <div class="menu-category">Profil TWA Punti Kayu</div>
                     <li><a href="profiltwa.html">Profil Kawasan</a></li>
-                    <li><a href="pejabat.html">Profil Pejabat</a></li>
                     <li><a href="struktur.html">Struktur Organisasi</a></li>
+                    <li><a href="pejabat.html">Profil Pimpinan</a></li>
 
                     <div class="menu-category">Keanekaragaman Hayati</div>
-                    <li><a href="kehati.html">Flora</a></li>
-                    <li><a href="fauna.html">Fauna</a></li>
-                    <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
+                    <li><a href="kehati.html">Tumbuhan</a></li>
+                    <li><a href="fauna.html">Satwa</a></li>
 
                     <div class="menu-category">Kegiatan</div>
-                    <li><a href="insitu.html">Insitu</a></li>
-                    <li><a href="eksitu.html">Eksitu</a></li>
+                    <li><a href="insitu.html">Kegiatan Dalam Kawasan</a></li>
                 </ul>
             </div>
 
@@ -1113,12 +1099,12 @@
             <div class="grid-two reveal">
                 <div class="card-box">
                     <h4>Profil & Legalitas Kawasan</h4>
-                    <p>Ditetapkan resmi berdasarkan SK Menteri Kehutanan No. 9273/Kpts-II/2002. Berfungsi sebagai kawasan perlindungan sistem penyangga kehidupan dan rekreasi alam.</p>
+                    <p>Ditetapkan resmi berdasarkan SK Menteri Kehutanan No. 9273/Kpts-II/2002. Berfungsi sebagai kawasan perlindungan sistem penyangga kehidupan dan rekreasi alam di bawah pengelolaan Balai Konservasi Sumber Daya Alam Sumatera Selatan.</p>
                     <a href="profiltwa.html" style="font-weight: 700; font-size: 12.5px;">Lihat Sejarah & Akses &rarr;</a>
                 </div>
                 <div class="card-box">
                     <h4>Potensi Keanekaragaman Hayati</h4>
-                    <p>Menjadi habitat bagi 71 jenis pohon, mamalia liar, herpetofauna, serta serangga langka <em>Podolestes coomansi</em> yang dilindungi.</p>
+                    <p>Menjadi habitat utama bagi berbagai jenis tumbuhan dan satwa liar, herpetofauna, serta serangga endemik konservasi yang berada di tengah ekosistem perkotaan Palembang.</p>
                     <a href="kehati.html" style="font-weight: 700; font-size: 12.5px;">Lihat Katalog Spesies &rarr;</a>
                 </div>
             </div>
@@ -1178,18 +1164,23 @@
                 <tbody>
                     <tr>
                         <td><strong>Pengelola Utama</strong></td>
-                        <td>BKSDA Sumatera Selatan (SKW I)</td>
-                        <td>Pemerintah Pusat / KLHK</td>
+                        <td>Balai Konservasi Sumber Daya Alam Sumatera Selatan</td>
+                        <td>Pemerintah Pusat / Kementerian Kehutanan</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Unit Pelaksana Teknis</strong></td>
+                        <td>Seksi Konservasi Sumber Daya Alam Wilayah 1 (SKSDA 1)</td>
+                        <td>Unit Wilayah Kerja Balai Konservasi Sumber Daya Alam Sumatera Selatan</td>
                     </tr>
                     <tr>
                         <td><strong>Pemegang IPPA Wisata</strong></td>
                         <td>PT. Indosuma Putra Citra (PT. IPC)</td>
-                        <td>Izin Pengusahaan Pariwisata</td>
+                        <td>Izin Pengusahaan Pariwisata Alam</td>
                     </tr>
                     <tr>
                         <td><strong>Daerah Penyangga</strong></td>
                         <td>Kel. Srijaya & Kel. Karya Baru</td>
-                        <td>Kecamatan Sukarami</td>
+                        <td>Kecamatan Sukarami, Palembang</td>
                     </tr>
                 </tbody>
             </table>
@@ -1199,6 +1190,34 @@
         <!-- SIDEBAR KANAN -->
         <div class="sidebar-area">
             
+            <!-- MEDIA SOSIAL RESMI BALAI KONSERVASI SUMBER DAYA ALAM -->
+            <div class="widget reveal">
+                <div class="widget-title">MEDIA SOSIAL BKSDA SUMSEL</div>
+                <p style="font-size: 11.5px; color: #334155; margin-bottom: 8px;">Ikuti kanal resmi Balai Konservasi Sumber Daya Alam Sumatera Selatan:</p>
+                <div class="social-links-grid">
+                    <a href="https://www.facebook.com/bksda.s.selatan" target="_blank" class="social-btn social-fb">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://x.com/bksda_sumsel" target="_blank" class="social-btn social-tw">
+                        <i class="fa-brands fa-x-twitter"></i>
+                        <span>X (Twitter)</span>
+                    </a>
+                    <a href="https://www.threads.com/@bksda_sumsel" target="_blank" class="social-btn social-th">
+                        <i class="fa-brands fa-threads"></i>
+                        <span>Threads</span>
+                    </a>
+                    <a href="https://www.instagram.com/bksda_sumsel" target="_blank" class="social-btn social-ig">
+                        <i class="fa-brands fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UC3mTRUNscHxFBZndT64-_Kg" target="_blank" class="social-btn social-yt">
+                        <i class="fa-brands fa-youtube"></i>
+                        <span>YouTube</span>
+                    </a>
+                </div>
+            </div>
+
             <div class="widget reveal">
                 <div class="widget-title">PENGUMUMAN RESMI</div>
                 <ul class="widget-list">
@@ -1211,17 +1230,17 @@
             <div class="widget reveal">
                 <div class="widget-title">LAYANAN MASYARAKAT</div>
                 <ul class="widget-list">
-                    <li><a href="kontak.html">Informasi Tiket & Jam Masuk</a></li>
+                    <li><a href="kontak.html">Informasi Tiket & SIMAKSI</a></li>
                     <li><a href="kontak.html">Permohonan Penelitian & Magang</a></li>
-                    <li><a href="kontak.html">Layanan Pengaduan & Kontak BKSDA</a></li>
+                    <li><a href="kontak.html">Call Center Pengaduan Balai Konservasi Sumber Daya Alam</a></li>
                 </ul>
             </div>
 
             <div class="widget reveal">
                 <div class="widget-title">TAUTAN TERKAIT</div>
                 <ul class="widget-list">
-                    <li><a href="https://www.menlhk.go.id" target="_blank">Kementerian Kehutanan RI</a></li>
-                    <li><a href="http://ksdae.menlhk.go.id" target="_blank">Ditjen KSDAE</a></li>
+                    <li><a href="https://www.kemenhut.go.id" target="_blank">Kementerian Kehutanan RI</a></li>
+                    <li><a href="http://ksdae.kemenhut.go.id" target="_blank">Ditjen KSDAE</a></li>
                 </ul>
             </div>
 
@@ -1233,20 +1252,20 @@
     <footer class="footer-main">
         <div class="footer-container">
             <div class="footer-col">
-                ##### BKSDA Sumatera Selatan
-                <p>Balai Konservasi Sumber Daya Alam Sumatera Selatan bertugas mengelola kawasan konservasi dan keanekaragaman hayati di wilayah Sumatera Selatan.</p>
+                <h5>Balai Konservasi Sumber Daya Alam Sumatera Selatan</h5>
+                <p>Unit Pelaksana Teknis Direktorat Jenderal Konservasi Sumber Daya Alam dan Ekosistem yang bertugas mengelola kawasan konservasi dan keanekaragaman hayati di wilayah Sumatera Selatan.</p>
             </div>
             <div class="footer-col">
-                ##### Alamat Kantor
-                <p>Jl. Kolonel H. Burlian KM. 6 No. 79, Kota Palembang, Sumatera Selatan<br>Telepon/Fax: (0711) 410948</p>
+                <h5>Alamat Kantor Balai</h5>
+                <p>Jl. Kolonel H. Burlian KM. 6 No. 79, Kota Palembang, Sumatera Selatan<br>Telepon/Fax: (0711) 410948 | Email: bksdasumsel@kemenhut.go.id</p>
             </div>
         </div>
         <div class="footer-bottom">
-            Hak Cipta &copy; 2026 Balai Konservasi Sumber Daya Alam (BKSDA) Sumatera Selatan — Pengelola Kawasan TWA Punti Kayu
+            Hak Cipta &copy; 2026 Balai Konservasi Sumber Daya Alam Sumatera Selatan — Kementerian Kehutanan Republik Indonesia
         </div>
     </footer>
 
-    <!-- SCRIPT JAVASCRIPT ANIMASI, MENU HP, & MODAL PETA -->
+    <!-- SCRIPT JAVASCRIPT -->
     <script>
         function toggleMobileMenu(event) {
             event.stopPropagation();
@@ -1261,10 +1280,9 @@
             }
         });
 
-        // MODAL LIGHTBOX PETA KAWASAN
         function openMapModal() {
             document.getElementById("mapModal").classList.add("show");
-            document.body.style.overflow = "hidden"; // Mencegah scroll latar saat modal terbuka
+            document.body.style.overflow = "hidden";
         }
 
         function closeMapModal(event) {
@@ -1273,7 +1291,6 @@
             document.body.style.overflow = "auto";
         }
 
-        // KONTROL TOMBOL ESCAPE UNTUK MENUTUP MODAL PETA
         document.addEventListener("keydown", function(e) {
             if (e.key === "Escape") {
                 closeMapModal();
