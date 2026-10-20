@@ -3,14 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poster Satwa Dilindungi - TWA Punti Kayu Palembang</title>
+    <title>Poster Satwa Dilindungi - Pusat Rehabilitasi Satwa Punti Kayu</title>
     
     <!-- IMPORT FONT PLUS JAKARTA SANS & INTER -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- IMPORT FONT AWESOME V6.5.1 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
     <style>
+        :root {
+            --forest: #081c10;
+            --green: #00a859;
+            --green-dark: #056b3d;
+            --mint: #eaf8ef;
+            --ink: #0f172a;
+            --muted: #5b6b63;
+            --line: #dbe7df;
+            --bg: #f0f4f2;
+        }
+
         * { 
             box-sizing: border-box; 
             margin: 0; 
@@ -19,30 +33,66 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 75px;
         }
 
         body { 
             font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
-            background-color: #f0f4f2; 
-            color: #0f172a; 
+            background-color: var(--bg); 
+            color: var(--ink); 
             line-height: 1.6; 
             font-size: 14px; 
             overflow-x: hidden;
         }
 
         a { 
-            color: #00a859; 
+            color: var(--green); 
             text-decoration: none; 
-            font-weight: 700; 
         }
 
-        a:hover { 
-            color: #007a40; 
-            text-decoration: underline; 
+        /* FLOATING SOCIAL MEDIA SIDEBAR */
+        .social-floating-bar {
+            position: fixed;
+            left: 0;
+            top: 40%;
+            transform: translateY(-50%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+            border: 1px solid #cbd5e1;
+            border-left: none;
+            padding: 6px 4px;
+            gap: 6px;
         }
 
-        /* 1. TOP BAR RESPONSIVE */
-        .top-bar { 
+        .social-floating-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 6px;
+            color: #334155;
+            font-size: 18px;
+            transition: all 0.25s ease;
+        }
+
+        .social-floating-item:hover {
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+
+        .social-floating-item.fb:hover { background-color: #1877f2; }
+        .social-floating-item.tw:hover { background-color: #000000; }
+        .social-floating-item.th:hover { background-color: #000000; }
+        .social-floating-item.ig:hover { background-color: #e1306c; }
+        .social-floating-item.yt:hover { background-color: #ff0000; }
+
+        /* 1. TOP BAR */
+        .topbar { 
             background-color: #081c10; 
             color: #ffffff; 
             padding: 6px 20px; 
@@ -52,7 +102,7 @@
             text-align: left;
         }
 
-        /* 2. HEADER MAIN RESPONSIVE */
+        /* 2. HEADER MAIN */
         .header-main { 
             background-color: #ffffff; 
             border-bottom: 3px solid #00a859; 
@@ -71,7 +121,6 @@
             display: flex; 
             align-items: center; 
             gap: 12px; 
-       
             flex-shrink: 0; 
         }
 
@@ -105,134 +154,103 @@
             margin-top: 2px;
         }
 
-        /* 3. NAVIGASI UTAMA RESPONSIVE */
-        .nav-bar { 
-            background-color: #081c10; 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+        /* 3. NAVIGASI KHUSUS PRS PUNTI KAYU */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #081c10;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
-        .nav-container { 
-            max-width: 1100px; 
-            margin: 0 auto; 
-            display: flex; 
-            justify-content: center; 
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
         }
 
-        .nav-menu { 
-            list-style: none; 
-            display: flex; 
-            align-items: center; 
-            height: 48px; 
-            gap: 4px; 
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: nowrap;
+            gap: 4px;
+            min-width: 0;
         }
 
-        .nav-menu li { 
-            position: relative; 
+        .nav-links li {
+            position: relative;
             white-space: nowrap;
         }
 
-        .nav-menu li a { 
-            display: flex; 
-            align-items: center; 
-            height: 48px; 
-            color: #ffffff; 
-            background-color: #081c10;
-            padding: 0 16px; 
-            font-size: 13px; 
-            font-weight: 700; 
-            border-bottom: 3px solid transparent; 
-            transition: all 0.2s ease; 
-            cursor: pointer;
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+            color: #fff;
+            background: #081c10;
+            padding: 0 16px;
+            font-size: 13px;
+            font-weight: 700;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            white-space: nowrap;
         }
 
-        .nav-menu li a:hover, 
-        .nav-menu li:hover > a,
-        .nav-menu li.active > a { 
-            color: #ffffff; 
-            background-color: #00a859; 
-            border-bottom: 3px solid #00ff88; 
-            text-decoration: none; 
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #fff;
+            background: #00a859;
+            border-bottom: 3px solid #00ff88;
         }
 
-        /* STYLING DROPDOWN MENU HOVER DESKTOP */
-        .dropdown-menu { 
-            display: none; 
-            position: absolute; 
-            top: 100%; 
-            left: 0; 
-            width: 100%;
-            min-width: 100%;
-            background-color: #081c10; 
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3); 
-            border-radius: 0 0 6px 6px; 
-            border-top: 3px solid #00a859; 
-            z-index: 1001; 
-            list-style: none; 
-            padding: 4px 0; 
+        .back {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            height: 32px;
+            padding: 0 14px;
+            border: 1.5px solid #00a859;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 12.5px;
+            font-weight: 700;
+            background: rgba(0, 168, 89, 0.15);
+            white-space: nowrap;
+            transition: all 0.2s;
         }
 
-        .dropdown:hover .dropdown-menu { 
-            display: block; 
-        }
-
-        .dropdown-menu li a { 
-            height: auto !important; 
-            padding: 8px 12px !important; 
-            font-size: 12px !important; 
-            font-weight: 600 !important; 
-            color: #e2e8f0 !important; 
-            background-color: #081c10 !important;
-            border-bottom: none !important; 
-            border-left: 3px solid transparent;
-            transition: all 0.2s ease;
-            white-space: normal !important;
-            line-height: 1.3 !important;
-        }
-
-        .dropdown-menu li a:hover,
-        .dropdown-menu li a:active { 
-            background-color: #00a859 !important; 
-            color: #ffffff !important; 
-            border-left: 3px solid #00ff88 !important;
-        }
-
-        .nav-prs a { 
-            height: 32px !important; 
-            padding: 0 14px !important; 
-            border: 1.5px solid #00a859 !important; 
-            border-radius: 6px; 
-            color: #ffffff !important; 
-            font-size: 12.5px !important; 
-            background-color: rgba(0, 168, 89, 0.15) !important; 
-        }
-
-        .nav-prs a:hover {
-            background-color: #00a859 !important;
-            color: #ffffff !important;
-            border-color: #00a859 !important;
+        .back:hover {
+            background: #00a859;
+            border-color: #00a859;
+            color: #fff;
         }
 
         /* BANNER PAGE */
         .page-banner { 
             background: linear-gradient(rgba(8, 28, 16, 0.72), rgba(8, 28, 16, 0.9)), url('images/profil.png') center/cover no-repeat; 
             border-bottom: 4px solid #00a859; 
-            padding: 55px 20px; 
+            padding: 40px 20px; 
             color: #ffffff; 
             text-align: center; 
         }
 
         .page-banner h2 { 
-            font-size: 32px; 
+            font-size: 26px; 
             font-weight: 800; 
             color: #ffffff; 
-            margin-bottom: 8px; 
+            margin-bottom: 6px; 
         }
 
         .page-banner p { 
-            font-size: 14.5px; 
+            font-size: 13.5px; 
             color: #00ff88; 
             font-weight: 700; 
         }
@@ -261,93 +279,6 @@
             padding-left: 22px; 
         }
 
-        /* FITUR TOMBOL GARIS 3 (HAMBURGER) UNTUK MODE HP */
-        .mobile-header-bar {
-            display: none;
-            background-color: #081c10;
-            border-radius: 8px;
-            padding: 10px 14px;
-            margin-bottom: 24px;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            border-left: 4px solid #00a859;
-        }
-
-        .mobile-header-title {
-            color: #ffffff;
-            font-size: 13.5px;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        .mobile-menu-btn {
-            background-color: transparent;
-            border: 1.5px solid #00a859;
-            border-radius: 6px;
-            padding: 6px 10px;
-            color: #ffffff;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            outline: none;
-        }
-
-        .mobile-menu-btn svg {
-            width: 22px;
-            height: 22px;
-            fill: #ffffff;
-        }
-
-        .mobile-dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background-color: #081c10;
-            border: 2px solid #00a859;
-            border-radius: 8px;
-            margin-top: 6px;
-            z-index: 9999;
-            list-style: none;
-            padding: 8px 0;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-        }
-
-        .mobile-dropdown-menu.show {
-            display: block;
-        }
-
-        .mobile-dropdown-menu .menu-category {
-            padding: 8px 16px 4px 16px;
-            font-size: 11px;
-            font-weight: 800;
-            color: #00ff88;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-top: 1px solid #164229;
-        }
-
-        .mobile-dropdown-menu .menu-category:first-child {
-            border-top: none;
-        }
-
-        .mobile-dropdown-menu li a {
-            display: block;
-            padding: 8px 16px 8px 24px;
-            color: #ffffff;
-            font-size: 12.5px;
-            font-weight: 600;
-        }
-
-        .mobile-dropdown-menu li a:hover,
-        .mobile-dropdown-menu li a:active {
-            background-color: #00a859;
-            color: #ffffff;
-        }
-
         .section-header { 
             background-color: #f0fdf4; 
             border-left: 5px solid #00a859; 
@@ -356,14 +287,10 @@
             font-weight: 800; 
             color: #0f172a; 
             margin-bottom: 16px; 
-            margin-top: 26px; 
             text-transform: uppercase; 
             border-radius: 0 6px 6px 0; 
             border: 1px solid #dcfce7; 
-        }
-
-        .section-header:first-of-type { 
-            margin-top: 0; 
+            border-left: 5px solid #00a859;
         }
 
         .article-text { 
@@ -375,7 +302,7 @@
             line-height: 1.65; 
         }
 
-        /* TAB INTERAKTIF */
+        /* TAB INTERAKTIF POSTER */
         .poster-tabs {
             display: flex;
             flex-wrap: wrap;
@@ -392,7 +319,7 @@
             font-weight: 700;
             border-radius: 6px;
             cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.25s ease;
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
@@ -400,7 +327,6 @@
             background-color: #e2e8f0;
             color: #0f172a;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.06);
         }
 
         .poster-tab-btn.active {
@@ -411,7 +337,7 @@
             box-shadow: 0 4px 12px rgba(0, 168, 89, 0.25);
         }
 
-        /* BINGKAI GAMBAR INTERAKTIF */
+        /* BINGKAI GAMBAR POSTER */
         .poster-image-box { 
             margin: 16px 0 20px 0; 
             border-radius: 10px; 
@@ -474,8 +400,6 @@
         .btn-view-full:hover {
             background-color: #007a40;
             transform: translateY(-1px);
-            box-shadow: 0 4px 10px rgba(0, 122, 64, 0.3);
-            text-decoration: none !important;
         }
 
         /* MODAL POPUP LIGHTBOX BESAR */
@@ -571,7 +495,7 @@
             color: #00a859; 
         }
 
-        /* FOOTER RESMI */
+        /* FOOTER RESMI PRS */
         .footer-main { 
             background-color: #081c10; 
             color: #ffffff; 
@@ -590,24 +514,6 @@
             gap: 20px;
         }
 
-        .footer-col { 
-            flex: 1; 
-        }
-
-        .footer-col h5 { 
-            font-size: 13.5px; 
-            font-weight: 800; 
-            color: #00ff88; 
-            margin-bottom: 10px; 
-            text-transform: uppercase;
-        }
-
-        .footer-col p {
-            color: #cbd5e1;
-            font-size: 12px;
-            line-height: 1.6;
-        }
-
         .footer-bottom { 
             max-width: 1100px; 
             margin: 22px auto 0 auto; 
@@ -621,58 +527,40 @@
 
         /* MEDIA QUERIES MOBILE & TABLET */
         @media screen and (max-width: 868px) {
-            .mobile-header-bar {
-                display: flex !important;
-            }
+            .social-floating-bar { display: none; }
+            .topbar { font-size: 11px; text-align: center; padding: 6px 12px; }
+            .header-main { padding: 14px 20px; }
+            .header-container { flex-direction: column; text-align: center; gap: 10px; }
+            .header-logo-wrapper { justify-content: center; }
+            .header-logo { height: 48px; }
+            .header-title h1 { font-size: 14px; }
+            .header-title h2 { font-size: 12px; }
+            .header-title p { font-size: 10.5px; }
 
-            .top-bar {
-                font-size: 11px;
-                text-align: center;
-                padding: 6px 12px;
-            }
-
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
-            }
-
-            .header-logo-wrapper {
-                justify-content: center;
-                margin-right: 0;
-            }
-
-            .header-logo {
-                height: 48px;
-            }
-
-            .header-title h1 {
-                font-size: 14px;
-            }
-
-            .header-title h2 {
-                font-size: 12px;
-            }
-
-            .header-title p {
-                font-size: 10.5px;
-            }
-
-            .nav-container {
+            .nav-inner {
                 overflow-x: auto;
+                overflow-y: hidden;
                 -webkit-overflow-scrolling: touch;
                 justify-content: flex-start;
+                padding: 0;
+                gap: 0;
             }
 
-            .nav-menu {
+            .nav-links {
+                justify-content: flex-start;
+                flex-shrink: 0;
                 padding: 0 10px;
-                height: 44px;
             }
 
-            .nav-menu li a {
+            .nav-links a {
                 height: 44px;
                 padding: 0 12px;
                 font-size: 12px;
+            }
+
+            .back {
+                margin: 0 10px 0 0;
+                font-size: 11px;
             }
 
             .main-container { 
@@ -699,79 +587,172 @@
             }
         }
 
-        @media screen and (max-width: 480px) {
-            .page-banner {
-                padding: 30px 15px;
-            }
-
-            .page-banner h2 {
-                font-size: 22px;
-            }
-
-            .page-banner p {
-                font-size: 12.5px;
-            }
+        @media screen and (max-width: 560px) {
+            .header-title h1 { font-size: 12px; line-height: 1.4; }
+            .header-title h2 { font-size: 11px; }
+            .header-title p { font-size: 10px; line-height: 1.5; }
+            .nav-links { gap: 2px; padding: 0 6px; }
+            .nav-links a { height: 42px; padding: 0 10px; font-size: 11px; }
+            .back { height: 30px; padding: 0 10px; font-size: 10px; }
+            .page-banner { padding: 30px 15px; }
+            .page-banner h2 { font-size: 20px; }
+            .page-banner p { font-size: 11.5px; }
         }
+        /* NAVIGASI KHUSUS PRS PUNTI KAYU */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: #081c10;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .nav-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 16px; /* Menambah padding samping agar tidak mepet layar */
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Membuat tombol terdorong rapi ke kanan */
+        gap: 16px; /* Memberi jarak minimal antar elemen */
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        gap: 4px;
+        min-width: 0;
+      }
+
+      .nav-links li {
+        position: relative;
+        white-space: nowrap;
+      }
+
+      .nav-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px;
+        color: #fff;
+        background: #081c10;
+        padding: 0 16px;
+        font-size: 13px;
+        font-weight: 700;
+        border-bottom: 3px solid transparent;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: #fff;
+        background: #00a859;
+        border-bottom: 3px solid #00ff88;
+      }
+
+      .back {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        height: 32px;
+        padding: 0 14px;
+        border: 1.5px solid #00a859;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 12.5px;
+        font-weight: 700;
+        background: rgba(0, 168, 89, 0.15);
+        white-space: nowrap;
+        transition: all 0.2s;
+        margin-left: 14px; /* TAMBAHAN: Memberi jarak renggang dari menu Dokumentasi */
+      }
+
+      .back:hover {
+        background: #00a859;
+        border-color: #00a859;
+        color: #fff;
+      }
     </style>
 </head>
 <body>
 
-    <!-- BARIS ATAS -->
-    <div class="top-bar">Kementerian Kehutanan Republik Indonesia — Direktorat Jenderal KSDAE</div>
+    <!-- FLOATING BAR MEDIA SOSIAL -->
+    <div class="social-floating-bar">
+      <a href="https://www.facebook.com/bksda.s.selatan" target="_blank" class="social-floating-item fb" title="Facebook BKSDA Sumsel">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a href="https://x.com/bksda_sumsel" target="_blank" class="social-floating-item tw" title="X (Twitter) BKSDA Sumsel">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+      <a href="https://www.threads.com/@bksda_sumsel" target="_blank" class="social-floating-item th" title="Threads BKSDA Sumsel">
+        <i class="fa-brands fa-threads"></i>
+      </a>
+      <a href="https://www.instagram.com/bksda_sumsel" target="_blank" class="social-floating-item ig" title="Instagram BKSDA Sumsel">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/channel/UC3mTRUNscHxFBZndT64-_Kg" target="_blank" class="social-floating-item yt" title="YouTube BKSDA Sumsel">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
+
+    <!-- INFORMASI INSTANSI -->
+    <div class="topbar">
+      Kementerian Kehutanan Republik Indonesia · Ditjen KSDAE
+    </div>
 
     <!-- HEADER INSTANSI -->
     <header class="header-main">
-        <div class="header-container">
-            <div class="header-logo-wrapper">
-                <img src="images/kemeteriankehutanan.png" alt="Logo Kementerian Kehutanan" class="header-logo" onerror="this.onerror=null; this.src='kemeteriankehutanan.png';">
-                <img src="images/logobksda.png" alt="Logo BKSDA" class="header-logo" onerror="this.onerror=null; this.src='logobksda.jpeg';">
-            </div>
-            <div class="header-title">
-                <h1>Balai Konservasi Sumber Daya Alam Sumatera Selatan</h1>
-                <h2>Sistem Informasi Taman Wisata Alam Punti Kayu Palembang</h2>
-                <p>Jl. Kolonel H. Burlian KM. 6 No. 79, Palembang, Sumatera Selatan | Email: bksdasumsel@kemenhut.go.id</p>
-            </div>
+      <div class="header-container">
+        <div class="header-logo-wrapper">
+          <img
+            src="images/kemeteriankehutanan.png"
+            alt="Logo Kementerian Kehutanan"
+            class="header-logo"
+            onerror="
+              this.onerror = null;
+              this.src = 'kemeteriankehutanan.png';
+            "
+          />
+          <img
+            src="images/logobksda.png"
+            alt="Logo BKSDA"
+            class="header-logo"
+            onerror="
+              this.onerror = null;
+              this.src = 'logobksda.jpeg';
+            "
+          />
         </div>
+        <div class="header-title">
+          <h1>Balai Konservasi Sumber Daya Alam Sumatera Selatan</h1>
+          <h2>Sistem Informasi Taman Wisata Alam Punti Kayu Palembang</h2>
+          <p>
+            Jl. Kolonel H. Burlian KM. 6 No. 79, Palembang, Sumatera Selatan |
+            Email: bksdasumsel@kemenhut.go.id
+          </p>
+        </div>
+      </div>
     </header>
 
-    <!-- NAVIGASI UTAMA DENGAN DESKTOP HOVER DAN LINK DROPDOWN LANGSUNG -->
-    <nav class="nav-bar">
-        <div class="nav-container">
-            <ul class="nav-menu">
-                <li><a href="index.html">Beranda</a></li>
-                
-                <li class="dropdown">
-                    <a href="profiltwa.html">Profil TWA Punti Kayu &#9662;</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="profiltwa.html">Profil Kawasan</a></li>
-                        <li><a href="pejabat.html">Profil Pejabat</a></li>
-                        <li><a href="struktur.html">Struktur Organisasi</a></li>
-                    </ul>
-                </li>
+    <!-- NAVIGASI UTAMA PRS PUNTI KAYU -->
+    <nav class="nav">
+      <div class="nav-inner">
+        <ul class="nav-links">
+          <li><a href="prs.html">Beranda PRS</a></li>
+          <li><a href="informasirehabilitasi.html">Informasi Rehabilitasi</a></li>
+          <li><a href="datasatwaprs.html">Data Satwa PRS</a></li>
+          <li><a href="eksitu.html">Kegiatan</a></li>
+          <li><a class="active" href="poster.html">Poster Satwa Dilindungi</a></li>
+          <li><a href="dokumentasi.html">Dokumentasi</a></li>
+        </ul>
 
-                <li class="dropdown active">
-                    <a href="kehati.html">Keanekaragaman Hayati &#9662;</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="kehati.html">Flora</a></li>
-                        <li><a href="fauna.html">Fauna</a></li>
-                        <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
-                    </ul>
-                </li>
-
-                <li><a href="wisata.html">Objek wisata</a></li>
-
-                <li class="dropdown">
-                    <a href="insitu.html">Kegiatan &#9662;</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="insitu.html">Insitu</a></li>
-                        <li><a href="eksitu.html">Eksitu</a></li>
-                    </ul>
-                </li>
-
-                <li><a href="kontak.html">Kontak</a></li>
-                <li class="nav-prs"><a href="prs.html">PRS Punti Kayu &rarr;</a></li>
-            </ul>
-        </div>
+        <a href="index.html" class="back"> &larr; Kembali ke TWA Punti Kayu </a>
+      </div>
     </nav>
 
     <!-- BANNER PAGE -->
@@ -785,30 +766,10 @@
         
         <!-- AREA KONTEN KIRI -->
         <div class="content-area">
-
-             <!-- BAR SUB-MENU GARIS 3 HANYA MUNCUL DI HP -->
-            <div class="mobile-header-bar">
-                <span class="mobile-header-title">Menu Keanekaragaman Hayati</span>
-                <button type="button" class="mobile-menu-btn" onclick="toggleMobileMenu(event)">
-                    <!-- IKON GARIS 3 -->
-                    <svg viewBox="0 0 24 24">
-                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                    </svg>
-                </button>
-
-                <!-- DROPDOWN SUB-MENU LENGKAP KHUSUS HP -->
-                <ul class="mobile-dropdown-menu" id="mobileDropdown">
-                    
-                    <div class="menu-category">Keanekaragaman Hayati</div>
-                    <li><a href="kehati.html">Flora</a></li>
-                    <li><a href="fauna.html">Fauna</a></li>
-                    <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
-                </ul>
-            </div>
             
             <div class="section-header">Poster Infografis TSL Dilindungi</div>
             <p class="article-text">
-                Pilih kategori poster di bawah ini untuk menampilkan infografis visual Tumbuhan dan Satwa Liar (TSL) yang dilindungi oleh Balai Konservasi Sumber Daya Alam (BKSDA) Sumatera Selatan
+                Pilih kategori poster di bawah ini untuk menampilkan infografis visual Tumbuhan dan Satwa Liar (TSL) yang dilindungi oleh Balai Konservasi Sumber Daya Alam (BKSDA) Sumatera Selatan:
             </p>
 
             <!-- TOMBOL TAB PILIHAN POSTER -->
@@ -845,10 +806,10 @@
         <!-- SIDEBAR AREA KANAN -->
         <div class="sidebar-area">
             <div class="widget">
-                <div class="widget-title">NAVIGASI KEHATI</div>
+                <div class="widget-title">EDUKASI CONSERVATION</div>
                 <ul class="widget-list">
-                    <li><a href="kehati.html">Flora</a></li>
-                    <li><a href="fauna.html">Fauna</a></li>
+                    <li><a href="informasirehabilitasi.html">Alur Rehabilitasi Satwa</a></li>
+                    <li><a href="datasatwaprs.html">Inventarisasi Satwa PRS</a></li>
                     <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
                 </ul>
             </div>
@@ -868,38 +829,23 @@
         <img id="modalImg" class="modal-content" src="" alt="Poster Fullscreen">
     </div>
 
-    <!-- FOOTER RESMI -->
+    <!-- FOOTER RESMI PRS -->
     <footer class="footer-main">
         <div class="footer-container">
-            <div class="footer-col">
-                <h5>BKSDA Sumatera Selatan</h5>
-                <p>Balai Konservasi Sumber Daya Alam Sumatera Selatan.</p>
-            </div>
-            <div class="footer-col">
-                <h5>Alamat Kantor</h5>
-                <p>Jl. Kolonel H. Burlian KM. 6 No. 79, Kota Palembang, Sumatera Selatan</p>
+            <div>
+                <h5 style="color: #00ff88; margin-bottom: 8px">PRS TWA Punti Kayu</h5>
+                <p style="color: #cbd5e1; font-size: 12px">
+                    Unit Pengelolaan Rehabilitasi Satwa BKSDA Sumatera Selatan.
+                </p>
             </div>
         </div>
-        <div class="footer-bottom">Hak Cipta &copy; 2026 Balai Konservasi Sumber Daya Alam (BKSDA) Sumatera Selatan</div>
+        <div class="footer-bottom">
+            Hak Cipta &copy; 2026 BKSDA Sumatera Selatan — Pusat Rehabilitasi Satwa Punti Kayu
+        </div>
     </footer>
 
     <!-- SCRIPT JAVASCRIPT UTAMA -->
     <script>
-    // --- 1. SCRIPT GARIS 3 HP ---
-    function toggleMobileMenu(event) {
-        event.stopPropagation();
-        const menu = document.getElementById("mobileDropdown");
-        menu.classList.toggle("show");
-    }
-
-    document.addEventListener("click", function (e) {
-        const menu = document.getElementById("mobileDropdown");
-        if (menu && !e.target.closest(".mobile-header-bar")) {
-            menu.classList.remove("show");
-        }
-    });
-
-    // --- 2. SCRIPT INTERAKTIF POSTER & LIGHTBOX ---
     function gantiGambar(imgUrl, judul, element) {
         document.getElementById('posterImg').src = imgUrl;
         document.getElementById('posterTitle').innerHTML = '<strong>Poster Aktif:</strong> ' + judul;
