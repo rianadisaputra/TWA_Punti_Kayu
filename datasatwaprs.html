@@ -5,9 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Data Satwa PRS - Pusat Rehabilitasi Satwa Punti Kayu</title>
 
+    <!-- IMPORT FONT PLUS JAKARTA SANS & INTER -->
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
+    />
+
+    <!-- IMPORT FONT AWESOME V6.5.1 -->
+    <link 
+      rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
     />
 
     <style>
@@ -52,9 +59,48 @@
         color: inherit;
       }
 
-      /* =========================================
-         HEADER & TOPBAR — SAMA DENGAN INFORMASIREHABILITASI.HTML
-      ========================================= */
+      /* FLOATING SOCIAL MEDIA SIDEBAR */
+      .social-floating-bar {
+        position: fixed;
+        left: 0;
+        top: 40%;
+        transform: translateY(-50%);
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        border-radius: 0 10px 10px 0;
+        box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+        border: 1px solid #cbd5e1;
+        border-left: none;
+        padding: 6px 4px;
+        gap: 6px;
+      }
+
+      .social-floating-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 6px;
+        color: #334155;
+        font-size: 18px;
+        transition: all 0.25s ease;
+      }
+
+      .social-floating-item:hover {
+        color: #ffffff;
+        transform: translateX(4px);
+      }
+
+      .social-floating-item.fb:hover { background-color: #1877f2; }
+      .social-floating-item.tw:hover { background-color: #000000; }
+      .social-floating-item.th:hover { background-color: #000000; }
+      .social-floating-item.ig:hover { background-color: #e1306c; }
+      .social-floating-item.yt:hover { background-color: #ff0000; }
+
+      /* HEADER & TOPBAR */
       .topbar {
         background: #081c10;
         color: #fff;
@@ -115,9 +161,7 @@
         margin-top: 2px;
       }
 
-      /* =========================================
-         NAVIGASI — SAMA DENGAN INFORMASIREHABILITASI.HTML
-      ========================================= */
+      /* NAVIGASI */
       .nav {
         position: sticky;
         top: 0;
@@ -196,9 +240,7 @@
         color: #fff;
       }
 
-      /* =========================================
-         KONTEN UTAMA & STATISTIK SPREADSHEET
-      ========================================= */
+      /* KONTEN UTAMA */
       .main-container {
         max-width: 1100px;
         margin: 28px auto;
@@ -223,50 +265,45 @@
         border-left: 5px solid #00a859;
       }
 
-      /* RINGKASAN STATUS MUTASI SATWA */
-      .summary-cards {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 12px;
-        margin-bottom: 24px;
-      }
-
-      .card-stat {
+      /* FILTER TAHUN UTAMA (DI PALING ATAS SEMUA DATA) */
+      .filter-tahun-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 22px;
+        padding: 12px 16px;
+        background-color: #f8fafc;
+        border: 1px solid #e2e8f0;
         border-radius: 8px;
-        padding: 14px 16px;
-        color: #ffffff;
-        text-align: center;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
       }
 
-      .card-stat.prs {
-        background-color: #82c91e;
+      .filter-label {
+        font-weight: 800;
+        font-size: 13.5px;
         color: #081c10;
       }
 
-      .card-stat.prss {
-        background-color: #2b8a3e;
-      }
-
-      .card-stat.lepas {
-        background-color: #3b82f6;
-      }
-
-      .card-stat.mati {
-        background-color: #ef4444;
-      }
-
-      .card-stat h5 {
-        font-size: 11.5px;
+      .btn-tahun {
+        padding: 7px 18px;
+        border: 1.5px solid #cbd5e1;
+        background-color: #ffffff;
+        color: #334155;
+        border-radius: 6px;
         font-weight: 700;
-        text-transform: uppercase;
-        margin-bottom: 4px;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.2s ease;
       }
 
-      .card-stat .value {
-        font-size: 26px;
-        font-weight: 800;
-        line-height: 1;
+      .btn-tahun:hover {
+        border-color: #00a859;
+        color: #00a859;
+      }
+
+      .btn-tahun.active {
+        background-color: #00a859;
+        color: #ffffff;
+        border-color: #00a859;
       }
 
       /* GRID UNTUK TABEL KANDANG */
@@ -285,7 +322,7 @@
         text-transform: uppercase;
       }
 
-      /* STYLING TABEL DESAIN SPREADSHEET */
+      /* STYLING TABEL */
       .table-wrapper {
         width: 100%;
         overflow-x: auto;
@@ -293,6 +330,7 @@
         margin-top: 10px;
         border: 1px solid #cbd5e1;
         border-radius: 8px;
+        margin-bottom: 28px;
       }
 
       table.data-table {
@@ -330,40 +368,6 @@
         background-color: #f0fdf4;
       }
 
-      /* BADGE STATUS SATWA */
-      .badge {
-        display: inline-block;
-        padding: 3px 8px;
-        border-radius: 4px;
-        font-size: 11px;
-        font-weight: 700;
-        white-space: nowrap;
-      }
-
-      .bg-red {
-        background-color: #fef2f2;
-        color: #dc2626;
-        border: 1px solid #fca5a5;
-      }
-
-      .bg-green {
-        background-color: #f0fdf4;
-        color: #16a34a;
-        border: 1px solid #86efac;
-      }
-
-      .bg-blue {
-        background-color: #eff6ff;
-        color: #2563eb;
-        border: 1px solid #93c5fd;
-      }
-
-      .bg-yellow {
-        background-color: #fffbeb;
-        color: #d97706;
-        border: 1px solid #fde68a;
-      }
-
       /* FOOTER */
       .footer-main {
         background-color: #081c10;
@@ -392,45 +396,17 @@
         color: #94a3b8;
       }
 
-      /* =========================================
-         RESPONSIVE TABLET & MOBILE
-      ========================================= */
+      /* RESPONSIVE TABLET & MOBILE */
       @media screen and (max-width: 868px) {
-        .topbar {
-          font-size: 11px;
-          text-align: center;
-          padding: 6px 12px;
-        }
-
-        .header-main {
-          padding: 14px 20px;
-        }
-
-        .header-container {
-          flex-direction: column;
-          text-align: center;
-          gap: 10px;
-        }
-
-        .header-logo-wrapper {
-          justify-content: center;
-        }
-
-        .header-logo {
-          height: 48px;
-        }
-
-        .header-title h1 {
-          font-size: 14px;
-        }
-
-        .header-title h2 {
-          font-size: 12px;
-        }
-
-        .header-title p {
-          font-size: 10.5px;
-        }
+        .social-floating-bar { display: none; }
+        .topbar { font-size: 11px; text-align: center; padding: 6px 12px; }
+        .header-main { padding: 14px 20px; }
+        .header-container { flex-direction: column; text-align: center; gap: 10px; }
+        .header-logo-wrapper { justify-content: center; }
+        .header-logo { height: 48px; }
+        .header-title h1 { font-size: 14px; }
+        .header-title h2 { font-size: 12px; }
+        .header-title p { font-size: 10.5px; }
 
         .nav-inner {
           overflow-x: auto;
@@ -458,10 +434,6 @@
           font-size: 11px;
         }
 
-        .summary-cards {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
         .grid-kandang {
           grid-template-columns: 1fr;
         }
@@ -478,41 +450,116 @@
       }
 
       @media screen and (max-width: 560px) {
-        .header-title h1 {
-          font-size: 12px;
-          line-height: 1.4;
-        }
+        .header-title h1 { font-size: 12px; line-height: 1.4; }
+        .header-title h2 { font-size: 11px; }
+        .header-title p { font-size: 10px; line-height: 1.5; }
+        .nav-links { gap: 2px; padding: 0 6px; }
+        .nav-links a { height: 42px; padding: 0 10px; font-size: 11px; }
+        .back { height: 30px; padding: 0 10px; font-size: 10px; }
+        .filter-tahun-wrapper { flex-direction: column; align-items: flex-start; gap: 8px; }
+      }
+      /* NAVIGASI KHUSUS PRS PUNTI KAYU */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: #081c10;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
 
-        .header-title h2 {
-          font-size: 11px;
-        }
+      .nav-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 16px; /* Menambah padding samping agar tidak mepet layar */
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Membuat tombol terdorong rapi ke kanan */
+        gap: 16px; /* Memberi jarak minimal antar elemen */
+      }
 
-        .header-title p {
-          font-size: 10px;
-          line-height: 1.5;
-        }
+      .nav-links {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        gap: 4px;
+        min-width: 0;
+      }
 
-        .nav-links {
-          gap: 2px;
-          padding: 0 6px;
-        }
+      .nav-links li {
+        position: relative;
+        white-space: nowrap;
+      }
 
-        .nav-links a {
-          height: 42px;
-          padding: 0 10px;
-          font-size: 11px;
-        }
+      .nav-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px;
+        color: #fff;
+        background: #081c10;
+        padding: 0 16px;
+        font-size: 13px;
+        font-weight: 700;
+        border-bottom: 3px solid transparent;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
 
-        .back {
-          height: 30px;
-          padding: 0 10px;
-          font-size: 10px;
-        }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: #fff;
+        background: #00a859;
+        border-bottom: 3px solid #00ff88;
+      }
+
+      .back {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        height: 32px;
+        padding: 0 14px;
+        border: 1.5px solid #00a859;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 12.5px;
+        font-weight: 700;
+        background: rgba(0, 168, 89, 0.15);
+        white-space: nowrap;
+        transition: all 0.2s;
+        margin-left: 14px; /* TAMBAHAN: Memberi jarak renggang dari menu Dokumentasi */
+      }
+
+      .back:hover {
+        background: #00a859;
+        border-color: #00a859;
+        color: #fff;
       }
     </style>
   </head>
 
   <body>
+    <!-- FLOATING BAR MEDIA SOSIAL -->
+    <div class="social-floating-bar">
+      <a href="https://www.facebook.com/bksda.s.selatan" target="_blank" class="social-floating-item fb" title="Facebook BKSDA Sumsel">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a href="https://x.com/bksda_sumsel" target="_blank" class="social-floating-item tw" title="X (Twitter) BKSDA Sumsel">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+      <a href="https://www.threads.com/@bksda_sumsel" target="_blank" class="social-floating-item th" title="Threads BKSDA Sumsel">
+        <i class="fa-brands fa-threads"></i>
+      </a>
+      <a href="https://www.instagram.com/bksda_sumsel" target="_blank" class="social-floating-item ig" title="Instagram BKSDA Sumsel">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/channel/UC3mTRUNscHxFBZndT64-_Kg" target="_blank" class="social-floating-item yt" title="YouTube BKSDA Sumsel">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
+
     <!-- INFORMASI INSTANSI -->
     <div class="topbar">
       Kementerian Kehutanan Republik Indonesia · Ditjen KSDAE
@@ -561,7 +608,8 @@
             <a href="informasirehabilitasi.html">Informasi Rehabilitasi</a>
           </li>
           <li><a class="active" href="datasatwaprs.html">Data Satwa PRS</a></li>
-          <li><a href="kegiatanedukasi.html">Kegiatan &amp; Edukasi</a></li>
+          <li><a href="eksitu.html">Kegiatan</a></li>
+          <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
           <li><a href="dokumentasi.html">Dokumentasi</a></li>
         </ul>
 
@@ -571,147 +619,71 @@
 
     <!-- WADAH KONTEN UTAMA -->
     <div class="main-container">
-      <div class="section-header">
-        Rekapitulasi Mutasi Satwa & Ketersediaan Kandang
+      
+      <!-- FILTER TAHUN UTAMA -->
+      <div class="filter-tahun-wrapper">
+        <span class="filter-label"><i class="fa-solid fa-calendar-days"></i> Filter Data Tahun:</span>
+        <button type="button" class="btn-tahun active" onclick="switchTahun('2026', this)">Tahun 2026</button>
+        <button type="button" class="btn-tahun" onclick="switchTahun('2025', this)">Tahun 2025</button>
       </div>
 
-      <!-- KARTU RINGKASAN DATA SPREADSHEET -->
-      <div class="summary-cards">
-        <div class="card-stat prs">
-          <h5>Satwa Perawatan di PRS</h5>
-          <div class="value">7</div>
+      <!-- BLOK KETERSEDIAAN KANDANG (DISEMBUNYIKAN UNTUK 2025) -->
+      <div id="container-kandang">
+        <div class="section-header">
+          Status Ketersediaan Kandang (<span id="year-label-kandang">2026</span>)
         </div>
-        <div class="card-stat prss">
-          <h5>Satwa Perawatan di PRSS</h5>
-          <div class="value">32</div>
-        </div>
-        <div class="card-stat lepas">
-          <h5>Lepas Liar</h5>
-          <div class="value">14</div>
-        </div>
-        <div class="card-stat mati">
-          <h5>Mati</h5>
-          <div class="value">3</div>
-        </div>
-      </div>
 
-      <!-- TABEL KETERSEDIAAN KANDANG (DARI SPREADSHEET) -->
-      <div class="grid-kandang">
-        <!-- KANDANG PRS -->
-        <div class="kandang-box">
-          <h4>Ketersediaan Kandang PRS Punti Kayu</h4>
-          <div class="table-wrapper">
-            <table class="data-table kandang-table">
-              <thead>
-                <tr>
-                  <th class="th-jenis">Jenis Kandang</th>
-                  <th class="th-jumlah">Jumlah</th>
-                  <th class="th-terisi">Terisi</th>
-                  <th class="th-kosong">Kosong</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Raptor</td>
-                  <td>5</td>
-                  <td>1</td>
-                  <td>4</td>
-                </tr>
-                <tr>
-                  <td>Primata Kecil</td>
-                  <td>2</td>
-                  <td>0</td>
-                  <td>2</td>
-                </tr>
-                <tr>
-                  <td>Aviary</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <td>Beruang</td>
-                  <td>2</td>
-                  <td>1</td>
-                  <td>1</td>
-                </tr>
-                <tr>
-                  <td>Kandang Sementara Portable</td>
-                  <td>3</td>
-                  <td>1</td>
-                  <td>2</td>
-                </tr>
-              </tbody>
-            </table>
+        <div class="grid-kandang">
+          <div class="kandang-box">
+            <h4>Ketersediaan Kandang PRS Punti Kayu</h4>
+            <div class="table-wrapper" style="margin-bottom:0;">
+              <table class="data-table kandang-table">
+                <thead>
+                  <tr>
+                    <th class="th-jenis">Jenis Kandang</th>
+                    <th class="th-jumlah">Jumlah</th>
+                    <th class="th-terisi">Terisi</th>
+                    <th class="th-kosong">Kosong</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody-kandang-prs">
+                  <!-- Data dimasukkan via JS -->
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
 
-        <!-- KANDANG PRSS TAF IP -->
-        <div class="kandang-box">
-          <h4>Ketersediaan Kandang PRSS Punti Kayu TAF IP</h4>
-          <div class="table-wrapper">
-            <table class="data-table kandang-table">
-              <thead>
-                <tr>
-                  <th class="th-jenis">Jenis Kandang</th>
-                  <th class="th-jumlah">Jumlah</th>
-                  <th class="th-terisi">Terisi</th>
-                  <th class="th-kosong">Kosong</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Karantina</td>
-                  <td>8</td>
-                  <td>8</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <td>Sosialisasi</td>
-                  <td>14</td>
-                  <td>14</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <td>Transit (Khusus Positif Herpes)</td>
-                  <td>4</td>
-                  <td>4</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <td>Observasi</td>
-                  <td>7</td>
-                  <td>7</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <td>Sementara</td>
-                  <td>2</td>
-                  <td>2</td>
-                  <td>0</td>
-                </tr>
-                <tr style="font-weight: 800; background-color: #e2e8f0;">
-                  <td>Total</td>
-                  <td>35</td>
-                  <td>35</td>
-                  <td>0</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="kandang-box">
+            <h4>Ketersediaan Kandang PRSS Punti Kayu TAF IP</h4>
+            <div class="table-wrapper" style="margin-bottom:0;">
+              <table class="data-table kandang-table">
+                <thead>
+                  <tr>
+                    <th class="th-jenis">Jenis Kandang</th>
+                    <th class="th-jumlah">Jumlah</th>
+                    <th class="th-terisi">Terisi</th>
+                    <th class="th-kosong">Kosong</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody-kandang-prss">
+                  <!-- Data dimasukkan via JS -->
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- TABEL INVENTARISASI SATWA LENGKAP -->
+      <!-- TABEL 1: DATA INVENTARISASI SATWA (TANPA KOLOM STATUS SATWA) -->
       <div class="section-header">
-        Data Inventarisasi Satwa Dalam Perawatan PRS
+        Data Inventarisasi Satwa Dalam Perawatan PRS (<span id="year-label-inv">2026</span>)
       </div>
       <p style="margin-bottom: 12px; color: #334155; font-size: 13px;">
-        Tabel berikut memuat rekapitulasi lengkap penerimaan, berita acara, serta status penanganan satwa liar di Pusat Rehabilitasi Satwa (PRS) Punti Kayu Palembang:
+        Tabel berikut memuat rekapitulasi penerimaan, berita acara, serta informasi registrasi satwa liar di Pusat Rehabilitasi Satwa (PRS) Punti Kayu Palembang:
       </p>
 
       <div class="table-wrapper">
-        <table class="data-table" style="min-width: 900px;">
+        <table class="data-table" style="min-width: 800px;">
           <thead>
             <tr>
               <th>No.</th>
@@ -721,403 +693,38 @@
               <th>Asal Satwa</th>
               <th>Tanggal Serah Terima</th>
               <th>Berita Acara</th>
-              <th>Status Satwa</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td><strong>Kucing Kuwuk</strong></td>
-              <td>Mamalia (M)</td>
-              <td>001/26</td>
-              <td>Barang Bukti</td>
-              <td>21 January 2026</td>
-              <td>BAST Balai / (Kematian) BA. 07/KSA/SKSDAW-I/02/2026</td>
-              <td><span class="badge bg-red">Mati</span></td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td><strong>Kucing Kuwuk</strong></td>
-              <td>Mamalia (M)</td>
-              <td>002/26</td>
-              <td>Barang Bukti</td>
-              <td>21 January 2026</td>
-              <td>BAST Balai / (Lepas Liar) BA. 09/KSA/SKSDAW-I/02/2026</td>
-              <td><span class="badge bg-red">Mati</span></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td><strong>Kucing Kuwuk</strong></td>
-              <td>Mamalia (M)</td>
-              <td>003/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>-</td>
-              <td>BAST BA. 10/KSA/SKSDAW-I/03/2026 / (Lepas Liar) BA. 11/KSA/SKSDAW-I/02/2026</td>
-              <td><span class="badge bg-green">Lepas Liar</span></td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td><strong>Ular Sanca</strong></td>
-              <td>Reptil</td>
-              <td>-</td>
-              <td>Serahan Masyarakat</td>
-              <td>23 January 2026</td>
-              <td>-</td>
-              <td><span class="badge bg-green">Lepas Liar</span></td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td><strong>Elang Bondol</strong></td>
-              <td>Aves (A)</td>
-              <td>001/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>13 February 2026</td>
-              <td>BAST BA. 15/KSA/SKSDAW-I/03/2026</td>
-              <td><span class="badge bg-green">Lepas Liar</span></td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td><strong>Lutung Kelabu</strong></td>
-              <td>Primata (P)</td>
-              <td>001/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>30 Maret 2026</td>
-              <td>BAST BA. 23/KSA/SKSDAW-I/03/2026 (Lepas Liar) BA. 69/KSA/SKSDAW-I/07/2026</td>
-              <td><span class="badge bg-green">Lepas Liar</span></td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td><strong>Siamang</strong></td>
-              <td>Primata (P)</td>
-              <td>002/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>7 April 2026</td>
-              <td>BAST BA. 24/KSA/SKSDAW-I/04/2026</td>
-              <td><span class="badge bg-blue">Penitipan ke Aspinall</span></td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td><strong>Siamang</strong></td>
-              <td>Primata</td>
-              <td>003/26</td>
-              <td>Translokasi dari Jabar</td>
-              <td>14 April 2026</td>
-              <td>BAST BKSDA Jabar / Penitipan BA.30/KSA/SKWI/04/2026 / Lepas liar BA.83/KSA/SKWI/08/2026</td>
-              <td><span class="badge bg-blue">Penitipan ke Aspinall</span></td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td><strong>Siamang</strong></td>
-              <td>Primata</td>
-              <td>004/26</td>
-              <td>Translokasi dari Jabar</td>
-              <td>14 April 2026</td>
-              <td>BAST BKSDA Jabar / Penitipan BA.30/KSA/SKWI/04/2026 / Lepas liar BA.83/KSA/SKWI/08/2026</td>
-              <td><span class="badge bg-blue">Penitipan ke Aspinall</span></td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td><strong>Siamang</strong></td>
-              <td>Primata</td>
-              <td>005/26</td>
-              <td>Translokasi dari Jabar</td>
-              <td>14 April 2026</td>
-              <td>BAST BKSDA Jabar / Penitipan BA.30/KSA/SKWI/04/2026</td>
-              <td><span class="badge bg-blue">Penitipan ke Aspinall</span></td>
-            </tr>
-            <tr>
-              <td>11</td>
-              <td><strong>Siamang</strong></td>
-              <td>Primata</td>
-              <td>006/26</td>
-              <td>Translokasi dari Jabar</td>
-              <td>14 April 2026</td>
-              <td>BAST BKSDA Jabar / Penitipan BA.30/KSA/SKWI/04/2026</td>
-              <td><span class="badge bg-blue">Penitipan ke Aspinall</span></td>
-            </tr>
-            <tr>
-              <td>12</td>
-              <td><strong>Siamang</strong></td>
-              <td>Primata</td>
-              <td>007/26</td>
-              <td>Translokasi dari Jabar</td>
-              <td>14 April 2026</td>
-              <td>BAST BKSDA Jabar / Nomor: BA.30/KSA/SKWI/04/2026</td>
-              <td><span class="badge bg-blue">Penitipan ke Aspinall</span></td>
-            </tr>
-            <tr>
-              <td>13</td>
-              <td><strong>Kucing Kuwuk</strong></td>
-              <td>Mamalia (M)</td>
-              <td>004/26</td>
-              <td>Barang Bukti</td>
-              <td>30 April 2026</td>
-              <td>BAST BA. 31/KSA/SKSDAW-I/04/2026/ (Kematian) BA. 32/KSA/SKSDAW-I/04/2026</td>
-              <td><span class="badge bg-red">Mati</span></td>
-            </tr>
-            <tr>
-              <td>14</td>
-              <td><strong>Kukang</strong></td>
-              <td>Primata (P)</td>
-              <td>008/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>19 Mei 2026</td>
-              <td>BAST BA. 34/KSA/SKSDAW-I/05/2026/ (Lepas Liar) BA. 35/KSA/SKSDAW-I/05/2026</td>
-              <td><span class="badge bg-green">Lepas Liar</span></td>
-            </tr>
-            <tr>
-              <td>15</td>
-              <td><strong>Burung Elang Brontok</strong></td>
-              <td>Aves (A)</td>
-              <td>003/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>29 Mei 2026</td>
-              <td>BAST BA. 42/KSA/SKSDAW-I/05/2026/</td>
-              <td><span class="badge bg-yellow">Perawatan di PRS</span></td>
-            </tr>
-            <tr>
-              <td>16</td>
-              <td><strong>Burung Elang Bondol</strong></td>
-              <td>Aves (A)</td>
-              <td>004/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>29 Mei 2026</td>
-              <td>BAST BA. 42/KSA/SKSDAW-I/05/2026/ (Lepas Liar) BA. 72/KSA/SKSDAW-I/07/2026</td>
-              <td><span class="badge bg-green">Lepas Liar</span></td>
-            </tr>
-            <tr>
-              <td>17</td>
-              <td><strong>Burung Elang Tikus</strong></td>
-              <td>Aves (A)</td>
-              <td>005/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>29 Mei 2026</td>
-              <td>BAST BA. 42/KSA/SKSDAW-I/05/2026/ (Lepas Liar) BA. 72/KSA/SKSDAW-I/07/2026</td>
-              <td><span class="badge bg-green">Lepas Liar</span></td>
-            </tr>
-            <tr>
-              <td>18</td>
-              <td><strong>Kukang</strong></td>
-              <td>Primata (P)</td>
-              <td>009/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>05 Juni 2026</td>
-              <td>BAST BA. 45/KSA/SKSDAW-I/06/2026/ (Lepas Liar) BA. 46/KSA/SKSDAW-I/06/2026</td>
-              <td><span class="badge bg-green">Lepas Liar</span></td>
-            </tr>
-            <tr>
-              <td>19</td>
-              <td><strong>Burung Elang Brontok</strong></td>
-              <td>Aves (A)</td>
-              <td>006/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>7 Juni 2026</td>
-              <td>BAST BA. 47/KSA/SKSDAW-I/06/2026/</td>
-              <td><span class="badge bg-yellow">Perawatan di PRS</span></td>
-            </tr>
-            <tr>
-              <td>20</td>
-              <td><strong>Burung Kakatua</strong></td>
-              <td>Aves (A)</td>
-              <td>007/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>7 Juni 2026</td>
-              <td>BAST BA. 47/KSA/SKSDAW-I/06/2026/</td>
-              <td><span class="badge bg-yellow">Perawatan di PRS</span></td>
-            </tr>
-            <tr>
-              <td>21</td>
-              <td><strong>Burung Elang Brontok</strong></td>
-              <td>Aves (A)</td>
-              <td>008/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>12 Juni 2026</td>
-              <td>BAST BA. 54/KSA/SKSDAW-I/06/2026/</td>
-              <td><span class="badge bg-green">Lepas Liar</span></td>
-            </tr>
-            <tr>
-              <td>22</td>
-              <td><strong>Owa ungko</strong></td>
-              <td>Primata (P)</td>
-              <td>010/26</td>
-              <td>Translokasi dari Sumbar</td>
-              <td>19 Juni 2026</td>
-              <td>Penitipan BA. 59/KSA/SKSDAW-I/06/2026/</td>
-              <td><span class="badge bg-blue">Penitipan ke Aspinall</span></td>
-            </tr>
-            <tr>
-              <td>23</td>
-              <td><strong>Owa ungko</strong></td>
-              <td>Primata (P)</td>
-              <td>011/26</td>
-              <td>Translokasi dari Sumbar</td>
-              <td>19 Juni 2026</td>
-              <td>Penitipan BA. 59/KSA/SKSDAW-I/06/2026/</td>
-              <td><span class="badge bg-blue">Penitipan ke Aspinall</span></td>
-            </tr>
-            <tr>
-              <td>24</td>
-              <td><strong>Owa ungko</strong></td>
-              <td>Primata (P)</td>
-              <td>012/26</td>
-              <td>Translokasi dari Sumbar</td>
-              <td>19 Juni 2026</td>
-              <td>Penitipan BA. 59/KSA/SKSDAW-I/06/2026/</td>
-              <td><span class="badge bg-blue">Penitipan ke Aspinall</span></td>
-            </tr>
-            <tr>
-              <td>25</td>
-              <td><strong>Owa ungko</strong></td>
-              <td>Primata (P)</td>
-              <td>013/26</td>
-              <td>Translokasi dari Sumbar</td>
-              <td>19 Juni 2026</td>
-              <td>Penitipan BA. 59/KSA/SKSDAW-I/06/2026/</td>
-              <td><span class="badge bg-blue">Penitipan ke Aspinall</span></td>
-            </tr>
-            <tr>
-              <td>26</td>
-              <td><strong>Siamang</strong></td>
-              <td>Primata (P)</td>
-              <td>014/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>19 Juni 2026</td>
-              <td>BAST BA. 60/KSA/SKSDAW-I/06/2026/ Penitipan BA. 68/KSA/SKSDAW-I/06/2026/</td>
-              <td><span class="badge bg-blue">Penitipan ke Aspinall</span></td>
-            </tr>
-            <tr>
-              <td>27</td>
-              <td><strong>Kucing Kuwuk</strong></td>
-              <td>Mamalia (M)</td>
-              <td>005/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>21 Juli 2026</td>
-              <td>BAST BA. 75/KSA/SKSDAW-I/06/2026/</td>
-              <td><span class="badge bg-yellow">Perawatan di PRS</span></td>
-            </tr>
-            <tr>
-              <td>28</td>
-              <td><strong>Siamang</strong></td>
-              <td>Primata (P)</td>
-              <td>015/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>30 Juli 2026</td>
-              <td>BAST BA. 77/KSA/SKSDAW-I/07/2026/</td>
-              <td><span class="badge bg-blue">Penitipan ke Aspinall</span></td>
-            </tr>
-            <tr>
-              <td>29</td>
-              <td><strong>Siamang</strong></td>
-              <td>Primata (P)</td>
-              <td>016/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>6 Agustus 2026</td>
-              <td>BAST BA. 29/KSA/SKSDAW-II/08/2026/ Penitipan BA. 80/KSA/SKSDAW-I/08/2026/</td>
-              <td><span class="badge bg-blue">Penitipan ke Aspinall</span></td>
-            </tr>
-            <tr>
-              <td>30</td>
-              <td><strong>Elang Brontok (Dark Morph)</strong></td>
-              <td>Aves (A)</td>
-              <td>009/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>14 Agustus 2026</td>
-              <td>BAST BA. 82/KSA/SKSDAW-I/08/2026/</td>
-              <td><span class="badge bg-yellow">Perawatan di PRS</span></td>
-            </tr>
-            <tr>
-              <td>31</td>
-              <td><strong>Owa Jawa</strong></td>
-              <td>Primata</td>
-              <td>017/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>24 Agustus 2026</td>
-              <td>BAST BA. 85/KSA/SKSDAW-I/08/2026/</td>
-              <td><span class="badge bg-yellow">Perawatan di PRS</span></td>
-            </tr>
-            <tr>
-              <td>32</td>
-              <td><strong>Owa Jawa</strong></td>
-              <td>Primata</td>
-              <td>018/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>24 Agustus 2026</td>
-              <td>BAST BA. 85/KSA/SKSDAW-I/08/2026/</td>
-              <td><span class="badge bg-yellow">Perawatan di PRS</span></td>
-            </tr>
-            <tr>
-              <td>33</td>
-              <td><strong>Siamang wingky</strong></td>
-              <td>Primata</td>
-              <td>019/26</td>
-              <td>Serahan Masyarakat SKW 2</td>
-              <td>24 Agustus 2026</td>
-              <td>BAST BA. 34/KSA/SKSDAW-II/08/2026/</td>
-              <td><span class="badge bg-yellow">Perawatan di PRS</span></td>
-            </tr>
-            <tr>
-              <td>34</td>
-              <td><strong>Siamang lilis</strong></td>
-              <td>Primata</td>
-              <td>020/26</td>
-              <td>Serahan Masyarakat SKW 2</td>
-              <td>24 Agustus 2026</td>
-              <td>BAST BA. 34/KSA/SKSDAW-II/08/2026/</td>
-              <td><span class="badge bg-yellow">Perawatan di PRS</span></td>
-            </tr>
-            <tr>
-              <td>35</td>
-              <td><strong>Kukang</strong></td>
-              <td>Primata</td>
-              <td>021/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>4 September 2026</td>
-              <td>BAST BA. 90/KSA/SKSDAW-I/09/2026/ Lepas Liar BA. 91/KSA/SKSDAW-I/09/2026/</td>
-              <td><span class="badge bg-green">Lepas Liar</span></td>
-            </tr>
-            <tr>
-              <td>36</td>
-              <td><strong>Elang brontok (Dark Morph)</strong></td>
-              <td>Aves (A)</td>
-              <td>010/26</td>
-              <td>Serahan Masyarakat SKW 2</td>
-              <td>7 September 2026</td>
-              <td>BAST BA. 38/KSA/SKSDAW-II/09/2026/</td>
-              <td><span class="badge bg-yellow">Perawatan di PRS</span></td>
-            </tr>
-            <tr>
-              <td>37</td>
-              <td><strong>Beruang Madu</strong></td>
-              <td>Mamalia (M)</td>
-              <td>006/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>11 September 2026</td>
-              <td>BAST BA. 95/KSA/SKSDAW-II/09/2026/</td>
-              <td><span class="badge bg-yellow">Perawatan di PRS</span></td>
-            </tr>
-            <tr>
-              <td>38</td>
-              <td><strong>Kucing Kuwuk</strong></td>
-              <td>Mamalia (M)</td>
-              <td>007/26</td>
-              <td>Serahan Masyarakat</td>
-              <td>26 September 2026</td>
-              <td>BAST BA. 95/KSA/SKSDAW-II/09/2026/</td>
-              <td><span class="badge bg-yellow">Perawatan di PRS</span></td>
-            </tr>
-            <tr>
-              <td>39</td>
-              <td><strong>Trenggiling</strong></td>
-              <td>Mamalia (M)</td>
-              <td>008/27</td>
-              <td>Serahan Masyarakat</td>
-              <td>8 Oktober 2026</td>
-              <td>BAST BA. 95/KSA/SKSDAW-II/09/2026/</td>
-              <td><span class="badge bg-green">Lepas Liar</span></td>
-            </tr>
+          <tbody id="tbody-inventaris">
+            <!-- Data dimasukkan via JS -->
           </tbody>
         </table>
       </div>
+
+      <!-- TABEL 2: REKAPITULASI TOTAL SATWA (DI BAWAH TABEL DATA INVENTARIS) -->
+      <div class="section-header">
+        Rekapitulasi Total Satwa Yang Direhabilitasi (<span id="year-label-rek">2026</span>)
+      </div>
+      <p style="margin-bottom: 12px; color: #334155; font-size: 13px;">
+        Berikut adalah riwayat total jumlah dari setiap jenis satwa liar yang terdata di Pusat Rehabilitasi Satwa (PRS) Punti Kayu Palembang:
+      </p>
+
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 60px;">No.</th>
+              <th>Jenis Satwa</th>
+              <th>Takson / Kelompok</th>
+              <th style="text-align: center; width: 200px;">Total Terdata (Ekor)</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-rekap">
+            <!-- Data dimasukkan via JS -->
+          </tbody>
+        </table>
+      </div>
+
     </div>
 
     <!-- FOOTER -->
@@ -1135,5 +742,309 @@
         Punti Kayu
       </div>
     </footer>
+
+    <!-- SCRIPT DATA 2026 & DATA LENGKAP 2025 -->
+    <script>
+      const dataset = {
+        '2026': {
+          kandangPRS: [
+            ['Raptor', 5, 1, 4],
+            ['Primata Kecil', 2, 0, 2],
+            ['Aviary', 1, 1, 0],
+            ['Beruang', 2, 1, 1],
+            ['Kandang Sementara Portable', 3, 1, 2]
+          ],
+          kandangPRSS: [
+            ['Karantina', 8, 8, 0],
+            ['Sosialisasi', 14, 14, 0],
+            ['Transit (Khusus Positif Herpes)', 4, 4, 0],
+            ['Observasi', 7, 7, 0],
+            ['Sementara', 2, 2, 0]
+          ],
+          inventaris: [
+            [1, 'Kucing Kuwuk', 'Mamalia (M)', '001/26', 'Barang Bukti', '21 January 2026', 'BAST Balai / (Kematian) BA. 07/KSA/SKSDAW-I/02/2026'],
+            [2, 'Kucing Kuwuk', 'Mamalia (M)', '002/26', 'Barang Bukti', '21 January 2026', 'BAST Balai / (Lepas Liar) BA. 09/KSA/SKSDAW-I/02/2026'],
+            [3, 'Kucing Kuwuk', 'Mamalia (M)', '003/26', 'Serahan Masyarakat', '-', 'BAST BA. 10/KSA/SKSDAW-I/03/2026 / (Lepas Liar) BA. 11/KSA/SKSDAW-I/02/2026'],
+            [4, 'Ular Sanca', 'Reptil', '-', 'Serahan Masyarakat', '23 January 2026', '-'],
+            [5, 'Elang Bondol', 'Aves (A)', '001/26', 'Serahan Masyarakat', '13 February 2026', 'BAST BA. 15/KSA/SKSDAW-I/03/2026'],
+            [6, 'Lutung Kelabu', 'Primata (P)', '001/26', 'Serahan Masyarakat', '30 Maret 2026', 'BAST BA. 23/KSA/SKSDAW-I/03/2026 (Lepas Liar) BA. 69/KSA/SKSDAW-I/07/2026'],
+            [7, 'Siamang', 'Primata (P)', '002/26', 'Serahan Masyarakat', '7 April 2026', 'BAST BA. 24/KSA/SKSDAW-I/04/2026'],
+            [8, 'Siamang', 'Primata', '003/26', 'Translokasi dari Jabar', '14 April 2026', 'BAST BKSDA Jabar / Penitipan BA.30/KSA/SKWI/04/2026'],
+            [9, 'Siamang', 'Primata', '004/26', 'Translokasi dari Jabar', '14 April 2026', 'BAST BKSDA Jabar / Penitipan BA.30/KSA/SKWI/04/2026'],
+            [10, 'Siamang', 'Primata', '005/26', 'Translokasi dari Jabar', '14 April 2026', 'BAST BKSDA Jabar / Penitipan BA.30/KSA/SKWI/04/2026'],
+            [11, 'Siamang', 'Primata', '006/26', 'Translokasi dari Jabar', '14 April 2026', 'BAST BKSDA Jabar / Penitipan BA.30/KSA/SKWI/04/2026'],
+            [12, 'Siamang', 'Primata', '007/26', 'Translokasi dari Jabar', '14 April 2026', 'BAST BKSDA Jabar / Nomor: BA.30/KSA/SKWI/04/2026'],
+            [13, 'Kucing Kuwuk', 'Mamalia (M)', '004/26', 'Barang Bukti', '30 April 2026', 'BAST BA. 31/KSA/SKSDAW-I/04/2026'],
+            [14, 'Kukang', 'Primata (P)', '008/26', 'Serahan Masyarakat', '19 Mei 2026', 'BAST BA. 34/KSA/SKSDAW-I/05/2026'],
+            [15, 'Burung Elang Brontok', 'Aves (A)', '003/26', 'Serahan Masyarakat', '29 Mei 2026', 'BAST BA. 42/KSA/SKSDAW-I/05/2026/'],
+            [16, 'Burung Elang Bondol', 'Aves (A)', '004/26', 'Serahan Masyarakat', '29 Mei 2026', 'BAST BA. 42/KSA/SKSDAW-I/05/2026/'],
+            [17, 'Burung Elang Tikus', 'Aves (A)', '005/26', 'Serahan Masyarakat', '29 Mei 2026', 'BAST BA. 42/KSA/SKSDAW-I/05/2026/'],
+            [18, 'Kukang', 'Primata (P)', '009/26', 'Serahan Masyarakat', '05 Juni 2026', 'BAST BA. 45/KSA/SKSDAW-I/06/2026/'],
+            [19, 'Burung Elang Brontok', 'Aves (A)', '006/26', 'Serahan Masyarakat', '7 Juni 2026', 'BAST BA. 47/KSA/SKSDAW-I/06/2026/'],
+            [20, 'Burung Kakatua', 'Aves (A)', '007/26', 'Serahan Masyarakat', '7 Juni 2026', 'BAST BA. 47/KSA/SKSDAW-I/06/2026/'],
+            [21, 'Burung Elang Brontok', 'Aves (A)', '008/26', 'Serahan Masyarakat', '12 Juni 2026', 'BAST BA. 54/KSA/SKSDAW-I/06/2026/'],
+            [22, 'Owa ungko', 'Primata (P)', '010/26', 'Translokasi dari Sumbar', '19 Juni 2026', 'Penitipan BA. 59/KSA/SKSDAW-I/06/2026/'],
+            [23, 'Owa ungko', 'Primata (P)', '011/26', 'Translokasi dari Sumbar', '19 Juni 2026', 'Penitipan BA. 59/KSA/SKSDAW-I/06/2026/'],
+            [24, 'Owa ungko', 'Primata (P)', '012/26', 'Translokasi dari Sumbar', '19 Juni 2026', 'Penitipan BA. 59/KSA/SKSDAW-I/06/2026/'],
+            [25, 'Owa ungko', 'Primata (P)', '013/26', 'Translokasi dari Sumbar', '19 Juni 2026', 'Penitipan BA. 59/KSA/SKSDAW-I/06/2026/'],
+            [26, 'Siamang', 'Primata (P)', '014/26', 'Serahan Masyarakat', '19 Juni 2026', 'BAST BA. 60/KSA/SKSDAW-I/06/2026/'],
+            [27, 'Kucing Kuwuk', 'Mamalia (M)', '005/26', 'Serahan Masyarakat', '21 Juli 2026', 'BAST BA. 75/KSA/SKSDAW-I/06/2026/'],
+            [28, 'Siamang', 'Primata (P)', '015/26', 'Serahan Masyarakat', '30 Juli 2026', 'BAST BA. 77/KSA/SKSDAW-I/07/2026/'],
+            [29, 'Siamang', 'Primata (P)', '016/26', 'Serahan Masyarakat', '6 Agustus 2026', 'BAST BA. 29/KSA/SKSDAW-II/08/2026/'],
+            [30, 'Elang Brontok (Dark Morph)', 'Aves (A)', '009/26', 'Serahan Masyarakat', '14 Agustus 2026', 'BAST BA. 82/KSA/SKSDAW-I/08/2026/'],
+            [31, 'Owa Jawa', 'Primata', '017/26', 'Serahan Masyarakat', '24 Agustus 2026', 'BAST BA. 85/KSA/SKSDAW-I/08/2026/'],
+            [32, 'Owa Jawa', 'Primata', '018/26', 'Serahan Masyarakat', '24 Agustus 2026', 'BAST BA. 85/KSA/SKSDAW-I/08/2026/'],
+            [33, 'Siamang wingky', 'Primata', '019/26', 'Serahan Masyarakat SKW 2', '24 Agustus 2026', 'BAST BA. 34/KSA/SKSDAW-II/08/2026/'],
+            [34, 'Siamang lilis', 'Primata', '020/26', 'Serahan Masyarakat SKW 2', '24 Agustus 2026', 'BAST BA. 34/KSA/SKSDAW-II/08/2026/'],
+            [35, 'Kukang', 'Primata', '021/26', 'Serahan Masyarakat', '4 September 2026', 'BAST BA. 90/KSA/SKSDAW-I/09/2026/'],
+            [36, 'Elang brontok (Dark Morph)', 'Aves (A)', '010/26', 'Serahan Masyarakat SKW 2', '7 September 2026', 'BAST BA. 38/KSA/SKSDAW-II/09/2026/'],
+            [37, 'Beruang Madu', 'Mamalia (M)', '006/26', 'Serahan Masyarakat', '11 September 2026', 'BAST BA. 95/KSA/SKSDAW-II/09/2026/'],
+            [38, 'Kucing Kuwuk', 'Mamalia (M)', '007/26', 'Serahan Masyarakat', '26 September 2026', 'BAST BA. 95/KSA/SKSDAW-II/09/2026/'],
+            [39, 'Trenggiling', 'Mamalia (M)', '008/27', 'Serahan Masyarakat', '8 Oktober 2026', 'BAST BA. 95/KSA/SKSDAW-II/09/2026/']
+          ],
+          rekap: [
+            [1, 'Kucing Kuwuk', 'Mamalia (M)', 6],
+            [2, 'Ular Sanca', 'Reptil (R)', 1],
+            [3, 'Elang Bondol', 'Aves (A)', 2],
+            [4, 'Elang Brontok', 'Aves (A)', 4],
+            [5, 'Elang Tikus', 'Aves (A)', 1],
+            [6, 'Burung Kakatua', 'Aves (A)', 1],
+            [7, 'Lutung Kelabu', 'Primata (P)', 1],
+            [8, 'Siamang', 'Primata (P)', 10],
+            [9, 'Kukang', 'Primata (P)', 3],
+            [10, 'Owa Ungko', 'Primata (P)', 4],
+            [11, 'Owa Jawa', 'Primata (P)', 2],
+            [12, 'Beruang Madu', 'Mamalia (M)', 1],
+            [13, 'Trenggiling', 'Mamalia (M)', 1]
+          ],
+          total: 39
+        },
+        '2025': {
+          kandangPRS: [],
+          kandangPRSS: [],
+          inventaris: [
+            [1, 'Kura-kura Daun', 'Reptil (R)', '002', 'Serahan Masyarakat', '8 May 2025', 'BA.23/KSA/SKW I/05/2025'],
+            [2, 'Buaya Muara', 'Reptil (R)', '001', 'Serahan Masyarakat', '10 June 2025', 'BA.30.1/KSA/SKW I/6/2025'],
+            [3, 'Burung Elang Brontok', 'Aves (A)', '001', 'Serahan Masyarakat', '26 June 2025', 'BA.32/KSA/SKSDAW-I/07/2025'],
+            [4, 'Burung Cucak Hijau Daun Kecil', 'Aves (A)', '002-023', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDDAW-I/06/2025'],
+            [5, 'Cucak Hijau Daun Besar', 'Aves (A)', '024-027', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDAW-I/06/2025'],
+            [6, 'Burung Takur Api', 'Aves (A)', '028-032', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDDAW-I/06/2025'],
+            [7, 'Celilin', 'Aves (A)', '033-036', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDDAW-I/06/2025'],
+            [8, 'Ekek Layongan', 'Aves (A)', '037-039', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDDAW-I/06/2025'],
+            [9, 'Cucak Hijau Daun Biasa', 'Aves (A)', '039-061', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDDAW-I/06/2025'],
+            [10, 'Pleci', 'Aves (A)', '143-438', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDAW-I/06/2025'],
+            [11, 'Burung Madu Sriganti', 'Aves (A)', '439-485', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDAW-I/06/2025'],
+            [12, 'Tepus', 'Aves (A)', '486-536', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDAW-I/06/2025'],
+            [13, 'Rambatan', 'Aves (A)', '537-541', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDAW-I/06/2025'],
+            [14, 'Glatik', 'Aves (A)', '542-545', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDAW-I/06/2025'],
+            [15, 'Ciung Air', 'Aves (A)', '546-565', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDAW-I/06/2025'],
+            [16, 'Poksai Rembo', 'Aves (A)', '566-577', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDAW-I/06/2025'],
+            [17, 'Poksai Mantel', 'Aves (A)', '578-585', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDAW-I/06/2025'],
+            [18, 'Poksai Mandarin', 'Aves (A)', '586-628', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDAW-I/06/2025'],
+            [19, 'Cucak Keling', 'Aves (A)', '629-642', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDAW-I/06/2025'],
+            [20, 'Poksai Hongkong', 'Aves (A)', '643-654', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDAW-I/06/2025'],
+            [21, 'Pelatuk Bawang', 'Aves (A)', '655-660', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDAW-I/06/2025'],
+            [22, 'Tledekan Gunung', 'Aves (A)', '661-680', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDAW-I/06/2025'],
+            [23, 'Kepodang', 'Aves (A)', '681-684', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDAW-I/06/2025'],
+            [24, 'Saeran Abu', 'Aves (A)', '685', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDAW-I/06/2025'],
+            [25, 'Cucak Biru', 'Aves (A)', '686-688', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDAW-I/06/2025'],
+            [26, 'Cucak Kopi', 'Aves (A)', '689-692', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDAW-I/06/2025'],
+            [27, 'Kutilang', 'Aves (A)', '693-697', 'Sitaan Gakkum', '30 June 2025', 'BA.33/KSA/SKSDAW-I/06/2025'],
+            [28, 'Kukang', 'Primata (P)', '001', 'Serahan', '1 July 2025', 'BA.36/KSA/SKSDAW-I/07/2025'],
+            [29, 'Kucing Kuwuk', 'Mamalia (M)', '001', 'Serahan', '1 July 2025', 'BA.46/KSA/SKSDAW-I/07/2025'],
+            [30, 'Lutung (Kokom)', 'Primata (P)', '002', 'Serahan', '2 July 2025', 'BA.21/KSA/SKW I/4/23'],
+            [31, 'Lutung (Kukum)', 'Primata (P)', '003', 'Serahan Masyarakat', '2 July 2025', 'BA.65/KSA/SKW I/11/2023'],
+            [32, 'Takur Api', 'Aves (A)', '062-065', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [33, 'Tiong nias', 'Aves (A)', '066-067', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [34, 'Poksai Jambul', 'Aves (A)', '068-071', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [35, 'Ekek Layongan', 'Aves (A)', '072-076', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [36, 'Cica Daun Sumatera', 'Aves (A)', '077-087', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [37, 'Cica Daun Kecil', 'Aves (A)', '088-099', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [38, 'Cica Daun Besar', 'Aves (A)', '100-103', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [39, 'Burung Madu Sepah Raja', 'Aves (A)', '104-105', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [40, 'Kutilang Tunggir Kuning', 'Aves (A)', '105', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [41, 'Cucak Gunung', 'Aves (A)', '106', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [42, 'Cucak Kuning', 'Aves (A)', '107-109', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [43, 'Perling', 'Aves (A)', '110-111', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [44, 'Empuloh Janggut', 'Aves (A)', '112-113', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [45, 'Srigunting Kelabu', 'Aves (A)', '114', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [46, 'Sibia Ekor Panjang', 'Aves (A)', '115-119', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [47, 'Brinji Gunung', 'Aves (A)', '120-124', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [48, 'Burung Madu Sriganti', 'Aves (A)', '125-126', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [49, 'Madi Injap', 'Aves (A)', '127', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [50, 'Poksai Genting', 'Aves (A)', '128-137', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [51, 'Poksai Mantel', 'Aves (A)', '138-142', 'Sitaan Polda', '6 July 2025', 'BA.41/KSA/SKSDAW-I/07/2025'],
+            [52, 'Elang Brontok', 'Aves (A)', '698', 'Sitaan Polda', '26 August 2025', 'BA.56/KSA/SKSDAW-I/08/2025'],
+            [53, 'Kucing Kuwuk', 'Mamalia (M)', '002', 'Relokasi BKSDA Jakarta', '3 September 2025', 'BA.268/K.13/TU/KSA.03.01/10/2025'],
+            [54, 'Serindit', 'Aves (A)', '699', 'Relokasi BKSDA Jakarta', '3 September 2025', 'BA.268/K.13/TU/KSA.03.01/10/2025'],
+            [55, 'Buaya Muara', 'Reptil (R)', '003-005', 'relokasi BKSDA Jakarta', '3 September 2025', 'BA.268/K.13/TU/KSA.03.01/10/2025'],
+            [56, 'Elang Bondol', 'Aves (A)', '700', 'Serahan Masyarakat', '29 Oktober 2025', 'BA.67/KSA/SKSDAW-I/10/2025'],
+            [57, 'Kukang', 'Primata (P)', '004', 'Serahan Masyarakat', '7 November 2025', 'BA.68/KSA/SKSDAW-I/11/2025 BA.69/KSA/SKSDAW-I/11/2025'],
+            [58, 'Elang brontok', 'Aves (A)', '701', 'Evakuasi Agrowisata Kebun Kito', '11/7/2025', 'BA.85/KSA/SKSDAW-I/12/2025'],
+            [59, 'Elang brontok', 'Aves (A)', '702', 'Evakuasi Agrowisata Kebun Kito', '11/7/2025', 'BA.86/KSA/SKSDAW-I/12/2025'],
+            [60, 'Elang brontok', 'Aves (A)', '703', 'Evakuasi Agrowisata Kebun Kito', '7 November 2025', 'Surat Penerimaan Satwa'],
+            [61, 'Nuri Kepala Hitam', 'Aves (A)', '704', 'Evakuasi Agrowisata Kebun Kito', '7 November 2025', 'Surat Penerimaan Satwa'],
+            [62, 'Tiong Emas', 'Aves (A)', '705', 'Evakuasi Agrowisata Kebun Kito', '7 November 2025', 'Surat Penerimaan Satwa'],
+            [63, 'Kuau Raja', 'Aves (A)', '706', 'Evakuasi Agrowisata Kebun Kito', '7 November 2025', 'Surat Penerimaan Satwa'],
+            [64, 'Merak', 'Aves (A)', '707', 'Evakuasi Agrowisata Kebun Kito', '7 November 2025', 'Surat Penerimaan Satwa'],
+            [65, 'Merak', 'Aves (A)', '708', 'Evakuasi Agrowisata Kebun Kito', '7 November 2025', 'Surat Penerimaan Satwa'],
+            [66, 'Bangau TongTong', 'Aves (A)', '709', 'Evakuasi Agrowisata Kebun Kito', '7 November 2025', 'BA.81/KSA/SKSDAW-I/12/2025'],
+            [67, 'Bangau TongTong', 'Aves (A)', '710', 'Evakuasi Agrowisata Kebun Kito', '7 November 2025', 'BA.83/KSA/SKSDAW-I/12/2025'],
+            [68, 'Trenggiling', 'Mamalia (M)', '003', 'Serahan Masyarakat', '10 November 2025', 'BA.70/KSA/SKSDAW-I/11/2025 BA.72/KSA/SKSDAW-I/11/2025'],
+            [69, 'Elang brontok', 'Aves (A)', '711', 'Serahan Masyarakat', '28 November 2025', 'BA.71/KSA/SKSDAW-I/11/2025'],
+            [70, 'Ular Sanca Batik', 'Reptil (R)', '004', 'Serahan Masyarakat', '2 Desember 2025', 'BA.74/KSA/SKSDAW-I/11/2025 BA.75/KSA/SKSDAW-I/11/2025'],
+            [71, 'Alap alap tikus', 'Aves (A)', '712-729', 'Titipan Polresta', '5 Desember 2025', 'BA.76/KSA/SKSDAW-I/12/2025'],
+            [72, 'Lutung Kelabu', 'Primata (P)', '005', 'Serahan Masyarakat', '24 Desember 2025', 'BA.84/KSA/SKSDAW-I/12/2025']
+          ],
+          rekap: [
+            [1, 'Kura-kura Daun', 'Reptil (R)', 1],
+            [2, 'Buaya Muara', 'Reptil (R)', 4],
+            [3, 'Burung Elang Brontok / Elang Brontok', 'Aves (A)', 6],
+            [4, 'Burung Cucak Hijau Daun Kecil', 'Aves (A)', 22],
+            [5, 'Cucak Hijau Daun Besar', 'Aves (A)', 4],
+            [6, 'Burung Takur Api / Takur Api', 'Aves (A)', 9],
+            [7, 'Celilin', 'Aves (A)', 4],
+            [8, 'Ekek Layongan', 'Aves (A)', 8],
+            [9, 'Cucak Hijau Daun Biasa', 'Aves (A)', 23],
+            [10, 'Pleci', 'Aves (A)', 296],
+            [11, 'Burung Madu Sriganti', 'Aves (A)', 49],
+            [12, 'Tepus', 'Aves (A)', 51],
+            [13, 'Rambatan', 'Aves (A)', 5],
+            [14, 'Glatik', 'Aves (A)', 4],
+            [15, 'Ciung Air', 'Aves (A)', 20],
+            [16, 'Poksai Rembo', 'Aves (A)', 12],
+            [17, 'Poksai Mantel', 'Aves (A)', 13],
+            [18, 'Poksai Mandarin', 'Aves (A)', 43],
+            [19, 'Cucak Keling', 'Aves (A)', 14],
+            [20, 'Poksai Hongkong', 'Aves (A)', 26],
+            [21, 'Pelatuk Bawang', 'Aves (A)', 6],
+            [22, 'Tledekan Gunung', 'Aves (A)', 20],
+            [23, 'Kepodang', 'Aves (A)', 4],
+            [24, 'Saeran Abu', 'Aves (A)', 1],
+            [25, 'Cucak Biru', 'Aves (A)', 3],
+            [26, 'Cucak Kopi', 'Aves (A)', 4],
+            [27, 'Kutilang', 'Aves (A)', 5],
+            [28, 'Kukang', 'Primata (P)', 2],
+            [29, 'Kucing Kuwuk', 'Mamalia (M)', 2],
+            [30, 'Lutung (Kokom / Kukum / Kelabu)', 'Primata (P)', 3],
+            [31, 'Tiong Nias / Tiong Emas', 'Aves (A)', 3],
+            [32, 'Poksai Jambul', 'Aves (A)', 4],
+            [33, 'Cica Daun Sumatera', 'Aves (A)', 11],
+            [34, 'Cica Daun Kecil', 'Aves (A)', 12],
+            [35, 'Cica Daun Besar', 'Aves (A)', 4],
+            [36, 'Burung Madu Sepah Raja', 'Aves (A)', 2],
+            [37, 'Kutilang Tunggir Kuning', 'Aves (A)', 1],
+            [38, 'Cucak Gunung', 'Aves (A)', 1],
+            [39, 'Cucak Kuning', 'Aves (A)', 3],
+            [40, 'Perling', 'Aves (A)', 2],
+            [41, 'Empuloh Janggut', 'Aves (A)', 2],
+            [42, 'Srigunting Kelabu', 'Aves (A)', 1],
+            [43, 'Sibia Ekor Panjang', 'Aves (A)', 5],
+            [44, 'Brinji Gunung', 'Aves (A)', 5],
+            [45, 'Madi Injap', 'Aves (A)', 1],
+            [46, 'Poksai Genting', 'Aves (A)', 10],
+            [47, 'Serindit', 'Aves (A)', 11],
+            [48, 'Elang Bondol', 'Aves (A)', 1],
+            [49, 'Nuri Kepala Hitam', 'Aves (A)', 1],
+            [50, 'Kuau Raja', 'Aves (A)', 1],
+            [51, 'Merak', 'Aves (A)', 2],
+            [52, 'Bangau TongTong', 'Aves (A)', 2],
+            [53, 'Trenggiling', 'Mamalia (M)', 1],
+            [54, 'Ular Sanca Batik', 'Reptil (R)', 1],
+            [55, 'Alap-alap Tikus', 'Aves (A)', 18]
+          ],
+          total: 785
+        }
+      };
+
+      function switchTahun(tahun, btnElement) {
+        document.querySelectorAll('.btn-tahun').forEach(btn => btn.classList.remove('active'));
+        btnElement.classList.add('active');
+
+        document.getElementById('year-label-inv').textContent = tahun;
+        document.getElementById('year-label-rek').textContent = tahun;
+
+        // TAMPILKAN/SEMBUNYIKAN BLOK KANDANG
+        const containerKandang = document.getElementById('container-kandang');
+        if (tahun === '2025') {
+          containerKandang.style.display = 'none';
+        } else {
+          containerKandang.style.display = 'block';
+          document.getElementById('year-label-kandang').textContent = tahun;
+
+          // UPDATE TABEL KANDANG PRS
+          const tbodyKandangPRS = document.getElementById('tbody-kandang-prs');
+          tbodyKandangPRS.innerHTML = '';
+          dataset[tahun].kandangPRS.forEach(row => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td>`;
+            tbodyKandangPRS.appendChild(tr);
+          });
+
+          // UPDATE TABEL KANDANG PRSS
+          const tbodyKandangPRSS = document.getElementById('tbody-kandang-prss');
+          tbodyKandangPRSS.innerHTML = '';
+          let totJumlah = 0, totTerisi = 0, totKosong = 0;
+          dataset[tahun].kandangPRSS.forEach(row => {
+            totJumlah += row[1];
+            totTerisi += row[2];
+            totKosong += row[3];
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td>`;
+            tbodyKandangPRSS.appendChild(tr);
+          });
+          const trTotalPRSS = document.createElement('tr');
+          trTotalPRSS.style.fontWeight = '800';
+          trTotalPRSS.style.backgroundColor = '#e2e8f0';
+          trTotalPRSS.innerHTML = `<td>Total</td><td>${totJumlah}</td><td>${totTerisi}</td><td>${totKosong}</td>`;
+          tbodyKandangPRSS.appendChild(trTotalPRSS);
+        }
+
+        // UPDATE TABEL DATA INVENTARISASI
+        const tbodyInv = document.getElementById('tbody-inventaris');
+        tbodyInv.innerHTML = '';
+        dataset[tahun].inventaris.forEach(row => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${row[0]}</td>
+            <td><strong>${row[1]}</strong></td>
+            <td>${row[2]}</td>
+            <td>${row[3]}</td>
+            <td>${row[4]}</td>
+            <td>${row[5]}</td>
+            <td>${row[6]}</td>
+          `;
+          tbodyInv.appendChild(tr);
+        });
+
+        // UPDATE TABEL REKAPITULASI TOTAL
+        const tbodyRek = document.getElementById('tbody-rekap');
+        tbodyRek.innerHTML = '';
+        dataset[tahun].rekap.forEach(row => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${row[0]}</td>
+            <td><strong>${row[1]}</strong></td>
+            <td>${row[2]}</td>
+            <td style="text-align: center; font-weight: 700;">${row[3]}</td>
+          `;
+          tbodyRek.appendChild(tr);
+        });
+
+        const trTotalRek = document.createElement('tr');
+        trTotalRek.style.fontWeight = '800';
+        trTotalRek.style.backgroundColor = '#e2e8f0';
+        trTotalRek.innerHTML = `
+          <td colspan="3" style="text-align: right;">Total Keseluruhan Satwa Direhabilitasi (${tahun}):</td>
+          <td style="text-align: center; font-size: 15px; color: #00a859;">${dataset[tahun].total} Ekor</td>
+        `;
+        tbodyRek.appendChild(trTotalRek);
+      }
+
+      // Load data default awal 2026
+      window.onload = function() {
+        switchTahun('2026', document.querySelector('.btn-tahun.active'));
+      };
+    </script>
   </body>
 </html>
