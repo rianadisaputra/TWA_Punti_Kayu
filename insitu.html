@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kegiatan Insitu - BKSDA Sumatera Selatan</title>
+    <title>Kegiatan Kawasan - Balai Konservasi Sumber Daya Alam Sumatera Selatan</title>
     
     <!-- IMPORT FONT PLUS JAKARTA SANS & INTER -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- IMPORT FONT AWESOME V6.5.1 UNTUK IKON SOSMED -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <style>
         * {
@@ -40,6 +43,47 @@
             color: #007a40;
             text-decoration: underline;
         }
+
+        /* FLOATING SOCIAL MEDIA SIDEBAR */
+        .social-floating-bar {
+            position: fixed;
+            left: 0;
+            top: 40%;
+            transform: translateY(-50%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+            border: 1px solid #cbd5e1;
+            border-left: none;
+            padding: 6px 4px;
+            gap: 6px;
+        }
+
+        .social-floating-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 6px;
+            color: #334155;
+            font-size: 18px;
+            transition: all 0.25s ease;
+        }
+
+        .social-floating-item:hover {
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+
+        .social-floating-item.fb:hover { background-color: #1877f2; }
+        .social-floating-item.tw:hover { background-color: #000000; }
+        .social-floating-item.th:hover { background-color: #000000; }
+        .social-floating-item.ig:hover { background-color: #e1306c; }
+        .social-floating-item.yt:hover { background-color: #ff0000; }
 
         /* 1. TOP BAR RESPONSIVE */
         .top-bar {
@@ -513,7 +557,7 @@
             color: #00a859;
         }
 
-        /* MODAL POPUP LIGHTBOX FOTO INSITU (DIBUAT OBJECT-FIT CONTAIN KETAT) */
+        /* MODAL POPUP LIGHTBOX FOTO INSITU */
         .detail-modal {
             display: none;
             position: fixed;
@@ -551,7 +595,6 @@
             max-height: 800px;
         }
 
-        /* DIBUAT OBJECT-FIT CONTAIN AGAR FOTO TAMPIL UTUH PENUH TANPA TERPOTONG */
         .detail-modal-img-box {
             width: 58%;
             background-color: #040e08;
@@ -565,7 +608,7 @@
         .detail-modal-img-box img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* PENTING: MENAMPILKAN GAMBAR PENUH UTUH TANPA POTONGAN */
+            object-fit: contain;
             background-color: #040e08;
         }
 
@@ -674,6 +717,10 @@
 
         /* MEDIA QUERIES MOBILE & TABLET */
         @media screen and (max-width: 868px) {
+            .social-floating-bar {
+                display: none;
+            }
+
             .mobile-header-bar {
                 display: flex !important;
             }
@@ -795,6 +842,25 @@
 </head>
 <body>
 
+    <!-- FLOATING SOCIAL MEDIA SIDEBAR -->
+    <div class="social-floating-bar">
+      <a href="https://www.facebook.com/bksda.s.selatan" target="_blank" class="social-floating-item fb" title="Facebook BKSDA Sumsel">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a href="https://x.com/bksda_sumsel" target="_blank" class="social-floating-item tw" title="X (Twitter) BKSDA Sumsel">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+      <a href="https://www.threads.com/@bksda_sumsel" target="_blank" class="social-floating-item th" title="Threads BKSDA Sumsel">
+        <i class="fa-brands fa-threads"></i>
+      </a>
+      <a href="https://www.instagram.com/bksda_sumsel" target="_blank" class="social-floating-item ig" title="Instagram BKSDA Sumsel">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/channel/UC3mTRUNscHxFBZndT64-_Kg" target="_blank" class="social-floating-item yt" title="YouTube BKSDA Sumsel">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
+
     <!-- BARIS ATAS -->
     <div class="top-bar">
         Kementerian Kehutanan Republik Indonesia — Direktorat Jenderal KSDAE
@@ -815,7 +881,7 @@
         </div>
     </header>
 
-    <!-- NAVIGASI UTAMA -->
+    <!-- NAVIGASI UTAMA SESUAI ARAHAN PIMPINAN -->
     <nav class="nav-bar">
         <div class="nav-container">
             <ul class="nav-menu">
@@ -825,31 +891,22 @@
                     <a href="profiltwa.html">Profil TWA Punti Kayu &#9662;</a>
                     <ul class="dropdown-menu">
                         <li><a href="profiltwa.html">Profil Kawasan</a></li>
-                        <li><a href="pejabat.html">Profil Pejabat</a></li>
                         <li><a href="struktur.html">Struktur Organisasi</a></li>
+                        <li><a href="pejabat.html">Profil Pimpinan</a></li>
                     </ul>
                 </li>
 
                 <li class="dropdown">
                     <a href="kehati.html">Keanekaragaman Hayati &#9662;</a>
                     <ul class="dropdown-menu">
-                        <li><a href="kehati.html">Flora</a></li>
-                        <li><a href="fauna.html">Fauna</a></li>
-                        <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
+                        <li><a href="kehati.html">Tumbuhan</a></li>
+                        <li><a href="fauna.html">Satwa</a></li>
                     </ul>
                 </li>
 
                 <li><a href="wisata.html">Objek wisata</a></li>
-
-                <li class="dropdown active">
-                    <a href="insitu.html">Kegiatan &#9662;</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="insitu.html">Insitu</a></li>
-                        <li><a href="eksitu.html">Eksitu</a></li>
-                    </ul>
-                </li>
-
-                <li><a href="kontak.html">Kontak</a></li>
+                <li class="active"><a href="insitu.html">Kegiatan</a></li>
+                <li><a href="kontak.html">Kontak & Layanan</a></li>
                 <li class="nav-prs"><a href="prs.html">PRS Punti Kayu &rarr;</a></li>
             </ul>
         </div>
@@ -857,7 +914,7 @@
 
     <!-- BANNER PAGE -->
     <div class="page-banner">
-        <h2>Kegiatan Patroli Insitu</h2>
+        <h2>Kegiatan Kawasan TWA Punti Kayu</h2>
     </div>
 
     <!-- WADAH KONTEN UTAMA -->
@@ -868,7 +925,7 @@
 
             <!-- BAR SUB-MENU GARIS 3 HANYA MUNCUL DI HP -->
             <div class="mobile-header-bar">
-                <span class="mobile-header-title">Menu Kegiatan</span>
+                <span class="mobile-header-title">Menu Utama HP</span>
                 <button type="button" class="mobile-menu-btn" onclick="toggleMobileMenu(event)">
                     <svg viewBox="0 0 24 24">
                         <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
@@ -876,17 +933,21 @@
                 </button>
 
                 <ul class="mobile-dropdown-menu" id="mobileDropdown">
-                    <div class="menu-category">Kegiatan</div>
-                    <li><a href="insitu.html">Insitu</a></li>
-                    <li><a href="eksitu.html">Eksitu</a></li>
+                    <div class="menu-category">Profil Kawasan</div>
+                    <li><a href="profiltwa.html">Profil Kawasan</a></li>
+                    <li><a href="struktur.html">Struktur Organisasi</a></li>
+                    <li><a href="pejabat.html">Profil Pimpinan</a></li>
+                    <div class="menu-category">Keanekaragaman Hayati</div>
+                    <li><a href="kehati.html">Tumbuhan</a></li>
+                    <li><a href="fauna.html">Satwa</a></li>
                 </ul>
             </div>
 
-            <div class="section-header">Laporan Kegiatan Insitu Dalam Kawasan</div>
+            <div class="section-header">Laporan Kegiatan Dalam Kawasan TWA Punti Kayu</div>
 
             <!-- KEGIATAN 1: PEMASANGAN BARCODE -->
             <div id="insitu-barcode" class="news-card">
-                <div class="news-img-box" onclick="bukaModalFoto('images/barcode2.jpg', 'Pemasangan Barcode Pohon di TWA Punti Kayu', 'ST. 377 • Edukasi Digital', 'Tim teknis BKSDA Sumsel melaksanakan program digitalisasi edukasi flora melalui pemasangan plang QR Code barcode pada spesies pohon prioritas di sepanjang jalur treking TWA Punti Kayu.')">
+                <div class="news-img-box" onclick="bukaModalFoto('images/barcode2.jpg', 'Pemasangan Barcode Pohon di TWA Punti Kayu', 'ST. 377 • Edukasi Digital', 'Tim teknis Balai Konservasi Sumber Daya Alam Sumatera Selatan melaksanakan program digitalisasi edukasi flora melalui pemasangan plang QR Code barcode pada spesies pohon prioritas di sepanjang jalur treking TWA Punti Kayu.')">
                     <img src="images/barcode2.jpg" alt="Pemasangan Barcode Pohon">
                 </div>
                 <div class="news-content">
@@ -896,7 +957,7 @@
                         <span class="news-date">Tahun 2026</span>
                     </div>
                     <h3 class="news-title">Pemasangan Barcode Pohon di TWA Punti Kayu</h3>
-                    <p class="news-desc">Tim teknis BKSDA Sumsel melaksanakan program digitalisasi edukasi flora melalui pemasangan plang QR Code barcode pada spesies pohon prioritas di sepanjang jalur treking TWA Punti Kayu.</p>
+                    <p class="news-desc">Tim teknis Balai Konservasi Sumber Daya Alam Sumatera Selatan melaksanakan program digitalisasi edukasi flora melalui pemasangan plang QR Code barcode pada spesies pohon prioritas di sepanjang jalur treking TWA Punti Kayu.</p>
                 </div>
             </div>
 
@@ -937,7 +998,7 @@
         <!-- SIDEBAR KANAN -->
         <div class="sidebar-area">
             <div class="widget">
-                <div class="widget-title">KATEGORI LAPORAN INSITU</div>
+                <div class="widget-title">KATEGORI LAPORAN KEGIATAN</div>
                 <ul class="widget-list">
                     <li><a href="#insitu-barcode">Pemasangan Barcode Pohon</a></li>
                     <li><a href="#insitu-patrol">Smart Patrol & Inventarisasi</a></li>
@@ -946,7 +1007,7 @@
             </div>
 
             <div class="widget">
-                <div class="widget-title">INFORMASI KANTONG INSITU</div>
+                <div class="widget-title">INFORMASI KAWASAN</div>
                 <p style="font-size: 12px; color: #334155; line-height: 1.55; font-weight: 600;">
                     Seluruh kegiatan difokuskan untuk menjaga integritas ekosistem hutan pinus alami seluas 50 Hektar di dalam TWA Punti Kayu.
                 </p>
@@ -955,15 +1016,15 @@
             <div class="widget">
                 <div class="widget-title">TAUTAN TERKAIT</div>
                 <ul class="widget-list">
-                    <li><a href="https://www.menlhk.go.id" target="_blank">Kementerian Kehutanan RI</a></li>
-                    <li><a href="http://ksdae.menlhk.go.id" target="_blank">Ditjen KSDAE</a></li>
+                    <li><a href="https://www.kemenhut.go.id" target="_blank">Kementerian Kehutanan RI</a></li>
+                    <li><a href="http://ksdae.kemenhut.go.id" target="_blank">Ditjen KSDAE</a></li>
                 </ul>
             </div>
         </div>
 
     </div>
 
-    <!-- MODAL POPUP PREVIEW FOTO INSITU -->
+    <!-- MODAL POPUP PREVIEW FOTO KEGIATAN -->
     <div id="detailModal" class="detail-modal" onclick="tutupModalOuter(event)">
         <span id="closeDetailModal" class="detail-modal-close">&times;</span>
         <div class="detail-modal-card">
@@ -984,16 +1045,16 @@
     <footer class="footer-main">
         <div class="footer-container">
             <div class="footer-col">
-                <h5>BKSDA Sumatera Selatan</h5>
-                <p>Balai Konservasi Sumber Daya Alam Sumatera Selatan bertugas mengelola kawasan konservasi dan keanekaragaman hayati di wilayah Sumatera Selatan.</p>
+                <h5>Balai Konservasi Sumber Daya Alam Sumatera Selatan</h5>
+                <p>Unit Pelaksana Teknis Direktorat Jenderal Konservasi Sumber Daya Alam dan Ekosistem yang bertugas mengelola kawasan konservasi dan keanekaragaman hayati di wilayah Sumatera Selatan.</p>
             </div>
             <div class="footer-col">
                 <h5>Alamat Kantor</h5>
-                <p>Jl. Kolonel H. Burlian KM. 6 No. 79, Kota Palembang, Sumatera Selatan<br>Telepon/Fax: (0711) 410948</p>
+                <p>Jl. Kolonel H. Burlian KM. 6 No. 79, Kota Palembang, Sumatera Selatan<br>Telepon/Fax: (0711) 410948 | Email: bksdasumsel@kemenhut.go.id</p>
             </div>
         </div>
         <div class="footer-bottom">
-            Hak Cipta &copy; 2026 Balai Konservasi Sumber Daya Alam (BKSDA) Sumatera Selatan — Pengelola Kawasan TWA Punti Kayu
+            Hak Cipta &copy; 2026 Balai Konservasi Sumber Daya Alam Sumatera Selatan — Kementerian Kehutanan Republik Indonesia
         </div>
     </footer>
 
