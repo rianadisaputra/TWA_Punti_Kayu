@@ -5,9 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Informasi Rehabilitasi Satwa | PRS Punti Kayu</title>
 
+    <!-- IMPORT FONT PLUS JAKARTA SANS & INTER -->
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
+    />
+    
+    <!-- IMPORT FONT AWESOME V6.5.1 -->
+    <link 
+      rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
     />
 
     <style>
@@ -57,9 +64,60 @@
       }
 
       /* =========================================
-       HEADER — DISESUAIKAN DENGAN INDEX.HTML
-    ========================================= */
-      /* 2. HEADER MAIN RESPONSIVE */
+         FLOATING SOCIAL MEDIA SIDEBAR
+      ========================================= */
+      .social-floating-bar {
+        position: fixed;
+        left: 0;
+        top: 40%;
+        transform: translateY(-50%);
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        border-radius: 0 10px 10px 0;
+        box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+        border: 1px solid #cbd5e1;
+        border-left: none;
+        padding: 6px 4px;
+        gap: 6px;
+      }
+
+      .social-floating-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 6px;
+        color: #334155;
+        font-size: 18px;
+        transition: all 0.25s ease;
+      }
+
+      .social-floating-item:hover {
+        color: #ffffff;
+        transform: translateX(4px);
+      }
+
+      .social-floating-item.fb:hover { background-color: #1877f2; }
+      .social-floating-item.tw:hover { background-color: #000000; }
+      .social-floating-item.th:hover { background-color: #000000; }
+      .social-floating-item.ig:hover { background-color: #e1306c; }
+      .social-floating-item.yt:hover { background-color: #ff0000; }
+
+      /* =========================================
+         HEADER & TOPBAR
+      ========================================= */
+      .topbar {
+        background: #081c10;
+        color: #fff;
+        padding: 6px 20px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+      }
+
       .header-main {
         background-color: #ffffff;
         border-bottom: 3px solid #00a859;
@@ -111,69 +169,7 @@
         margin-top: 2px;
       }
 
-      .topbar {
-        background: #081c10;
-        color: #fff;
-        padding: 6px 20px;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 0.3px;
-      }
-
-      .header {
-        background: #fff;
-        border-bottom: 3px solid #00a859;
-        padding: 14px 20px;
-      }
-
-      .header-inner {
-        max-width: 1100px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        gap: 16px;
-      }
-
-      .header-logo-wrapper {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        flex-shrink: 0;
-      }
-
-      .logo {
-        display: block;
-        height: 55px;
-        width: auto;
-        max-width: none;
-        object-fit: contain;
-        flex-shrink: 0;
-      }
-
-      .brand {
-        min-width: 0;
-      }
-
-      .brand h1 {
-        font-size: 16.5px;
-        font-weight: 800;
-        color: #0f172a;
-        text-transform: uppercase;
-        letter-spacing: -0.2px;
-        line-height: 1.25;
-      }
-
-      .brand p {
-        font-size: 13.5px;
-        font-weight: 700;
-        color: #00a859;
-        text-transform: uppercase;
-        margin-top: 2px;
-        line-height: 1.5;
-      }
-
-      /* NAVIGASI SAMA SEPERTI INDEX */
-
+      /* NAVIGASI */
       .nav {
         position: sticky;
         top: 0;
@@ -252,10 +248,7 @@
         color: #fff;
       }
 
-      /* =========================================
-       HERO
-    ========================================= */
-
+      /* HERO */
       .hero {
         background:
           linear-gradient(110deg, #062c1be8, #087b4cb0),
@@ -315,10 +308,7 @@
         transform: translateY(-2px);
       }
 
-      /* =========================================
-       KONTEN UTAMA
-    ========================================= */
-
+      /* KONTEN UTAMA */
       main {
         max-width: 1200px;
         margin: 35px auto;
@@ -379,7 +369,6 @@
       }
 
       /* RINGKASAN TAHAP */
-
       .overview {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -429,7 +418,6 @@
       }
 
       /* JUDUL BAGIAN */
-
       .section-heading {
         display: flex;
         align-items: end;
@@ -445,7 +433,6 @@
       }
 
       /* KARTU TAHAP */
-
       .steps {
         display: grid;
         gap: 22px;
@@ -523,7 +510,6 @@
       }
 
       /* GALERI FOTO */
-
       .media-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -597,19 +583,7 @@
         color: var(--muted);
       }
 
-      .image-error {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        padding: 15px;
-        color: #42574a;
-        font-size: 12px;
-        text-align: center;
-      }
-
       /* VIDEO */
-
       .video-card {
         margin-top: 18px;
         background: #071c12;
@@ -650,7 +624,6 @@
       }
 
       /* FOOTER */
-
       .footer {
         margin-top: 45px;
         background: var(--forest);
@@ -662,7 +635,6 @@
       }
 
       /* MODAL FOTO */
-
       .modal {
         display: none;
         position: fixed;
@@ -721,22 +693,20 @@
         background: var(--mint);
       }
 
-      /* =========================================
-       RESPONSIVE TABLET — HEADER IKUT INDEX
-    ========================================= */
-
+      /* RESPONSIVE TABLET & MOBILE */
       @media screen and (max-width: 868px) {
+        .social-floating-bar { display: none; }
         .topbar {
           font-size: 11px;
           text-align: center;
           padding: 6px 12px;
         }
 
-        .header {
+        .header-main {
           padding: 14px 20px;
         }
 
-        .header-inner {
+        .header-container {
           flex-direction: column;
           text-align: center;
           gap: 10px;
@@ -746,19 +716,22 @@
           justify-content: center;
         }
 
-        .logo {
+        .header-logo {
           height: 48px;
         }
 
-        .brand h1 {
+        .header-title h1 {
           font-size: 14px;
         }
 
-        .brand p {
+        .header-title h2 {
           font-size: 12px;
         }
 
-        /* Navigasi bisa digeser horizontal seperti index */
+        .header-title p {
+          font-size: 10.5px;
+        }
+
         .nav-inner {
           overflow-x: auto;
           overflow-y: hidden;
@@ -802,34 +775,17 @@
         }
       }
 
-      /* =========================================
-       RESPONSIVE HP
-    ========================================= */
-
       @media screen and (max-width: 560px) {
-        .header {
-          padding: 12px 14px;
-        }
-
-        .header-inner {
-          gap: 9px;
-        }
-
-        .header-logo-wrapper {
-          gap: 10px;
-        }
-
-        .logo {
-          height: 42px;
-          max-width: 50px;
-        }
-
-        .brand h1 {
+        .header-title h1 {
           font-size: 12px;
           line-height: 1.4;
         }
 
-        .brand p {
+        .header-title h2 {
+          font-size: 11px;
+        }
+
+        .header-title p {
           font-size: 10px;
           line-height: 1.5;
         }
@@ -930,17 +886,16 @@
       }
 
       @media screen and (max-width: 360px) {
-        .brand h1 {
+        .header-title h1 {
           font-size: 11px;
         }
 
-        .brand p {
+        .header-title h2 {
           font-size: 9px;
         }
 
-        .logo {
+        .header-logo {
           height: 38px;
-          max-width: 44px;
         }
 
         .overview {
@@ -959,10 +914,108 @@
           padding: 15px 10px;
         }
       }
+      /* NAVIGASI KHUSUS PRS PUNTI KAYU */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: #081c10;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .nav-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 16px; /* Menambah padding samping agar tidak mepet layar */
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Membuat tombol terdorong rapi ke kanan */
+        gap: 16px; /* Memberi jarak minimal antar elemen */
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        gap: 4px;
+        min-width: 0;
+      }
+
+      .nav-links li {
+        position: relative;
+        white-space: nowrap;
+      }
+
+      .nav-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px;
+        color: #fff;
+        background: #081c10;
+        padding: 0 16px;
+        font-size: 13px;
+        font-weight: 700;
+        border-bottom: 3px solid transparent;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: #fff;
+        background: #00a859;
+        border-bottom: 3px solid #00ff88;
+      }
+
+      .back {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        height: 32px;
+        padding: 0 14px;
+        border: 1.5px solid #00a859;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 12.5px;
+        font-weight: 700;
+        background: rgba(0, 168, 89, 0.15);
+        white-space: nowrap;
+        transition: all 0.2s;
+        margin-left: 14px; /* TAMBAHAN: Memberi jarak renggang dari menu Dokumentasi */
+      }
+
+      .back:hover {
+        background: #00a859;
+        border-color: #00a859;
+        color: #fff;
+      }
     </style>
   </head>
 
   <body>
+    <!-- FLOATING BAR MEDIA SOSIAL -->
+    <div class="social-floating-bar">
+      <a href="https://www.facebook.com/bksda.s.selatan" target="_blank" class="social-floating-item fb" title="Facebook BKSDA Sumsel">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a href="https://x.com/bksda_sumsel" target="_blank" class="social-floating-item tw" title="X (Twitter) BKSDA Sumsel">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+      <a href="https://www.threads.com/@bksda_sumsel" target="_blank" class="social-floating-item th" title="Threads BKSDA Sumsel">
+        <i class="fa-brands fa-threads"></i>
+      </a>
+      <a href="https://www.instagram.com/bksda_sumsel" target="_blank" class="social-floating-item ig" title="Instagram BKSDA Sumsel">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/channel/UC3mTRUNscHxFBZndT64-_Kg" target="_blank" class="social-floating-item yt" title="YouTube BKSDA Sumsel">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
+
     <!-- INFORMASI INSTANSI -->
     <div class="topbar">
       Kementerian Kehutanan Republik Indonesia · Ditjen KSDAE
@@ -1007,17 +1060,14 @@
       <div class="nav-inner">
         <ul class="nav-links">
           <li><a href="prs.html">Beranda PRS</a></li>
-
           <li>
             <a class="active" href="informasirehabilitasi.html">
               Informasi Rehabilitasi
             </a>
           </li>
-
           <li><a href="datasatwaprs.html">Data Satwa PRS</a></li>
-
-          <li><a href="kegiatanedukasi.html">Kegiatan &amp; Edukasi</a></li>
-
+          <li><a href="eksitu.html">Kegiatan</a></li>
+          <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
           <li><a href="dokumentasi.html">Dokumentasi</a></li>
         </ul>
 
