@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontak Kami - BKSDA Sumatera Selatan</title>
+    <title>Kontak & Layanan - Balai Konservasi Sumber Daya Alam Sumatera Selatan</title>
     
     <!-- IMPORT FONT PLUS JAKARTA SANS & INTER -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- IMPORT FONT AWESOME V6.5.1 UNTUK IKON SOSMED -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <style>
         /* CSS DASAR & RESET FONT */
@@ -41,6 +44,47 @@
             color: #007a40;
             text-decoration: underline;
         }
+
+        /* FLOATING SOCIAL MEDIA SIDEBAR (TAMPIL DI SEMUA UKURAN LAYAR) */
+        .social-floating-bar {
+            position: fixed;
+            left: 0;
+            top: 40%;
+            transform: translateY(-50%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+            border: 1px solid #cbd5e1;
+            border-left: none;
+            padding: 6px 4px;
+            gap: 6px;
+        }
+
+        .social-floating-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 6px;
+            color: #334155;
+            font-size: 18px;
+            transition: all 0.25s ease;
+        }
+
+        .social-floating-item:hover {
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+
+        .social-floating-item.fb:hover { background-color: #1877f2; }
+        .social-floating-item.tw:hover { background-color: #000000; }
+        .social-floating-item.th:hover { background-color: #000000; }
+        .social-floating-item.ig:hover { background-color: #e1306c; }
+        .social-floating-item.yt:hover { background-color: #ff0000; }
 
         /* 1. TOP BAR RESPONSIVE */
         .top-bar {
@@ -367,6 +411,103 @@
             border-bottom: 1px solid #dcfce7;
         }
 
+        /* KOTAK DOUBLE KONTAK */
+        .contact-card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .contact-card {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 16px;
+            border-top: 4px solid #00a859;
+        }
+
+        .contact-card h4 {
+            font-size: 14px;
+            font-weight: 800;
+            color: #081c10;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .contact-card p {
+            font-size: 12px;
+            color: #475569;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .contact-number {
+            display: inline-block;
+            background-color: #00a859;
+            color: #ffffff !important;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 800;
+            text-decoration: none !important;
+        }
+
+        .contact-number:hover {
+            background-color: #007a40;
+        }
+
+        /* KOTAK KARTU LAYANAN KUNJUNGAN, PENELITIAN, SIMAKSI */
+        .service-card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .service-card {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 14px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            transition: all 0.25s ease;
+        }
+
+        .service-card:hover {
+            border-color: #00a859;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 168, 89, 0.12);
+        }
+
+        .service-card h4 {
+            font-size: 13.5px;
+            font-weight: 800;
+            color: #00a859;
+            margin-bottom: 6px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 4px;
+        }
+
+        .service-card p {
+            font-size: 11.5px;
+            color: #334155;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .service-info-banner {
+            background-color: #f0fdf4;
+            border: 1.5px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 28px;
+            font-size: 12.5px;
+            color: #166534;
+            font-weight: 600;
+            line-height: 1.55;
+        }
+
         /* STYLING FORM PENGADUAN FULL WIDTH */
         .form-group { 
             margin-bottom: 16px; 
@@ -538,6 +679,19 @@
 
         /* MEDIA QUERIES MOBILE & TABLET */
         @media screen and (max-width: 868px) {
+            /* MENGECILKAN UKURAN IKON SOSMED DI HP AGAR TIDAK MENUTUPI TEKS */
+            .social-floating-bar {
+                top: 50%;
+                padding: 4px 2px;
+                gap: 4px;
+            }
+
+            .social-floating-item {
+                width: 32px;
+                height: 32px;
+                font-size: 15px;
+            }
+
             .mobile-header-bar {
                 display: flex !important;
             }
@@ -605,6 +759,10 @@
                 padding-top: 20px;
             }
 
+            .contact-card-grid, .service-card-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
             .footer-container {
                 flex-direction: column;
                 gap: 18px;
@@ -628,6 +786,25 @@
 </head>
 <body>
 
+    <!-- FLOATING SOCIAL MEDIA SIDEBAR (TAMPIL DI SEMUA MODE TERMASUK HP) -->
+    <div class="social-floating-bar">
+      <a href="https://www.facebook.com/bksda.s.selatan" target="_blank" class="social-floating-item fb" title="Facebook BKSDA Sumsel">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a href="https://x.com/bksda_sumsel" target="_blank" class="social-floating-item tw" title="X (Twitter) BKSDA Sumsel">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+      <a href="https://www.threads.com/@bksda_sumsel" target="_blank" class="social-floating-item th" title="Threads BKSDA Sumsel">
+        <i class="fa-brands fa-threads"></i>
+      </a>
+      <a href="https://www.instagram.com/bksda_sumsel" target="_blank" class="social-floating-item ig" title="Instagram BKSDA Sumsel">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/channel/UC3mTRUNscHxFBZndT64-_Kg" target="_blank" class="social-floating-item yt" title="YouTube BKSDA Sumsel">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
+
     <!-- BARIS ATAS -->
     <div class="top-bar">
         Kementerian Kehutanan Republik Indonesia — Direktorat Jenderal KSDAE
@@ -648,7 +825,7 @@
         </div>
     </header>
 
-    <!-- NAVIGASI UTAMA (LANGSUNG MENGARAH KE HALAMAN PERTAMA DARI MASING-MASING KATEGORI) -->
+    <!-- NAVIGASI UTAMA SESUAI ARAHAN PIMPINAN -->
     <nav class="nav-bar">
         <div class="nav-container">
             <ul class="nav-menu">
@@ -658,31 +835,22 @@
                     <a href="profiltwa.html">Profil TWA Punti Kayu &#9662;</a>
                     <ul class="dropdown-menu">
                         <li><a href="profiltwa.html">Profil Kawasan</a></li>
-                        <li><a href="pejabat.html">Profil Pejabat</a></li>
                         <li><a href="struktur.html">Struktur Organisasi</a></li>
+                        <li><a href="pejabat.html">Profil Pimpinan</a></li>
                     </ul>
                 </li>
 
                 <li class="dropdown">
                     <a href="kehati.html">Keanekaragaman Hayati &#9662;</a>
                     <ul class="dropdown-menu">
-                        <li><a href="kehati.html">Flora</a></li>
-                        <li><a href="fauna.html">Fauna</a></li>
-                        <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
+                        <li><a href="kehati.html">Tumbuhan</a></li>
+                        <li><a href="fauna.html">Satwa</a></li>
                     </ul>
                 </li>
 
                 <li><a href="wisata.html">Objek wisata</a></li>
-
-                <li class="dropdown">
-                    <a href="insitu.html">Kegiatan &#9662;</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="insitu.html">Insitu</a></li>
-                        <li><a href="eksitu.html">Eksitu</a></li>
-                    </ul>
-                </li>
-
-                <li class="active"><a href="kontak.html">Kontak</a></li>
+                <li><a href="insitu.html">Kegiatan</a></li>
+                <li class="active"><a href="kontak.html">Kontak & Layanan</a></li>
                 <li class="nav-prs"><a href="prs.html">PRS Punti Kayu &rarr;</a></li>
             </ul>
         </div>
@@ -690,8 +858,8 @@
 
     <!-- BANNER PAGE KONTAK -->
     <div class="page-banner">
-        <h2>Hubungi Kami</h2>
-        <p>Layanan Informasi, Layanan Pengaduan, dan Kontak Resmi BKSDA Sumatera Selatan</p>
+        <h2>Kontak & Layanan Resmi</h2>
+        <p>Call Center Pengaduan, Layanan Perizinan SIMAKSI, dan Kontak Pengelola Kawasan TWA Punti Kayu</p>
     </div>
 
     <!-- WADAH KONTEN UTAMA -->
@@ -700,9 +868,64 @@
         <!-- AREA KONTEN KIRI -->
         <div class="content-area">
 
-           
+            <!-- BAR SUB-MENU HANYA MUNCUL DI HP -->
+            <div class="mobile-header-bar">
+                <span class="mobile-header-title">Menu Navigasi HP</span>
+                <button type="button" class="mobile-menu-btn" onclick="toggleMobileMenu(event)">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </button>
 
-            <div class="section-header">Kontak & Layanan Pesan Informasi</div>
+                <ul class="mobile-dropdown-menu" id="mobileDropdown">
+                    <div class="menu-category">Profil Kawasan</div>
+                    <li><a href="profiltwa.html">Profil Kawasan</a></li>
+                    <li><a href="struktur.html">Struktur Organisasi</a></li>
+                    <li><a href="pejabat.html">Profil Pimpinan</a></li>
+                    <div class="menu-category">Keanekaragaman Hayati</div>
+                    <li><a href="kehati.html">Tumbuhan</a></li>
+                    <li><a href="fauna.html">Satwa</a></li>
+                </ul>
+            </div>
+
+            <!-- SEKSI DOUBLE KONTAK SESUAI DATA REAL -->
+            <div class="section-header">Kontak Resmi Pengelola</div>
+            <div class="contact-card-grid">
+                <div class="contact-card">
+                    <h4>Call Center BKSDA Sumsel</h4>
+                    <p>Layanan darurat aduan konflik satwa liar, illegal logging, serta perizinan SIMAKSI resmi balai.</p>
+                    <a href="https://wa.me/6281271412141" target="_blank" class="contact-number">&#128222; 0812-7141-2141</a>
+                </div>
+                <div class="contact-card">
+                    <h4>Kepala Resor TWA Punti Kayu</h4>
+                    <p>Layanan koordinasi lapangan, perizinan kunjungan lokasi, dan operasional harian kawasan.</p>
+                    <a href="https://wa.me/6281373610748" target="_blank" class="contact-number">&#128222; 0813-7361-0748</a>
+                </div>
+            </div>
+
+            <!-- SEKSI HALAMAN LAYANAN -->
+            <div class="section-header">Layanan Masyarakat & Perizinan</div>
+            <div class="service-card-grid">
+                <div class="service-card">
+                    <h4>1. Layanan Kunjungan</h4>
+                    <p>Pelayanan informasi tiket masuk PNBP, prosedur reservasi rombongan edukasi sekolah, dan fasilitas gathering kawasan.</p>
+                </div>
+                <div class="service-card">
+                    <h4>2. Layanan Penelitian</h4>
+                    <p>Panduan permohonan izin penelitian, kerja praktik, magang mahasiswa, dan akademisi di kawasan konservasi.</p>
+                </div>
+                <div class="service-card">
+                    <h4>3. Layanan SIMAKSI</h4>
+                    <p>Penerbitan Surat Izin Masuk Kawasan Konservasi (SIMAKSI) untuk kegiatan komersial/dokumentasi.</p>
+                </div>
+            </div>
+
+            <!-- INFORMASI BERSAMA MENGHUBUNGI CALL CENTER -->
+            <div class="service-info-banner">
+                 <strong>Untuk Layanan Diatas Silahkan Hubungi Call Center Balai Konservasi Sumber Daya Alam Sumatera Selatan (0812-7141-2141)</strong>.
+            </div>
+
+            <div class="section-header">Formulir Pesan Pengaduan & Informasi</div>
 
             <!-- FORM ADUAN MASYARAKAT -->
             <form id="formAduan" onsubmit="kirimAduan(event)" style="margin-bottom: 30px;">
@@ -759,12 +982,12 @@
                 </div>
 
                 <button type="submit" class="btn-submit">
-                    Kirim Pengaduan ke WhatsApp
+                    Kirim Pengaduan ke WhatsApp Call Center
                 </button>
             </form>
 
             <!-- PETA LOKASI INTERAKTIF GOOGLE MAPS -->
-            <div class="section-header">Peta Lokasi Kawasan</div>
+            <div class="section-header">Peta Lokasi Kawasan TWA Punti Kayu</div>
             <div style="border-radius: 8px; overflow: hidden; border: 1px solid #cbd5e1; background-color: #f1f5f9;">
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.5538339055834!2d104.72542301072819!3d-2.94365453967171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e3b74795c704869%3A0x30e21e94d2770c6!2sTaman%20Wisata%20Alam%20Punti%20Kayu!5e0!3m2!1sid!2sid!4v1790870576894!5m2!1sid!2sid" 
@@ -783,16 +1006,24 @@
         <div class="sidebar-area">
             
             <div class="widget">
-                <div class="widget-title">ALAMAT KANTOR PENGELOLA</div>
-                <p style="font-size: 12.5px; color: #334155; line-height: 1.6; font-weight: 600;">
+                <div class="widget-title">ALAMAT KANTOR BALAI</div>
+                <p style="font-size: 12px; color: #334155; line-height: 1.6; font-weight: 600;">
                     <strong>Balai Konservasi Sumber Daya Alam Sumatera Selatan</strong><br>
                     Jl. Kolonel H. Burlian KM. 6 No. 79, Kota Palembang, Sumatera Selatan
                 </p>
             </div>
 
             <div class="widget">
+                <div class="widget-title">ALAMAT KANTOR WILAYAH</div>
+                <p style="font-size: 12px; color: #334155; line-height: 1.6; font-weight: 600;">
+                    <strong>Seksi Konservasi Sumber Daya Alam Wilayah 1 (SKSDA 1)</strong><br>
+                    Kantor Resor Wilayah 1 TWA Punti Kayu, Jl. Kolonel H. Burlian KM. 6, Kota Palembang, Sumatera Selatan
+                </p>
+            </div>
+
+            <div class="widget">
                 <div class="widget-title">JAM PELAYANAN KANTOR</div>
-                <p style="font-size: 12.5px; color: #334155; padding: 4px 0; line-height: 1.6; font-weight: 600;">
+                <p style="font-size: 12px; color: #334155; padding: 4px 0; line-height: 1.6; font-weight: 600;">
                     Senin - Kamis: <strong>08.00 - 16.00 WIB</strong><br>
                     Jumat: <strong>08.00 - 16.30 WIB</strong><br>
                     <span style="color: #e11d48;">Sabtu, Minggu & Hari Libur Nasional Tutup</span>
@@ -802,8 +1033,8 @@
             <div class="widget">
                 <div class="widget-title">TAUTAN TERKAIT</div>
                 <ul class="widget-list">
-                    <li><a href="https://www.menlhk.go.id" target="_blank">Kementerian Kehutanan RI</a></li>
-                    <li><a href="http://ksdae.menlhk.go.id" target="_blank">Ditjen KSDAE</a></li>
+                    <li><a href="https://www.kemenhut.go.id" target="_blank">Kementerian Kehutanan RI</a></li>
+                    <li><a href="http://ksdae.kemenhut.go.id" target="_blank">Ditjen KSDAE</a></li>
                 </ul>
             </div>
 
@@ -815,16 +1046,16 @@
     <footer class="footer-main">
         <div class="footer-container">
             <div class="footer-col">
-                <h5>BKSDA Sumatera Selatan</h5>
-                <p>Balai Konservasi Sumber Daya Alam Sumatera Selatan bertugas mengelola kawasan konservasi dan keanekaragaman hayati di wilayah Sumatera Selatan.</p>
+                <h5>Balai Konservasi Sumber Daya Alam Sumatera Selatan</h5>
+                <p>Unit Pelaksana Teknis Direktorat Jenderal Konservasi Sumber Daya Alam dan Ekosistem yang bertugas mengelola kawasan konservasi dan keanekaragaman hayati di wilayah Sumatera Selatan.</p>
             </div>
             <div class="footer-col">
                 <h5>Alamat Kantor</h5>
-                <p>Jl. Kolonel H. Burlian KM. 6 No. 79, Kota Palembang, Sumatera Selatan<br>Telepon/Fax: (0711) 410948</p>
+                <p>Jl. Kolonel H. Burlian KM. 6 No. 79, Kota Palembang, Sumatera Selatan<br>Telepon/Fax: (0711) 410948 | Email: bksdasumsel@kemenhut.go.id</p>
             </div>
         </div>
         <div class="footer-bottom">
-            Hak Cipta &copy; 2026 Balai Konservasi Sumber Daya Alam (BKSDA) Sumatera Selatan — Pengelola Kawasan TWA Punti Kayu
+            Hak Cipta &copy; 2026 Balai Konservasi Sumber Daya Alam Sumatera Selatan — Kementerian Kehutanan Republik Indonesia
         </div>
     </footer>
 
@@ -844,7 +1075,7 @@
         }
     });
 
-    // --- SCRIPT FORMAT WA ADUAN ---
+    // --- SCRIPT FORMAT WA ADUAN KE CALL CENTER BKSDA SUMSEL ---
     function kirimAduan(event) {
         event.preventDefault();
 
@@ -866,9 +1097,10 @@
         const kabupaten = document.getElementById('kabupaten').value.trim() || "-";
         const kronologi = document.getElementById('kronologi').value.trim() || "-";
 
-        const nomorWA = "6281373610748";
+        // NOMOR WHATSAPP CALL CENTER BKSDA SUMSEL REAL
+        const nomorWA = "6281271412141";
 
-        const teksWA = `*LAPORAN PENGADUAN MASYARAKAT BKSDA SUMSEL*%0A%0A` +
+        const teksWA = `*LAPORAN PENGADUAN MASYARAKAT BALAI KONSERVASI SUMBER DAYA ALAM SUMSEL*%0A%0A` +
                        `*1. Nama Pelapor:* ${encodeURIComponent(nama)}%0A` +
                        `*2. Jabatan:* ${encodeURIComponent(jabatan)}%0A` +
                        `*3. No. HP/WA:* ${encodeURIComponent(no_hp)}%0A` +
