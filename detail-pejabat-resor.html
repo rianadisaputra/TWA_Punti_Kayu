@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Pejabat - Anjas Tuberlani, S.H. - BKSDA Sumatera Selatan</title>
+    <title>Detail Pimpinan - Anjas Tuberlani, S.H. - BKSDA Sumatera Selatan</title>
     
     <!-- IMPORT FONT PLUS JAKARTA SANS & INTER -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- IMPORT FONT AWESOME V6.5.1 UNTUK IKON SOSMED -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <style>
         * { 
@@ -40,6 +43,47 @@
             color: #007a40;
             text-decoration: underline;
         }
+
+        /* FLOATING SOCIAL MEDIA SIDEBAR */
+        .social-floating-bar {
+            position: fixed;
+            left: 0;
+            top: 40%;
+            transform: translateY(-50%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+            border: 1px solid #cbd5e1;
+            border-left: none;
+            padding: 6px 4px;
+            gap: 6px;
+        }
+
+        .social-floating-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 6px;
+            color: #334155;
+            font-size: 18px;
+            transition: all 0.25s ease;
+        }
+
+        .social-floating-item:hover {
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+
+        .social-floating-item.fb:hover { background-color: #1877f2; }
+        .social-floating-item.tw:hover { background-color: #000000; }
+        .social-floating-item.th:hover { background-color: #000000; }
+        .social-floating-item.ig:hover { background-color: #e1306c; }
+        .social-floating-item.yt:hover { background-color: #ff0000; }
 
         /* 1. TOP BAR RESPONSIVE */
         .top-bar { 
@@ -203,6 +247,12 @@
             color: #ffffff !important; 
             font-size: 12.5px !important; 
             background-color: rgba(0, 168, 89, 0.15); 
+        }
+
+        .nav-prs a:hover {
+            background-color: #00a859 !important;
+            color: #ffffff !important;
+            border-color: #00a859 !important;
         }
 
         /* PAGE BANNER */
@@ -440,6 +490,10 @@
 
         /* MEDIA QUERIES MOBILE & TABLET */
         @media screen and (max-width: 868px) {
+            .social-floating-bar {
+                display: none;
+            }
+
             .mobile-header-bar {
                 display: flex !important;
             }
@@ -558,6 +612,25 @@
 </head>
 <body>
 
+    <!-- FLOATING SOCIAL MEDIA SIDEBAR -->
+    <div class="social-floating-bar">
+      <a href="https://www.facebook.com/bksda.s.selatan" target="_blank" class="social-floating-item fb" title="Facebook BKSDA Sumsel">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a href="https://x.com/bksda_sumsel" target="_blank" class="social-floating-item tw" title="X (Twitter) BKSDA Sumsel">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+      <a href="https://www.threads.com/@bksda_sumsel" target="_blank" class="social-floating-item th" title="Threads BKSDA Sumsel">
+        <i class="fa-brands fa-threads"></i>
+      </a>
+      <a href="https://www.instagram.com/bksda_sumsel" target="_blank" class="social-floating-item ig" title="Instagram BKSDA Sumsel">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/channel/UC3mTRUNscHxFBZndT64-_Kg" target="_blank" class="social-floating-item yt" title="YouTube BKSDA Sumsel">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
+
     <!-- BARIS ATAS -->
     <div class="top-bar">Kementerian Kehutanan Republik Indonesia — Direktorat Jenderal KSDAE</div>
 
@@ -576,7 +649,7 @@
         </div>
     </header>
 
-    <!-- NAVIGASI UTAMA (LANGSUNG MENGARAH KE HALAMAN PERTAMA DARI MASING-MASING CATEGORY) -->
+    <!-- NAVIGASI UTAMA DENGAN URUTAN SESUAI KOREKSI TERBARU -->
     <nav class="nav-bar">
         <div class="nav-container">
             <ul class="nav-menu">
@@ -586,31 +659,24 @@
                     <a href="profiltwa.html">Profil TWA Punti Kayu &#9662;</a>
                     <ul class="dropdown-menu">
                         <li><a href="profiltwa.html">Profil Kawasan</a></li>
-                        <li><a href="pejabat.html">Profil Pejabat</a></li>
                         <li><a href="struktur.html">Struktur Organisasi</a></li>
+                        <li><a href="pejabat.html">Profil Pimpinan</a></li>
                     </ul>
                 </li>
 
                 <li class="dropdown">
                     <a href="kehati.html">Keanekaragaman Hayati &#9662;</a>
                     <ul class="dropdown-menu">
-                        <li><a href="kehati.html">Flora</a></li>
-                        <li><a href="fauna.html">Fauna</a></li>
-                        <li><a href="poster.html">Poster Satwa Dilindungi</a></li>
+                        <li><a href="kehati.html">Tumbuhan</a></li>
+                        <li><a href="fauna.html">Satwa</a></li>
                     </ul>
                 </li>
 
                 <li><a href="wisata.html">Objek wisata</a></li>
 
-                <li class="dropdown">
-                    <a href="insitu.html">Kegiatan &#9662;</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="insitu.html">Insitu</a></li>
-                        <li><a href="eksitu.html">Eksitu</a></li>
-                    </ul>
-                </li>
+                <li><a href="insitu.html">Kegiatan</a></li>
 
-                <li><a href="kontak.html">Kontak</a></li>
+                <li><a href="kontak.html">Kontak & Layanan</a></li>
                 <li class="nav-prs"><a href="prs.html">PRS Punti Kayu &rarr;</a></li>
             </ul>
         </div>
@@ -618,7 +684,7 @@
 
     <!-- BANNER PAGE -->
     <div class="page-banner">
-        <h2>Detail Profil Pejabat</h2>
+        <h2>Detail Profil Pimpinan</h2>
     </div>
 
     <!-- WADAH DETAIL PEJABAT -->
@@ -638,8 +704,8 @@
                 <ul class="mobile-dropdown-menu" id="mobileDropdown">
                     <div class="menu-category">Profil TWA Punti Kayu</div>
                     <li><a href="profiltwa.html">Profil Kawasan</a></li>
-                    <li><a href="pejabat.html">Profil Pejabat</a></li>
-                    <li><a href="struktur.html">Struktur Organisasi</a></li>                   
+                    <li><a href="struktur.html">Struktur Organisasi</a></li>
+                    <li><a href="pejabat.html">Profil Pimpinan</a></li>                   
                 </ul>
             </div>
 
